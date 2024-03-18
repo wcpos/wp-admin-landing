@@ -1,0 +1,210 @@
+/*!***********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/index.css ***!
+  \***********************************************************************************************************/
+*, ::before, ::after {
+	--tw-border-spacing-x: 0;
+	--tw-border-spacing-y: 0;
+	--tw-translate-x: 0;
+	--tw-translate-y: 0;
+	--tw-rotate: 0;
+	--tw-skew-x: 0;
+	--tw-skew-y: 0;
+	--tw-scale-x: 1;
+	--tw-scale-y: 1;
+	--tw-pan-x:  ;
+	--tw-pan-y:  ;
+	--tw-pinch-zoom:  ;
+	--tw-scroll-snap-strictness: proximity;
+	--tw-gradient-from-position:  ;
+	--tw-gradient-via-position:  ;
+	--tw-gradient-to-position:  ;
+	--tw-ordinal:  ;
+	--tw-slashed-zero:  ;
+	--tw-numeric-figure:  ;
+	--tw-numeric-spacing:  ;
+	--tw-numeric-fraction:  ;
+	--tw-ring-inset:  ;
+	--tw-ring-offset-width: 0px;
+	--tw-ring-offset-color: #fff;
+	--tw-ring-color: rgb(59 130 246 / 0.5);
+	--tw-ring-offset-shadow: 0 0 #0000;
+	--tw-ring-shadow: 0 0 #0000;
+	--tw-shadow: 0 0 #0000;
+	--tw-shadow-colored: 0 0 #0000;
+	--tw-blur:  ;
+	--tw-brightness:  ;
+	--tw-contrast:  ;
+	--tw-grayscale:  ;
+	--tw-hue-rotate:  ;
+	--tw-invert:  ;
+	--tw-saturate:  ;
+	--tw-sepia:  ;
+	--tw-drop-shadow:  ;
+	--tw-backdrop-blur:  ;
+	--tw-backdrop-brightness:  ;
+	--tw-backdrop-contrast:  ;
+	--tw-backdrop-grayscale:  ;
+	--tw-backdrop-hue-rotate:  ;
+	--tw-backdrop-invert:  ;
+	--tw-backdrop-opacity:  ;
+	--tw-backdrop-saturate:  ;
+	--tw-backdrop-sepia:  ;
+}
+::backdrop {
+	--tw-border-spacing-x: 0;
+	--tw-border-spacing-y: 0;
+	--tw-translate-x: 0;
+	--tw-translate-y: 0;
+	--tw-rotate: 0;
+	--tw-skew-x: 0;
+	--tw-skew-y: 0;
+	--tw-scale-x: 1;
+	--tw-scale-y: 1;
+	--tw-pan-x:  ;
+	--tw-pan-y:  ;
+	--tw-pinch-zoom:  ;
+	--tw-scroll-snap-strictness: proximity;
+	--tw-gradient-from-position:  ;
+	--tw-gradient-via-position:  ;
+	--tw-gradient-to-position:  ;
+	--tw-ordinal:  ;
+	--tw-slashed-zero:  ;
+	--tw-numeric-figure:  ;
+	--tw-numeric-spacing:  ;
+	--tw-numeric-fraction:  ;
+	--tw-ring-inset:  ;
+	--tw-ring-offset-width: 0px;
+	--tw-ring-offset-color: #fff;
+	--tw-ring-color: rgb(59 130 246 / 0.5);
+	--tw-ring-offset-shadow: 0 0 #0000;
+	--tw-ring-shadow: 0 0 #0000;
+	--tw-shadow: 0 0 #0000;
+	--tw-shadow-colored: 0 0 #0000;
+	--tw-blur:  ;
+	--tw-brightness:  ;
+	--tw-contrast:  ;
+	--tw-grayscale:  ;
+	--tw-hue-rotate:  ;
+	--tw-invert:  ;
+	--tw-saturate:  ;
+	--tw-sepia:  ;
+	--tw-drop-shadow:  ;
+	--tw-backdrop-blur:  ;
+	--tw-backdrop-brightness:  ;
+	--tw-backdrop-contrast:  ;
+	--tw-backdrop-grayscale:  ;
+	--tw-backdrop-hue-rotate:  ;
+	--tw-backdrop-invert:  ;
+	--tw-backdrop-opacity:  ;
+	--tw-backdrop-saturate:  ;
+	--tw-backdrop-sepia:  ;
+}
+.wcpos-flex {
+	display: flex;
+}
+.wcpos-flex-1 {
+	flex: 1 1 0%;
+}
+.wcpos-items-center {
+	align-items: center;
+}
+.wcpos-border-l-4 {
+	border-left-width: 4px;
+}
+.wcpos-border-green-600 {
+	--tw-border-opacity: 1;
+	border-color: rgb(22 163 74 / var(--tw-border-opacity));
+}
+.wcpos-border-red-600 {
+	--tw-border-opacity: 1;
+	border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
+.wcpos-border-yellow-300 {
+	--tw-border-opacity: 1;
+	border-color: rgb(253 224 71 / var(--tw-border-opacity));
+}
+.wcpos-bg-green-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+}
+.wcpos-bg-red-300 {
+	--tw-bg-opacity: 1;
+	background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+.wcpos-bg-yellow-100 {
+	--tw-bg-opacity: 1;
+	background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+}
+.wcpos-p-4 {
+	padding: 1rem;
+}
+.wcpos-px-4 {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.wcpos-py-2 {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+*,
+::before,
+::after {
+	/* 1 */
+	box-sizing: border-box;
+	/* 2 */
+	border-width: 0;
+	/* 2 */
+	border-style: solid;
+	/* 2 */
+	border-color: #e5e7eb;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+#woocommerce-pos-settings table {
+	/* 1 */
+	text-indent: 0;
+	/* 2 */
+	border-color: inherit;
+	/* 3 */
+	border-collapse: collapse;
+}
+
+/**
+ * forms.css gives input[type="checkbox"] display: inline-block
+ * we need it to be hidden sometimes 
+ */
+/* .wcpos-hidden {
+	display: none !important;
+} */
+
+/**
+ * Give JS 10 seconds to load before showing the error
+ * @TODO - there must be a better way to do this
+ */
+#woocommerce-pos-js-error {
+	animation: 10s wcposError;
+	animation-fill-mode: forwards;
+	visibility: hidden;
+}
+
+@keyframes wcposError {
+	99% {
+		visibility: hidden;
+	}
+
+	100% {
+		visibility: visible;
+	}
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jc3MvbGFuZGluZy5jc3MiLCJtYXBwaW5ncyI6Ijs7O0FBQUE7Q0FBQSx3QkFBYztDQUFkLHdCQUFjO0NBQWQsbUJBQWM7Q0FBZCxtQkFBYztDQUFkLGNBQWM7Q0FBZCxjQUFjO0NBQWQsY0FBYztDQUFkLGVBQWM7Q0FBZCxlQUFjO0NBQWQsYUFBYztDQUFkLGFBQWM7Q0FBZCxrQkFBYztDQUFkLHNDQUFjO0NBQWQsOEJBQWM7Q0FBZCw2QkFBYztDQUFkLDRCQUFjO0NBQWQsZUFBYztDQUFkLG9CQUFjO0NBQWQsc0JBQWM7Q0FBZCx1QkFBYztDQUFkLHdCQUFjO0NBQWQsa0JBQWM7Q0FBZCwyQkFBYztDQUFkLDRCQUFjO0NBQWQsc0NBQWM7Q0FBZCxrQ0FBYztDQUFkLDJCQUFjO0NBQWQsc0JBQWM7Q0FBZCw4QkFBYztDQUFkLFlBQWM7Q0FBZCxrQkFBYztDQUFkLGdCQUFjO0NBQWQsaUJBQWM7Q0FBZCxrQkFBYztDQUFkLGNBQWM7Q0FBZCxnQkFBYztDQUFkLGFBQWM7Q0FBZCxtQkFBYztDQUFkLHFCQUFjO0NBQWQsMkJBQWM7Q0FBZCx5QkFBYztDQUFkLDBCQUFjO0NBQWQsMkJBQWM7Q0FBZCx1QkFBYztDQUFkLHdCQUFjO0NBQWQseUJBQWM7Q0FBZDtBQUFjO0FBQWQ7Q0FBQSx3QkFBYztDQUFkLHdCQUFjO0NBQWQsbUJBQWM7Q0FBZCxtQkFBYztDQUFkLGNBQWM7Q0FBZCxjQUFjO0NBQWQsY0FBYztDQUFkLGVBQWM7Q0FBZCxlQUFjO0NBQWQsYUFBYztDQUFkLGFBQWM7Q0FBZCxrQkFBYztDQUFkLHNDQUFjO0NBQWQsOEJBQWM7Q0FBZCw2QkFBYztDQUFkLDRCQUFjO0NBQWQsZUFBYztDQUFkLG9CQUFjO0NBQWQsc0JBQWM7Q0FBZCx1QkFBYztDQUFkLHdCQUFjO0NBQWQsa0JBQWM7Q0FBZCwyQkFBYztDQUFkLDRCQUFjO0NBQWQsc0NBQWM7Q0FBZCxrQ0FBYztDQUFkLDJCQUFjO0NBQWQsc0JBQWM7Q0FBZCw4QkFBYztDQUFkLFlBQWM7Q0FBZCxrQkFBYztDQUFkLGdCQUFjO0NBQWQsaUJBQWM7Q0FBZCxrQkFBYztDQUFkLGNBQWM7Q0FBZCxnQkFBYztDQUFkLGFBQWM7Q0FBZCxtQkFBYztDQUFkLHFCQUFjO0NBQWQsMkJBQWM7Q0FBZCx5QkFBYztDQUFkLDBCQUFjO0NBQWQsMkJBQWM7Q0FBZCx1QkFBYztDQUFkLHdCQUFjO0NBQWQseUJBQWM7Q0FBZDtBQUFjO0FBRWQ7Q0FBQTtBQUFtQjtBQUFuQjtDQUFBO0FBQW1CO0FBQW5CO0NBQUE7QUFBbUI7QUFBbkI7Q0FBQTtBQUFtQjtBQUFuQjtDQUFBLHNCQUFtQjtDQUFuQjtBQUFtQjtBQUFuQjtDQUFBLHNCQUFtQjtDQUFuQjtBQUFtQjtBQUFuQjtDQUFBLHNCQUFtQjtDQUFuQjtBQUFtQjtBQUFuQjtDQUFBLGtCQUFtQjtDQUFuQjtBQUFtQjtBQUFuQjtDQUFBLGtCQUFtQjtDQUFuQjtBQUFtQjtBQUFuQjtDQUFBLGtCQUFtQjtDQUFuQjtBQUFtQjtBQUFuQjtDQUFBO0FBQW1CO0FBQW5CO0NBQUEsa0JBQW1CO0NBQW5CO0FBQW1CO0FBQW5CO0NBQUEsbUJBQW1CO0NBQW5CO0FBQW1COztBQUVuQjs7O0NBR0M7QUFDRDs7O0NBR0MsTUFBTTtDQUNOLHNCQUFzQjtDQUN0QixNQUFNO0NBQ04sZUFBZTtDQUNmLE1BQU07Q0FDTixtQkFBbUI7Q0FDbkIsTUFBTTtDQUNOLHFCQUFxQjtBQUN0Qjs7QUFFQTs7OztDQUlDOztBQUVEO0NBQ0MsTUFBTTtDQUNOLGNBQWM7Q0FDZCxNQUFNO0NBQ04scUJBQXFCO0NBQ3JCLE1BQU07Q0FDTix5QkFBeUI7QUFDMUI7O0FBRUE7OztFQUdFO0FBQ0Y7O0dBRUc7O0FBRUg7OztFQUdFO0FBQ0Y7Q0FDQyx5QkFBeUI7Q0FDekIsNkJBQTZCO0NBQzdCLGtCQUFrQjtBQUNuQjs7QUFFQTtDQUNDO0VBQ0Msa0JBQWtCO0NBQ25COztDQUVBO0VBQ0MsbUJBQW1CO0NBQ3BCO0FBQ0QsQyIsInNvdXJjZXMiOlsid2VicGFjazovL0B3Y3Bvcy93cC1hZG1pbi1sYW5kaW5nLy4vc3JjL2luZGV4LmNzcyJdLCJzb3VyY2VzQ29udGVudCI6WyJAdGFpbHdpbmQgYmFzZTtcbkB0YWlsd2luZCBjb21wb25lbnRzO1xuQHRhaWx3aW5kIHV0aWxpdGllcztcblxuLypcbjEuIFByZXZlbnQgcGFkZGluZyBhbmQgYm9yZGVyIGZyb20gYWZmZWN0aW5nIGVsZW1lbnQgd2lkdGguIChodHRwczovL2dpdGh1Yi5jb20vbW96ZGV2cy9jc3NyZW1lZHkvaXNzdWVzLzQpXG4yLiBBbGxvdyBhZGRpbmcgYSBib3JkZXIgdG8gYW4gZWxlbWVudCBieSBqdXN0IGFkZGluZyBhIGJvcmRlci13aWR0aC4gKGh0dHBzOi8vZ2l0aHViLmNvbS90YWlsd2luZGNzcy90YWlsd2luZGNzcy9wdWxsLzExNilcbiovXG4qLFxuOjpiZWZvcmUsXG46OmFmdGVyIHtcblx0LyogMSAqL1xuXHRib3gtc2l6aW5nOiBib3JkZXItYm94O1xuXHQvKiAyICovXG5cdGJvcmRlci13aWR0aDogMDtcblx0LyogMiAqL1xuXHRib3JkZXItc3R5bGU6IHNvbGlkO1xuXHQvKiAyICovXG5cdGJvcmRlci1jb2xvcjogI2U1ZTdlYjtcbn1cblxuLypcbjEuIFJlbW92ZSB0ZXh0IGluZGVudGF0aW9uIGZyb20gdGFibGUgY29udGVudHMgaW4gQ2hyb21lIGFuZCBTYWZhcmkuIChodHRwczovL2J1Z3MuY2hyb21pdW0ub3JnL3AvY2hyb21pdW0vaXNzdWVzL2RldGFpbD9pZD05OTkwODgsIGh0dHBzOi8vYnVncy53ZWJraXQub3JnL3Nob3dfYnVnLmNnaT9pZD0yMDEyOTcpXG4yLiBDb3JyZWN0IHRhYmxlIGJvcmRlciBjb2xvciBpbmhlcml0YW5jZSBpbiBhbGwgQ2hyb21lIGFuZCBTYWZhcmkuIChodHRwczovL2J1Z3MuY2hyb21pdW0ub3JnL3AvY2hyb21pdW0vaXNzdWVzL2RldGFpbD9pZD05MzU3MjksIGh0dHBzOi8vYnVncy53ZWJraXQub3JnL3Nob3dfYnVnLmNnaT9pZD0xOTUwMTYpXG4zLiBSZW1vdmUgZ2FwcyBiZXR3ZWVuIHRhYmxlIGJvcmRlcnMgYnkgZGVmYXVsdC5cbiovXG5cbiN3b29jb21tZXJjZS1wb3Mtc2V0dGluZ3MgdGFibGUge1xuXHQvKiAxICovXG5cdHRleHQtaW5kZW50OiAwO1xuXHQvKiAyICovXG5cdGJvcmRlci1jb2xvcjogaW5oZXJpdDtcblx0LyogMyAqL1xuXHRib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xufVxuXG4vKipcbiAqIGZvcm1zLmNzcyBnaXZlcyBpbnB1dFt0eXBlPVwiY2hlY2tib3hcIl0gZGlzcGxheTogaW5saW5lLWJsb2NrXG4gKiB3ZSBuZWVkIGl0IHRvIGJlIGhpZGRlbiBzb21ldGltZXMgXG4gKi9cbi8qIC53Y3Bvcy1oaWRkZW4ge1xuXHRkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XG59ICovXG5cbi8qKlxuICogR2l2ZSBKUyAxMCBzZWNvbmRzIHRvIGxvYWQgYmVmb3JlIHNob3dpbmcgdGhlIGVycm9yXG4gKiBAVE9ETyAtIHRoZXJlIG11c3QgYmUgYSBiZXR0ZXIgd2F5IHRvIGRvIHRoaXNcbiAqL1xuI3dvb2NvbW1lcmNlLXBvcy1qcy1lcnJvciB7XG5cdGFuaW1hdGlvbjogMTBzIHdjcG9zRXJyb3I7XG5cdGFuaW1hdGlvbi1maWxsLW1vZGU6IGZvcndhcmRzO1xuXHR2aXNpYmlsaXR5OiBoaWRkZW47XG59XG5cbkBrZXlmcmFtZXMgd2Nwb3NFcnJvciB7XG5cdDk5JSB7XG5cdFx0dmlzaWJpbGl0eTogaGlkZGVuO1xuXHR9XG5cblx0MTAwJSB7XG5cdFx0dmlzaWJpbGl0eTogdmlzaWJsZTtcblx0fVxufSJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==*/

@@ -4,12 +4,23 @@ import { createRoot, render } from '@wordpress/element';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import Error from './components/error';
+import { Hero } from './components/hero';
+import { Pro } from './components/pro';
 
 import './index.css';
 
 const App = () => {
 	return (
-		<h1>Hello World!</h1>
+		<div className="wcpos-w-full wcpos-py-4">
+			<div className="wcpos-mx-auto wcpos-grid wcpos-gap-8 lg:wcpos-max-w-6xl lg:wcpos-grid-cols-12 lg:wcpos-px-6">
+				<div className="wcpos-grid wcpos-gap-4 lg:wcpos-col-span-8 lg:wcpos-gap-2">
+					<Hero />
+				</div>
+				<div className="lg:wcpos-col-span-4">
+					<Pro />
+				</div>
+			</div>
+		</div>
 	);
 };
 

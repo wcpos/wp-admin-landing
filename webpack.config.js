@@ -5,7 +5,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const LiveReloadPlugin = require('webpack-livereload-plugin');
+// const LiveReloadPlugin = require('webpack-livereload-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -110,12 +110,25 @@ module.exports = function (_env, argv) {
 			new MiniCssExtractPlugin({
 				filename: './css/[name].css',
 			}),
-			new LiveReloadPlugin(),
+			// new LiveReloadPlugin(),
 			new BundleAnalyzerPlugin({
 				analyzerMode: 'static',
 				openAnalyzer: false,
 			}),
 		],
+		devServer: {
+			static: {
+				directory: path.join(__dirname, OUTPUT), // Serve files from the output directory
+			},
+			compress: true, // Enable gzip compression
+			port: 9000, // Port number for the dev server
+			hot: true, // Enable Hot Module Replacement (HMR)
+			headers: {
+				'Access-Control-Allow-Origin': '*', // Useful if you're dealing with CORS during development
+			},
+			allowedHosts: 'all',
+			historyApiFallback: true, // Fallback to /index.html for Single Page Applications.
+		},
 		optimization: {
 			minimize: NODE_ENV === 'production',
 			minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
