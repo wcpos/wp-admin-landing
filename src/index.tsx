@@ -6,6 +6,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Error from './components/error';
 import { Hero } from './components/hero';
 import { Pro } from './components/pro';
+import { PayPalButton } from './components/paypal-button';
+import { Review } from './components/review';
+import { HireMe } from './components/hire-me';
 
 import './index.css';
 
@@ -17,7 +20,12 @@ const App = () => {
 					<Hero />
 				</div>
 				<div className="lg:wcpos-col-span-4">
-					<Pro />
+					<div className="wcpos-grid wcpos-gap-4">
+						<Pro />
+						<PayPalButton />
+						<Review />
+						<HireMe />
+					</div>
 				</div>
 			</div>
 		</div>
