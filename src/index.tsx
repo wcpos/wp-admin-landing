@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { createRoot, render } from '@wordpress/element';
 import { ErrorBoundary } from 'react-error-boundary';
+import ReactGA from 'react-ga4';
 
 import Error from './components/error';
 import { Hero } from './components/hero';
@@ -11,6 +12,9 @@ import { Review } from './components/review';
 import { HireMe } from './components/hire-me';
 
 import './index.css';
+
+ReactGA.initialize([{ trackingId: 'G-08SJ28P1E5' }]);
+ReactGA.send({ hitType: "pageview", page: "/wp-admin/admin.php?page=woocommerce-pos", title: "Support WooCommerce POS" });
 
 const App = () => {
 	return (
