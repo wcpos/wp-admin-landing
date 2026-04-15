@@ -27,6 +27,9 @@ export function initI18n(): typeof i18next {
         prefix: '{',
         suffix: '}',
       },
+      react: {
+        useSuspense: false,
+      },
       partialBundledLanguages: true,
       resources: {
         en_US: { [NAMESPACE]: en },
