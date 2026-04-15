@@ -98,7 +98,7 @@ All webpack/babel dev dependencies (~20 packages): `webpack`, `webpack-cli`, `we
 
 ### Tailwind
 
-Upgrade to Tailwind v4 (uses `@tailwindcss/vite` plugin, no separate PostCSS config). The `wcpos-` prefix and custom WordPress admin theme colors are preserved. `tailwind.config.js` migrates to Tailwind v4 CSS-based config (or remains as a JS config if v4 compat requires it — to be determined during implementation).
+Upgrade to Tailwind v4 (uses `@tailwindcss/vite` plugin, no separate PostCSS config). Tailwind v4 changes the prefix mechanism from dash-prefix (`wcpos-flex`) to variant-style prefix (`wcpos:flex`). All component class names are updated accordingly. The `tailwind.config.js` is removed — config moves to CSS (`@import "tailwindcss" prefix(wcpos)` + `@theme inline` for custom colors). Preflight is disabled by not importing it.
 
 ### Package manager
 
