@@ -153,8 +153,8 @@ export interface UpdatesServerConfig {
 export interface WCPOSLanding {
   schema_version: number;
   profile: LandingProfile;
-  posthog: PostHogConfig;
-  updates_server: UpdatesServerConfig;
+  posthog?: PostHogConfig;
+  updates_server?: UpdatesServerConfig;
 }
 
 declare global {
@@ -188,9 +188,10 @@ import posthog from 'posthog-js';
 import { getLandingData } from './landing-data';
 
 export function initAnalytics(): void {
-  const { posthog: config, profile } = getLandingData();
-
-  if (!config.api_key) return;
+  const data = getLandingData();
+  const config = data?.posthog;
+  const profile = data?.profile;
+  if (!config?.api_key) return;
 
   posthog.init(config.api_key, {
     api_host: config.api_host,
@@ -226,7 +227,7 @@ export function trackEvent(event: string, properties?: Record<string, unknown>):
 - **Conditional init on `api_key`.** PostHog infra (wcpos/wcpos-infra#18) may not be deployed when this ships. Empty `api_key` = skip init entirely.
 - **`persistence: 'memory'`** — no cookies or localStorage in wp-admin context.
 - **`autocapture: false`** — wp-admin has too many irrelevant elements. Explicit tracking only.
-- **`trackEvent  helper** — thin wrapper so components don't import posthog directly. If PostHog isn't initialized, `posthog.capture` is a no-op.
+- **`trackEvent` helper** — thin wrapper so components don't import posthog directly. If PostHog isn't initialized, `posthog.capture` is a no-op.
 
 ### Removal
 
@@ -243,9 +244,11 @@ export function trackEvent(event: string, properties?: Record<string, unknown>):
 import { getLandingData } from './landing-data';
 
 export function reportProfile(): void {
-  const { updates_server, profile } = getLandingData();
+  const data = getLandingData();
+  if (!data) return;
 
-  if (!updates_server.profile_url) return;
+  const { updates_server, profile } = data;
+  if (!updates_server?.profile_url) return;
 
   fetch(updates_server.profile_url, {
     method: 'POST',
@@ -325,9 +328,8 @@ const NAMESPACE = 'wp-admin-landing';
 const PROJECT = 'woocommerce-pos';
 
 export function initI18n(): typeof i18next {
-  const { profile } = getLandingData();
-  // Convert WP locale (de_DE) to i18next format if needed
-  const locale = profile.locale || 'en_US';
+  const data = getLandingData();
+  const locale = data?.profile?.locale ?? 'en_US';
 
   i18next
     .use(ChainedBackend)
