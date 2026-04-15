@@ -30,12 +30,12 @@
  * Give JS 10 seconds to load before showing the error message.
  */
 #woocommerce-pos-js-error {
-  animation: 10s wcposError;
+  animation: 10s wcpos-error;
   animation-fill-mode: forwards;
   visibility: hidden;
 }
 
-@keyframes wcposError {
+@keyframes wcpos-error {
   99% {
     visibility: hidden;
   }

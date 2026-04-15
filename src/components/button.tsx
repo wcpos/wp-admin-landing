@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { ReactNode, MouseEventHandler } from 'react';
 
 interface ButtonProps {
   href: string;
   children: ReactNode;
   target?: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 export const Button = ({ href, children, target, onClick }: ButtonProps) => {

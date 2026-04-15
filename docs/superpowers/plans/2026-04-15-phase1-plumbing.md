@@ -31,6 +31,7 @@ All component files in this plan use the v4 prefix syntax.
 ## File Map
 
 ### New files
+
 | File | Responsibility |
 |---|---|
 | `vite.config.ts` | Vite build config with externals, output paths, dev server |
@@ -41,6 +42,7 @@ All component files in this plan use the v4 prefix syntax.
 | `src/translations/en/wp-admin-landing.json` | English source strings extracted from all components |
 
 ### Modified files
+
 | File | Changes |
 |---|---|
 | `package.json` | Remove webpack/babel deps, add vite/tailwind4/posthog/i18next deps, update scripts |
@@ -59,6 +61,7 @@ All component files in this plan use the v4 prefix syntax.
 | `src/hooks/use-notices.tsx` | Update React imports |
 
 ### Deleted files
+
 | File | Reason |
 |---|---|
 | `webpack.config.js` | Replaced by `vite.config.ts` |

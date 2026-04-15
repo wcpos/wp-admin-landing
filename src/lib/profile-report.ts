@@ -5,7 +5,7 @@ export function reportProfile(): void {
   if (!data) return;
 
   const { updates_server, profile } = data;
-  if (!updates_server.profile_url) return;
+  if (!updates_server?.profile_url) return;
 
   fetch(updates_server.profile_url, {
     method: 'POST',

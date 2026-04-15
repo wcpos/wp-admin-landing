@@ -15,7 +15,7 @@ This spec covers Phase 1: the technical plumbing that subsequent phases depend o
 
 - **Old plugin versions** load `wp-admin-landing/assets/` (untagged default branch, current static page)
 - **Plugin 1.9.0+** loads `wp-admin-landing@v2/assets/` (tagged release with the new app)
-- The v2 bundle can assume `window.wcpos.landing` always exists — no backward compatibility code needed
+- The v2 bundle should use `getLandingData()` which returns `undefined` if `window.wcpos.landing` is missing — all consumers degrade gracefully
 
 ### Dependencies
 
@@ -25,7 +25,7 @@ This spec covers Phase 1: the technical plumbing that subsequent phases depend o
 | PostHog instance | Issue open: wcpos/wcpos-infra#18 |
 | Updates-server `POST /v1/profile` | Issue open: wcpos/updates-server#46 |
 
-The app handles missing PostHog config and unavailable updates-server gracefully, but `window.wcpos.landing` is guaranteed by the versioning strategy.
+The app handles all missing data gracefully — `getLandingData()` returns `undefined` if `window.wcpos.landing` is absent, and all consumers (analytics, i18n, profile reporting) degrade to safe defaults.
 
 ---
 
@@ -365,7 +365,7 @@ export function initI18n(): typeof i18next {
 
 **Translation version:** Unlike the settings app (which pins translations to the plugin version), the landing page should always fetch the latest translations. This allows updating copy and translations without shipping a plugin update. The CDN path uses `@main` instead of a pinned version:
 
-```
+```text
 https://cdn.jsdelivr.net/gh/wcpos/translations@main/translations/js/{locale}/woocommerce-pos/wp-admin-landing.json
 ```
 

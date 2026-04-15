@@ -11,7 +11,7 @@ const PROJECT = 'woocommerce-pos';
 
 export function initI18n(): typeof i18next {
   const data = getLandingData();
-  const locale = data?.profile.locale || 'en_US';
+  const locale = data?.profile?.locale || 'en_US';
 
   i18next
     .use(ChainedBackend)
@@ -42,7 +42,7 @@ export function initI18n(): typeof i18next {
             expirationTime: 7 * 24 * 60 * 60 * 1000, // 7 days
           },
           {
-            loadPath: `https://cdn.jsdelivr.net/gh/wcpos/translations@main/translations/js/{lng}/${PROJECT}/${NAMESPACE}.json`,
+            loadPath: `https://cdn.jsdelivr.net/gh/wcpos/translations@main/translations/js/{{lng}}/${PROJECT}/${NAMESPACE}.json`,
           },
         ],
       },
