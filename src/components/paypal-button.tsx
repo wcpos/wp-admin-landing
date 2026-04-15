@@ -1,5 +1,6 @@
 import * as React from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { trackEvent } from '../lib/analytics';
 
 export const PayPalButton = () => {
   const [donationAmount, setDonationAmount] = React.useState('5'); // Default donation amount
@@ -28,6 +29,7 @@ export const PayPalButton = () => {
   };
 
   const handleCreateOrder = (data, actions) => {
+    trackEvent('paypal_donate_clicked', { amount: currentDonationAmountRef.current });
     return actions.order.create({
       purchase_units: [
         {

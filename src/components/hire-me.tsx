@@ -1,12 +1,9 @@
 import * as React from 'react';
-
-import { Button } from './button';
+import { trackEvent } from '../lib/analytics';
 
 export const HireMe = () => {
   return (
     <div className="wcpos:bg-gray-50 wcpos:p-6 wcpos:rounded-lg">
-      {/* <Badge>How you can help</Badge> */}
-
       <h2 className="wcpos:text-2xl wcpos:font-semibold wcpos:m-0">Hire me!</h2>
 
       <p>I am available for Contract Work:</p>
@@ -17,7 +14,14 @@ export const HireMe = () => {
         <li>Expertise in custom plugin and block development (eg: Gutenberg)</li>
       </ul>
 
-      Email <a href="mailto:paul@wcpos.com">paul@wcpos.com</a> with your project.
+      Email{' '}
+      <a
+        href="mailto:paul@wcpos.com"
+        onClick={() => trackEvent('hire_me_clicked')}
+      >
+        paul@wcpos.com
+      </a>{' '}
+      with your project.
     </div>
-  )
-}
+  );
+};
