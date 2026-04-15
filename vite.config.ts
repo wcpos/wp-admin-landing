@@ -13,6 +13,7 @@ function extractCss(): Plugin {
     apply: 'build',
     enforce: 'post',
     generateBundle(_, bundle) {
+      let cssExtracted = false;
       for (const [fileName, chunk] of Object.entries(bundle)) {
         if (chunk.type === 'chunk' && chunk.code) {
           // Match Vite's CSS injection pattern: document.createElement("style"); ... .textContent=`...`
@@ -20,6 +21,7 @@ function extractCss(): Plugin {
             /var \w+=document\.createElement\("style"\);\w+\.textContent=`([\s\S]*?)`[,;]document\.head\.appendChild/
           );
           if (cssMatch) {
+            cssExtracted = true;
             // Emit the CSS as a separate asset
             this.emitFile({
               type: 'asset',
@@ -33,6 +35,9 @@ function extractCss(): Plugin {
             );
           }
         }
+      }
+      if (!cssExtracted) {
+        this.warn('extract-css: No inline CSS found — Vite may have changed its CSS injection pattern.');
       }
     },
   };

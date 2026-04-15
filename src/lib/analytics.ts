@@ -2,8 +2,10 @@ import posthog from 'posthog-js';
 import { getLandingData } from './landing-data';
 
 export function initAnalytics(): void {
-  const { posthog: config, profile } = getLandingData();
+  const data = getLandingData();
+  if (!data) return;
 
+  const { posthog: config, profile } = data;
   if (!config.api_key) return;
 
   posthog.init(config.api_key, {

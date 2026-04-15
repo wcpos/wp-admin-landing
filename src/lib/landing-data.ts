@@ -41,6 +41,6 @@ declare global {
   }
 }
 
-export function getLandingData(): WCPOSLanding {
-  return window.wcpos.landing;
+export function getLandingData(): WCPOSLanding | undefined {
+  return window.wcpos?.landing;
 }

@@ -1,11 +1,9 @@
-@import "tailwindcss" prefix(wcpos);
-
 /*
- * Disable preflight — WordPress admin provides its own base styles.
- * In Tailwind v4, we do this by importing layers selectively.
- * The prefix(wcpos) on the @import line handles the prefix config.
+ * Import only theme + utilities — skip preflight (base layer).
+ * WordPress admin provides its own base styles; preflight would conflict.
  */
-@layer theme, base, components, utilities;
+@import "tailwindcss/theme" prefix(wcpos);
+@import "tailwindcss/utilities" prefix(wcpos);
 
 /* Custom WordPress admin theme colors */
 @theme inline {

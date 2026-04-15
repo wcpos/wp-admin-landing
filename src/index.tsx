@@ -49,8 +49,10 @@ const Root = () => {
 
 const el = document.getElementById('woocommerce-pos-upgrade');
 
-if (createRoot) {
-	createRoot(el).render(<Root />);
-} else {
-	render(<Root />, el);
+if (el) {
+	if (createRoot) {
+		createRoot(el).render(<Root />);
+	} else {
+		render(<Root />, el);
+	}
 }

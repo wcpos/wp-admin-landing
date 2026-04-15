@@ -1,8 +1,10 @@
 import { getLandingData } from './landing-data';
 
 export function reportProfile(): void {
-  const { updates_server, profile } = getLandingData();
+  const data = getLandingData();
+  if (!data) return;
 
+  const { updates_server, profile } = data;
   if (!updates_server.profile_url) return;
 
   fetch(updates_server.profile_url, {
