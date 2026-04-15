@@ -1,3 +1,4 @@
 .yarn
+.worktrees
 node_modules
 *.lock
