@@ -9,8 +9,12 @@ import { Pro } from './components/pro';
 import { PayPalButton } from './components/paypal-button';
 import { Review } from './components/review';
 import { HireMe } from './components/hire-me';
+import { initAnalytics } from './lib/analytics';
 
 import './index.css';
+
+// Initialize analytics (non-blocking, no-op if PostHog not configured)
+initAnalytics();
 
 const App = () => {
 	return (
