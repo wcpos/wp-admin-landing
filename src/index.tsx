@@ -10,12 +10,14 @@ import { PayPalButton } from './components/paypal-button';
 import { Review } from './components/review';
 import { HireMe } from './components/hire-me';
 import { initAnalytics } from './lib/analytics';
+import { initI18n } from './lib/i18n';
 import { reportProfile } from './lib/profile-report';
 
 import './index.css';
 
 // Initialize analytics (non-blocking, no-op if PostHog not configured)
 initAnalytics();
+initI18n();
 // Report store profile to updates-server (fire-and-forget)
 reportProfile();
 
