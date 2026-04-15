@@ -11,7 +11,7 @@ const PROJECT = 'woocommerce-pos';
 
 export function initI18n(): typeof i18next {
   const data = getLandingData();
-  const locale = data?.profile?.locale || 'en_US';
+  const locale = data?.profile?.locale ?? 'en_US';
 
   i18next
     .use(ChainedBackend)

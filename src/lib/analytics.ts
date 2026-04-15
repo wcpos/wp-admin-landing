@@ -3,11 +3,10 @@ import { getLandingData } from './landing-data';
 
 export function initAnalytics(): void {
   const data = getLandingData();
-  if (!data) return;
+  if (!data?.posthog?.api_key || !data?.posthog?.api_host || !data?.profile?.site_uuid) return;
 
   const config = data.posthog;
   const profile = data.profile;
-  if (!config?.api_key) return;
 
   posthog.init(config.api_key, {
     api_host: config.api_host,
@@ -16,7 +15,7 @@ export function initAnalytics(): void {
     capture_pageview: false,
   });
 
-  posthog.identify(profile?.site_uuid, {
+  posthog.identify(profile.site_uuid, {
     locale: profile.locale,
     wc_version: profile.wc_version,
     plugin_version: profile.plugin_version,

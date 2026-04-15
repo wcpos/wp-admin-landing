@@ -25,7 +25,7 @@ This spec covers Phase 1: the technical plumbing that subsequent phases depend o
 | PostHog instance | Issue open: wcpos/wcpos-infra#18 |
 | Updates-server `POST /v1/profile` | Issue open: wcpos/updates-server#46 |
 
-The app handles all missing data gracefully — `getLandingData()` returns `undefined` if `window.wcpos.landing` is absent, and all consumers (analytics, i18n, profile reporting) degrade to safe defaults.
+The app handles missing/malformed landing data gracefully — `getLandingData()` returns `undefined` and consumers (analytics, i18n, profile reporting) degrade to safe defaults.
 
 ---
 
@@ -54,9 +54,9 @@ export default defineConfig({
       input: 'src/index.tsx',
       external: ['react', 'react-dom', '@wordpress/element'],
       output: {
-        entryFileNames: 'js/landing.js',
+        entryFileNames: 'js/welcome.js',
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) return 'css/landing.css';
+          if (assetInfo.name?.endsWith('.css')) return 'css/welcome.css';
           return 'assets/[name][extname]';
         },
         globals: {
@@ -77,8 +77,9 @@ export default defineConfig({
 
 ### Output
 
-- `assets/js/landing.js` — IIFE bundle (same as current)
-- `assets/css/landing.css` — extracted CSS (same as current)
+- `assets/js/welcome.js` — new IIFE bundle for plugin 1.9.0+
+- `assets/css/welcome.css` — new extracted CSS for plugin 1.9.0+
+- `assets/js/landing.js` and `assets/css/landing.css` remain as legacy outputs for older plugin versions
 
 ### Files removed
 
@@ -158,21 +159,22 @@ export interface WCPOSLanding {
 
 declare global {
   interface Window {
-    wcpos: {
-      landing: WCPOSLanding;
+    wcpos?: {
+      landing?: unknown;
     };
   }
 }
 
-export function getLandingData(): WCPOSLanding {
-  return window.wcpos.landing;
+export function getLandingData(): WCPOSLanding | undefined {
+  const landing = window.wcpos?.landing;
+  return isLandingData(landing) ? landing : undefined;
 }
 ```
 
 ### Design decisions
 
-- **No null return / no schema_version check.** The v2 bundle is only loaded by plugin 1.9.0+ which guarantees the data exists at schema_version 1. If a future schema_version 2 breaks compatibility, we publish a v3 tag.
-- **Global type augmentation** via `declare global` so `window.wcpos.landing` is typed everywhere without casting.
+- **Safe getter with runtime validation.** `getLandingData()` validates the runtime shape and returns `undefined` for missing/malformed payloads so all consumers can degrade gracefully.
+- **Global type augmentation + runtime checks.** `declare global` preserves editor typing, while `isLandingData()` remains the runtime safety boundary.
 - **Sub-interfaces exported separately** (`LandingProfile`, `PostHogConfig`, `UpdatesServerConfig`) so consumers can import only what they need.
 
 ---
@@ -224,7 +226,7 @@ export function trackEvent(event: string, properties?: Record<string, unknown>):
 - **Conditional init on `api_key`.** PostHog infra (wcpos/wcpos-infra#18) may not be deployed when this ships. Empty `api_key` = skip init entirely.
 - **`persistence: 'memory'`** — no cookies or localStorage in wp-admin context.
 - **`autocapture: false`** — wp-admin has too many irrelevant elements. Explicit tracking only.
-- **`trackEvent` helper** — thin wrapper so components don't import posthog directly. If PostHog isn't initialized, `posthog.capture` is a no-op.
+- **`trackEvent  helper** — thin wrapper so components don't import posthog directly. If PostHog isn't initialized, `posthog.capture` is a no-op.
 
 ### Removal
 
@@ -353,7 +355,7 @@ export function initI18n(): typeof i18next {
             expirationTime: 7 * 24 * 60 * 60 * 1000, // 7 days
           },
           {
-            loadPath: `https://cdn.jsdelivr.net/gh/wcpos/translations@main/translations/js/{lng}/${PROJECT}/${NAMESPACE}.json`,
+            loadPath: `https://cdn.jsdelivr.net/gh/wcpos/translations@main/translations/js/{{lng}}/${PROJECT}/${NAMESPACE}.json`,
           },
         ],
       },
