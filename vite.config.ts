@@ -23,7 +23,7 @@ function extractCss(): Plugin {
             // Emit the CSS as a separate asset
             this.emitFile({
               type: 'asset',
-              fileName: 'css/landing.css',
+              fileName: 'css/welcome.css',
               source: cssMatch[1],
             });
             // Remove the CSS injection code from the JS
@@ -42,14 +42,14 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), extractCss()],
   build: {
     outDir: 'assets',
-    emptyOutDir: true,
+    emptyOutDir: false,
     rollupOptions: {
       input: 'src/index.tsx',
       external: ['react', 'react-dom', '@wordpress/element'],
       output: {
-        entryFileNames: 'js/landing.js',
+        entryFileNames: 'js/welcome.js',
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) return 'css/landing.css';
+          if (assetInfo.name?.endsWith('.css')) return 'css/welcome.css';
           return 'assets/[name][extname]';
         },
         globals: {
