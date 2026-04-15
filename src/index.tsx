@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { createRoot, render } from '@wordpress/element';
 import { ErrorBoundary } from 'react-error-boundary';
-import ReactGA from 'react-ga4';
 
 import Error from './components/error';
 import { Hero } from './components/hero';
@@ -13,18 +12,15 @@ import { HireMe } from './components/hire-me';
 
 import './index.css';
 
-ReactGA.initialize([{ trackingId: 'G-08SJ28P1E5' }]);
-ReactGA.send({ hitType: "pageview", page: "/wp-admin/admin.php?page=woocommerce-pos", title: "Support WooCommerce POS" });
-
 const App = () => {
 	return (
-		<div className="wcpos-w-full wcpos-py-4">
-			<div className="wcpos-mx-auto wcpos-grid wcpos-gap-8 lg:wcpos-max-w-6xl lg:wcpos-grid-cols-12 lg:wcpos-px-6">
-				<div className="wcpos-grid wcpos-gap-4 lg:wcpos-col-span-8 lg:wcpos-gap-2">
+		<div className="wcpos:w-full wcpos:py-4">
+			<div className="wcpos:mx-auto wcpos:grid wcpos:gap-8 wcpos:lg:max-w-6xl wcpos:lg:grid-cols-12 wcpos:lg:px-6">
+				<div className="wcpos:grid wcpos:gap-4 wcpos:lg:col-span-8 wcpos:lg:gap-2">
 					<Hero />
 				</div>
-				<div className="lg:wcpos-col-span-4">
-					<div className="wcpos-grid wcpos-gap-4">
+				<div className="wcpos:lg:col-span-4">
+					<div className="wcpos:grid wcpos:gap-4">
 						<Pro />
 						<PayPalButton />
 						<Review />
