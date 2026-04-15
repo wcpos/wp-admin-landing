@@ -1,27 +1,31 @@
-import * as React from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { trackEvent } from '../lib/analytics';
 
 export const HireMe = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="wcpos:bg-gray-50 wcpos:p-6 wcpos:rounded-lg">
-      <h2 className="wcpos:text-2xl wcpos:font-semibold wcpos:m-0">Hire me!</h2>
+      <h2 className="wcpos:text-2xl wcpos:font-semibold wcpos:m-0">{t('hire_me')}</h2>
 
-      <p>I am available for Contract Work:</p>
+      <p>{t('available_for_contract')}</p>
 
       <ul className="wcpos:list-disc wcpos:pl-6">
-        <li>Advanced knowledge in WordPress & WooCommerce (over 10 years experience)</li>
-        <li>Proficient in React and React Native for modern web applications</li>
-        <li>Expertise in custom plugin and block development (eg: Gutenberg)</li>
+        <li>{t('hire_skill_wordpress')}</li>
+        <li>{t('hire_skill_react')}</li>
+        <li>{t('hire_skill_plugin')}</li>
       </ul>
 
-      Email{' '}
-      <a
-        href="mailto:paul@wcpos.com"
-        onClick={() => trackEvent('hire_me_clicked')}
-      >
-        paul@wcpos.com
-      </a>{' '}
-      with your project.
+      <Trans i18nKey="hire_email_prompt">
+        Email{' '}
+        <a
+          href="mailto:paul@wcpos.com"
+          onClick={() => trackEvent('hire_me_clicked')}
+        >
+          paul@wcpos.com
+        </a>{' '}
+        with your project.
+      </Trans>
     </div>
   );
 };

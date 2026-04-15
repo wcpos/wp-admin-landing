@@ -1,8 +1,10 @@
 import * as React from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useTranslation } from 'react-i18next';
 import { trackEvent } from '../lib/analytics';
 
 export const PayPalButton = () => {
+  const { t } = useTranslation();
   const [donationAmount, setDonationAmount] = React.useState('5'); // Default donation amount
   const [customAmount, setCustomAmount] = React.useState(''); // State for custom donation amount
   const [showCustomInput, setShowCustomInput] = React.useState(false); // State to control the visibility of the custom amount input
@@ -43,7 +45,7 @@ export const PayPalButton = () => {
 
   return (
     <div className="wcpos:bg-gray-50 wcpos:p-6 wcpos:rounded-lg wcpos:space-y-4">
-      <h2 className="wcpos:text-2xl wcpos:font-semibold wcpos:m-0">Donate</h2>
+      <h2 className="wcpos:text-2xl wcpos:font-semibold wcpos:m-0">{t('donate')}</h2>
 
       {/* Donation options */}
       <div className="wcpos:flex wcpos:flex-wrap wcpos:gap-1">
@@ -56,7 +58,7 @@ export const PayPalButton = () => {
               'wcpos:bg-wp-admin-theme-color-darker-10 wcpos:text-white' :
               'wcpos:bg-gray-200'} wcpos:hover:bg-wp-admin-theme-color-darker-20 wcpos:hover:text-white wcpos:focus:outline-none wcpos:focus:ring-2 wcpos:focus:ring-blue-500 wcpos:focus:ring-offset-2`}
           >
-            {amount === 'Other' ? 'Other' : `$${amount}`}
+            {amount === 'Other' ? t('other') : `$${amount}`}
           </button>
         ))}
       </div>
@@ -70,7 +72,7 @@ export const PayPalButton = () => {
             setDonationAmount(e.target.value);
             setCustomAmount(e.target.value);
           }}
-          placeholder="Enter donation amount"
+          placeholder={t('enter_donation_amount')}
           className="wcpos:w-full wcpos:py-2 wcpos:px-4 wcpos:border wcpos:border-gray-300 wcpos:rounded-md wcpos:focus:outline-none wcpos:focus:ring-2 wcpos:focus:ring-wp-admin-theme-color-darker-10 wcpos:focus:ring-opacity-50"
         />
       )}
@@ -84,7 +86,7 @@ export const PayPalButton = () => {
           onApprove={(data, actions) => {
             // Capture the funds from the transaction
             return actions.order.capture().then((details) => {
-              alert('Donation successful! Thank you for your generosity.');
+              alert(t('donation_successful'));
               // Handle post-donation logic here
             });
           }}
