@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { ReactNode } from 'react';
 
 interface ButtonProps {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   target?: string;
   onClick?: () => void;
 }

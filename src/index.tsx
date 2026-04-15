@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { createRoot, render } from '@wordpress/element';
 import { ErrorBoundary } from 'react-error-boundary';
 

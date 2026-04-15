@@ -1,41 +1,36 @@
-import * as React from 'react';
+import { createContext, useState, useContext, ReactNode } from 'react';
 
 interface NoticeProps {
-	type?: 'error' | 'info' | 'success';
-	message: string;
+  type?: 'error' | 'info' | 'success';
+  message: string;
 }
 
 interface NoticesContextProps {
-	notice: NoticeProps | null;
-	setNotice: (args: NoticeProps | null) => void;
+  notice: NoticeProps | null;
+  setNotice: (args: NoticeProps | null) => void;
 }
 
-const NoticesContext = React.createContext<NoticesContextProps>({
-	notice: null,
-	setNotice: () => {},
+const NoticesContext = createContext<NoticesContextProps>({
+  notice: null,
+  setNotice: () => {},
 });
 
 interface NoticesProviderProps {
-	children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const NoticesProvider = ({ children }: NoticesProviderProps) => {
-	const [notice, setNotice] = React.useState<NoticeProps | null>(null);
+  const [notice, setNotice] = useState<NoticeProps | null>(null);
 
-	return (
-		<NoticesContext.Provider
-			value={{
-				notice,
-				setNotice,
-			}}
-		>
-			{children}
-		</NoticesContext.Provider>
-	);
+  return (
+    <NoticesContext.Provider value={{ notice, setNotice }}>
+      {children}
+    </NoticesContext.Provider>
+  );
 };
 
 const useNotices = () => {
-	return React.useContext(NoticesContext);
+  return useContext(NoticesContext);
 };
 
 export default useNotices;
