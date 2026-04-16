@@ -21,7 +21,8 @@ root = 'assets'
 entries = []
 
 if os.path.isdir(root):
-    for current_root, _, files in os.walk(root):
+    for current_root, dirnames, files in os.walk(root):
+        dirnames.sort()
         for filename in sorted(files):
             path = os.path.join(current_root, filename)
             with open(path, 'rb') as handle:
