@@ -34,11 +34,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Typecheck
-        run: npm run typecheck
+      - name: Run quality gates
+        run: npm run ci
 
   release:
-    name: release-cdn-tag
+    name: release-cdn-package
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - quality-gates
@@ -57,37 +57,16 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Build assets
-        run: npm run build
-
-      - name: Commit built assets if changed
-        id: build_commit
-        run: |
-          set -euo pipefail
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/js/welcome.js assets/css/welcome.css
-
-          if git diff --cached --quiet; then
-            echo "sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
-            echo "No asset changes to commit."
-          else
-            git commit -m "build: update generated assets [skip ci]"
-            git push
-            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-            echo "Assets committed and pushed."
-          fi
 
       - name: Detect release-worthy changes
         id: changes
         env:
           BEFORE_SHA: ${{ github.event.before }}
-          AFTER_SHA: ${{ steps.build_commit.outputs.sha }}
+          AFTER_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
 
@@ -97,43 +76,70 @@ jobs:
             DIFF_BASE="$BEFORE_SHA"
           fi
 
-          if git diff --quiet "$DIFF_BASE" "$AFTER_SHA" -- src assets vite.config.ts package.json package-lock.json tsconfig.json; then
+          mapfile -t CHANGED_FILES < <(git diff --name-only "$DIFF_BASE" "$AFTER_SHA")
+
+          if [ "${#CHANGED_FILES[@]}" -eq 0 ]; then
             echo "release=false" >> "$GITHUB_OUTPUT"
-            echo "No shipped asset changes detected; skipping release."
-          else
-            echo "release=true" >> "$GITHUB_OUTPUT"
-            echo "Shipped asset changes detected; creating a release tag."
+            echo "No changed files detected."
+            exit 0
           fi
 
-      - name: Skip if commit already has a version tag
+          node scripts/release-should-publish.mjs "${CHANGED_FILES[@]}" | tee /tmp/release-decision.txt
+          cat /tmp/release-decision.txt >> "$GITHUB_OUTPUT"
+
+      - name: Build release assets
         if: steps.changes.outputs.release == 'true'
-        id: tagged
-        env:
-          RELEASE_SHA: ${{ steps.build_commit.outputs.sha }}
-        run: |
-          set -euo pipefail
+        run: npm run build:release
 
-          if git tag --points-at "$RELEASE_SHA" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
-            echo "tagged=true" >> "$GITHUB_OUTPUT"
-            echo "Commit already tagged; skipping."
-          else
-            echo "tagged=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Calculate next tag
-        if: steps.changes.outputs.release == 'true' && steps.tagged.outputs.tagged != 'true'
+      - name: Calculate next release version
+        if: steps.changes.outputs.release == 'true'
         id: version
         run: |
-          echo "tag=$(node scripts/next-release-tag.mjs patch)" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          TAG="$(node scripts/next-release-tag.mjs patch)"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure npm version is unpublished
+        if: steps.changes.outputs.release == 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          if npm view "@wcpos/wp-admin-landing@$VERSION" version >/dev/null 2>&1; then
+            echo "@wcpos/wp-admin-landing@$VERSION already exists on npm" >&2
+            exit 1
+          fi
+
+      - name: Stage publishable npm package
+        if: steps.changes.outputs.release == 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: node scripts/stage-release-package.mjs assets .release-package "$VERSION"
+
+      - name: Verify staged npm package
+        if: steps.changes.outputs.release == 'true'
+        run: node scripts/verify-release-package.mjs .release-package
+
+      - name: Publish package to npm
+        if: steps.changes.outputs.release == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish .release-package --access public
 
       - name: Create GitHub release
-        if: steps.changes.outputs.release == 'true' && steps.tagged.outputs.tagged != 'true'
+        if: steps.changes.outputs.release == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.version.outputs.tag }}
-          RELEASE_SHA: ${{ steps.build_commit.outputs.sha }}
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
           gh release create "$TAG" \
-            --target "$RELEASE_SHA" \
+            --target "${{ github.sha }}" \
             --title "$TAG" \
-            --notes "Automated patch release for jsDelivr CDN assets from $RELEASE_SHA."
+            --notes "Automated npm/jsDelivr release for version $VERSION.
+
+          JS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@2/assets/js/welcome.js
+          CSS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@2/assets/css/welcome.css
+          Exact JS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@$VERSION/assets/js/welcome.js
+          Exact CSS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@$VERSION/assets/css/welcome.css"

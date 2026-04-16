@@ -67,11 +67,11 @@ Allowed local commands:
 
 Disallowed local workflow assumptions:
 
-- developers should not rely on `npm run build` as the source of deployable production artifacts
+- developers should not rely on local release-build commands as the source of deployable production artifacts
 - developers should not commit generated `assets/` output
 - repo checks should not fail because generated assets are not committed
 
-`npm run build` may continue to exist as a technical implementation detail for CI and for local debugging, but the repo policy treats the output as disposable and untracked.
+The repo exposes `npm run build:release` for CI and controlled local verification only, but the output remains disposable and untracked.
 
 ### 3.2 CI release pipeline
 
@@ -134,7 +134,7 @@ This keeps one canonical release number while preserving the convenience of the 
 
 Because built assets are generated during CI, the workflow should publish from a temporary staging directory instead of publishing the whole repository root.
 
-That staging directory will be assembled after `npm run build` and will contain:
+That staging directory will be assembled after `npm run build:release` and will contain:
 
 - the built `assets/` tree
 - a minimal publish-specific `package.json` with the computed version

@@ -14,7 +14,7 @@ This spec covers Phase 1: the technical plumbing that subsequent phases depend o
 ### Versioning strategy
 
 - **Old plugin versions** load `wp-admin-landing/assets/` (untagged default branch, current static page)
-- **Plugin 1.9.0+** loads `wp-admin-landing@v2/assets/` (tagged release with the new app)
+- **Plugin 1.9.0+** loads jsDelivr npm assets from `@wcpos/wp-admin-landing@2/assets/` (CI-published release artifacts)
 - The v2 bundle should use `getLandingData()` which returns `undefined` if `window.wcpos.landing` is missing — all consumers degrade gracefully
 
 ### Dependencies
@@ -77,9 +77,9 @@ export default defineConfig({
 
 ### Output
 
-- `assets/js/welcome.js` — new IIFE bundle for plugin 1.9.0+
-- `assets/css/welcome.css` — new extracted CSS for plugin 1.9.0+
-- `assets/js/landing.js` and `assets/css/landing.css` remain as legacy outputs for older plugin versions
+- `assets/js/welcome.js` — new IIFE bundle for plugin 1.9.0+, generated in CI and published via npm/jsDelivr
+- `assets/css/welcome.css` — new extracted CSS for plugin 1.9.0+, generated in CI and published via npm/jsDelivr
+- `assets/js/landing.js` and `assets/css/landing.css` remain legacy compatibility outputs for older plugin versions
 
 ### Files removed
 
@@ -109,7 +109,7 @@ Keep Yarn (existing `.yarnrc.yml`). Update scripts:
 {
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:release": "vite build",
     "preview": "vite preview"
   }
 }
