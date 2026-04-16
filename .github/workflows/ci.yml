@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  quality-gates:
+    name: quality-gates
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Verify generated assets are committed
+        run: npm run check:assets
+
+  release:
+    name: release-cdn-tag
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs:
+      - quality-gates
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Detect release-worthy changes
+        id: changes
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
+            DIFF_BASE="$(git rev-list --max-count=1 "$AFTER_SHA"^)"
+          else
+            DIFF_BASE="$BEFORE_SHA"
+          fi
+
+          if git diff --quiet "$DIFF_BASE" "$AFTER_SHA" -- src assets vite.config.ts package.json package-lock.json tsconfig.json; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            echo "No shipped asset changes detected; skipping release."
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+            echo "Shipped asset changes detected; creating a release tag."
+          fi
+
+      - name: Skip if commit already has a version tag
+        if: steps.changes.outputs.release == 'true'
+        id: tagged
+        env:
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if git tag --points-at "$RELEASE_SHA" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "tagged=true" >> "$GITHUB_OUTPUT"
+            echo "Commit already tagged; skipping."
+          else
+            echo "tagged=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Calculate next tag
+        if: steps.changes.outputs.release == 'true' && steps.tagged.outputs.tagged != 'true'
+        id: version
+        run: |
+          echo "tag=$(node scripts/next-release-tag.mjs patch)" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        if: steps.changes.outputs.release == 'true' && steps.tagged.outputs.tagged != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          gh release create "$TAG" \
+            --target "$RELEASE_SHA" \
+            --title "$TAG" \
+            --notes "Automated patch release for jsDelivr CDN assets from $RELEASE_SHA."
