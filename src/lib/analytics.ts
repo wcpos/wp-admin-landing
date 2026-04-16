@@ -6,6 +6,11 @@ const POSTHOG_KEY = 'phc_BhTJzZ7fXMqcD4MiaUJQsQqPkEpu94yoSAthXFBWemvd';
 const POSTHOG_HOST = 'https://ph.wcpos.com';
 const GA_TRACKING_ID = 'G-08SJ28P1E5';
 
+/**
+ * Initializes Google Analytics and PostHog tracking.
+ * GA and PostHog always fire an anonymous pageview. If the user has consented
+ * (i.e. `profile` is present in landing data), PostHog is enriched via `identify`.
+ */
 export function initAnalytics(): void {
   // Google Analytics — always runs (same as before)
   ReactGA.initialize([{ trackingId: GA_TRACKING_ID }]);
@@ -45,6 +50,11 @@ export function initAnalytics(): void {
   }
 }
 
+/**
+ * Sends a custom event to PostHog.
+ * @param event - The event name.
+ * @param properties - Optional key-value properties attached to the event.
+ */
 export function trackEvent(event: string, properties?: Record<string, unknown>): void {
   posthog.capture(event, properties);
 }

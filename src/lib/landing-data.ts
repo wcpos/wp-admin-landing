@@ -8,6 +8,7 @@
  *   Store metrics, UUIDs, updates-server config
  */
 
+/** Store metrics and identifiers available only when the user has opted in to tracking. */
 export interface ConsentProfile {
   wc_version: string;
   php_version: string;
@@ -24,10 +25,12 @@ export interface ConsentProfile {
   active_extensions: string[];
 }
 
+/** Configuration for the updates-server endpoint used to report store profiles. */
 export interface UpdatesServerConfig {
   profile_url: string;
 }
 
+/** Two-tier landing data injected via `window.wcpos.landing`. Base fields are always present; `profile` and `updates_server` are consent-gated. */
 export interface WCPOSLanding {
   schema_version: number;
   locale: string;
@@ -45,10 +48,12 @@ declare global {
   }
 }
 
+/** Type guard that checks whether a value is an array of strings. */
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === 'string');
 }
 
+/** Type guard validating that a value conforms to the {@link ConsentProfile} shape. */
 function isConsentProfile(value: unknown): value is ConsentProfile {
   if (!value || typeof value !== 'object') return false;
 
@@ -70,6 +75,7 @@ function isConsentProfile(value: unknown): value is ConsentProfile {
   );
 }
 
+/** Type guard validating that a value conforms to the {@link UpdatesServerConfig} shape. */
 function isUpdatesServerConfig(value: unknown): value is UpdatesServerConfig {
   if (!value || typeof value !== 'object') return false;
 
@@ -77,6 +83,7 @@ function isUpdatesServerConfig(value: unknown): value is UpdatesServerConfig {
   return typeof u.profile_url === 'string';
 }
 
+/** Type guard validating that a value has the required base fields of {@link WCPOSLanding}. */
 function isValidBase(value: unknown): value is WCPOSLanding {
   if (!value || typeof value !== 'object') return false;
 
@@ -89,6 +96,11 @@ function isValidBase(value: unknown): value is WCPOSLanding {
   );
 }
 
+/**
+ * Reads and validates `window.wcpos.landing`, returning a typed {@link WCPOSLanding} object.
+ * Consent-tier fields (`profile`, `updates_server`) are included only when both are valid.
+ * @returns The validated landing data, or `undefined` if base fields are missing or invalid.
+ */
 export function getLandingData(): WCPOSLanding | undefined {
   const landing = window.wcpos?.landing;
   if (!isValidBase(landing)) return undefined;

@@ -9,6 +9,11 @@ import en from '../translations/en/wp-admin-landing.json';
 const NAMESPACE = 'wp-admin-landing';
 const PROJECT = 'woocommerce-pos';
 
+/**
+ * Initializes i18next with chained localStorage + CDN backends.
+ * Uses the `locale` from landing data (falls back to `en_US`).
+ * @returns The configured i18next instance.
+ */
 export function initI18n(): typeof i18next {
   const data = getLandingData();
   const locale = data?.locale ?? 'en_US';
