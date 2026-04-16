@@ -42,7 +42,7 @@ jobs:
 
   build-pr-assets:
     name: build-pr-assets
-    # Only run on same-repo PRs — fork PRs can't be pushed to with GITHUB_TOKEN.
+    # Only run on same-repo PRs — fork PRs can't use the org bot token.
     if: >-
       github.event_name == 'pull_request' &&
       github.event.pull_request.head.repo.full_name == github.repository
@@ -53,11 +53,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Push with a GitHub App token so the resulting commit retriggers CI
+      # (and `quality-gates` registers against the new HEAD SHA, satisfying
+      # branch protection). GITHUB_TOKEN pushes don't trigger workflows.
+      - name: Generate bot app token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.PROJECT_BOT_APP_ID }}
+          private-key: ${{ secrets.PROJECT_BOT_PRIVATE_KEY }}
+
       - name: Check out PR head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
