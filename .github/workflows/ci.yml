@@ -13,6 +13,8 @@ concurrency:
 jobs:
   quality-gates:
     name: quality-gates
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
 
     steps:
