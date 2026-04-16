@@ -37,6 +37,55 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+  build-pr-assets:
+    name: build-pr-assets
+    # Only run on same-repo PRs — fork PRs can't be pushed to with GITHUB_TOKEN.
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    needs:
+      - quality-gates
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Commit built assets if changed
+        env:
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/js/welcome.js assets/css/welcome.css
+
+          if git diff --cached --quiet; then
+            echo "Assets already up to date with source; nothing to commit."
+            exit 0
+          fi
+
+          git commit -m "build: update generated assets"
+          git push origin "HEAD:${PR_BRANCH}"
+
   release:
     name: release-cdn-tag
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
