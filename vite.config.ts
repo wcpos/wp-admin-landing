@@ -22,11 +22,13 @@ function extractCss(): Plugin {
           );
           if (cssMatch) {
             cssExtracted = true;
+            // Unescape JS template literal escapes (e.g. \\: → \: for Tailwind's wcpos: prefix)
+            const css = cssMatch[1].replace(/\\(.)/g, '$1');
             // Emit the CSS as a separate asset
             this.emitFile({
               type: 'asset',
               fileName: 'css/welcome.css',
-              source: cssMatch[1],
+              source: css,
             });
             // Remove the CSS injection code from the JS
             chunk.code = chunk.code.replace(
