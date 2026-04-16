@@ -34,11 +34,63 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run quality gates
-        run: npm run ci
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+  build-pr-assets:
+    name: build-pr-assets
+    # Only run on same-repo PRs — fork PRs can't be pushed to with GITHUB_TOKEN.
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    needs:
+      - quality-gates
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Commit built assets if changed
+        env:
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A assets/
+
+          if git diff --cached --quiet; then
+            echo "Assets already up to date with source; nothing to commit."
+            exit 0
+          fi
+
+          git commit -m "build: update generated assets"
+          git push origin "HEAD:${PR_BRANCH}"
 
   release:
-    name: release-cdn-package
+    name: release-cdn-tag
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs:
       - quality-gates
@@ -57,29 +109,39 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Commit built assets if changed
+        id: build_commit
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A assets/
+
+          if git diff --cached --quiet; then
+            echo "sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+            echo "No asset changes to commit."
+          else
+            git commit -m "build: update generated assets [skip ci]"
+            git push
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            echo "Assets committed and pushed."
+          fi
 
       - name: Detect release-worthy changes
         id: changes
         env:
           BEFORE_SHA: ${{ github.event.before }}
-          AFTER_SHA: ${{ github.sha }}
+          AFTER_SHA: ${{ steps.build_commit.outputs.sha }}
         run: |
           set -euo pipefail
-
-          # Skip if this commit already has a semver tag — prevents reruns from
-          # bumping the version and publishing a duplicate asset package for
-          # identical source, which would advance the @2 alias unnecessarily.
-          git fetch --tags --force origin
-          EXISTING_TAG="$(git tag --points-at "$AFTER_SHA" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' || true)"
-          if [ -n "$EXISTING_TAG" ]; then
-            echo "release=false" >> "$GITHUB_OUTPUT"
-            echo "Commit $AFTER_SHA already tagged as $EXISTING_TAG; skipping release."
-            exit 0
-          fi
 
           if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
             DIFF_BASE="$(git rev-parse "$AFTER_SHA^" 2>/dev/null || git hash-object -t tree /dev/null)"
@@ -87,91 +149,43 @@ jobs:
             DIFF_BASE="$BEFORE_SHA"
           fi
 
-          mapfile -t CHANGED_FILES < <(git diff --name-only "$DIFF_BASE" "$AFTER_SHA")
-
-          if [ "${#CHANGED_FILES[@]}" -eq 0 ]; then
+          if git diff --quiet "$DIFF_BASE" "$AFTER_SHA" -- src assets vite.config.ts package.json package-lock.json tsconfig.json; then
             echo "release=false" >> "$GITHUB_OUTPUT"
-            echo "No changed files detected."
-            exit 0
+            echo "No shipped asset changes detected; skipping release."
+          else
+            echo "release=true" >> "$GITHUB_OUTPUT"
+            echo "Shipped asset changes detected; creating a release tag."
           fi
 
-          node scripts/release-should-publish.mjs "${CHANGED_FILES[@]}" | tee /tmp/release-decision.txt
-          cat /tmp/release-decision.txt >> "$GITHUB_OUTPUT"
-
-      - name: Build release assets
+      - name: Skip if commit already has a version tag
         if: steps.changes.outputs.release == 'true'
-        run: npm run build:release
+        id: tagged
+        env:
+          RELEASE_SHA: ${{ steps.build_commit.outputs.sha }}
+        run: |
+          set -euo pipefail
 
-      - name: Calculate next release version
-        if: steps.changes.outputs.release == 'true'
+          if git tag --points-at "$RELEASE_SHA" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "tagged=true" >> "$GITHUB_OUTPUT"
+            echo "Commit already tagged; skipping."
+          else
+            echo "tagged=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Calculate next tag
+        if: steps.changes.outputs.release == 'true' && steps.tagged.outputs.tagged != 'true'
         id: version
         run: |
-          set -euo pipefail
-          TAG="$(node scripts/next-release-tag.mjs patch)"
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
-
-      - name: Ensure npm version is unpublished
-        if: steps.changes.outputs.release == 'true'
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
-        run: |
-          set -euo pipefail
-          if npm view "@wcpos/wp-admin-landing@$VERSION" version >/dev/null 2>&1; then
-            echo "@wcpos/wp-admin-landing@$VERSION already exists on npm" >&2
-            exit 1
-          fi
-
-      - name: Stage publishable npm package
-        if: steps.changes.outputs.release == 'true'
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
-        run: node scripts/stage-release-package.mjs assets .release-package "$VERSION"
-
-      - name: Verify staged npm package
-        if: steps.changes.outputs.release == 'true'
-        run: node scripts/verify-release-package.mjs .release-package
-
-      - name: Publish package to npm
-        if: steps.changes.outputs.release == 'true'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish .release-package --access public
-
-      - name: Verify jsDelivr exact and alias URLs
-        if: steps.changes.outputs.release == 'true'
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
-        run: |
-          set -euo pipefail
-          # Poll up to ~5 minutes — npm has already published at this point,
-          # so if we bail on transient CDN lag the "ensure version unpublished"
-          # guard would block reruns and strand the release half-published.
-          for attempt in 1 2 3 4 5 6 7 8 9 10; do
-            if node scripts/verify-jsdelivr-alias.mjs "$VERSION"; then
-              exit 0
-            fi
-            if [ "$attempt" -eq 10 ]; then
-              echo "jsDelivr did not serve version $VERSION after 10 attempts." >&2
-              exit 1
-            fi
-            echo "Attempt $attempt failed; retrying in 30s…"
-            sleep 30
-          done
+          echo "tag=$(node scripts/next-release-tag.mjs patch)" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub release
-        if: steps.changes.outputs.release == 'true'
+        if: steps.changes.outputs.release == 'true' && steps.tagged.outputs.tagged != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.version.outputs.tag }}
-          VERSION: ${{ steps.version.outputs.version }}
+          RELEASE_SHA: ${{ steps.build_commit.outputs.sha }}
         run: |
           gh release create "$TAG" \
-            --target "${{ github.sha }}" \
+            --target "$RELEASE_SHA" \
             --title "$TAG" \
-            --notes "Automated npm/jsDelivr release for version $VERSION.
-
-          JS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@2/assets/js/welcome.js
-          CSS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@2/assets/css/welcome.css
-          Exact JS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@$VERSION/assets/js/welcome.js
-          Exact CSS: https://cdn.jsdelivr.net/npm/@wcpos/wp-admin-landing@$VERSION/assets/css/welcome.css"
+            --notes "Automated patch release for jsDelivr CDN assets from $RELEASE_SHA."
