@@ -93,13 +93,18 @@ export function getLandingData(): WCPOSLanding | undefined {
   const landing = window.wcpos?.landing;
   if (!isValidBase(landing)) return undefined;
 
-  // Strip optional blocks that don't match their expected shape
-  const validated: WCPOSLanding = { ...landing };
-  if (validated.profile !== undefined && !isConsentProfile(validated.profile)) {
-    delete validated.profile;
-  }
-  if (validated.updates_server !== undefined && !isUpdatesServerConfig(validated.updates_server)) {
-    delete validated.updates_server;
+  // Consent tier: profile and updates_server are coupled — include both only if both are valid
+  const validated: WCPOSLanding = {
+    schema_version: landing.schema_version,
+    locale: landing.locale,
+    plugin_version: landing.plugin_version,
+    pro_active: landing.pro_active,
+  };
+
+  const raw = landing as Partial<WCPOSLanding>;
+  if (isConsentProfile(raw.profile) && isUpdatesServerConfig(raw.updates_server)) {
+    validated.profile = raw.profile;
+    validated.updates_server = raw.updates_server;
   }
 
   return validated;
