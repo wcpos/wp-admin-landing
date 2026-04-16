@@ -33,7 +33,7 @@ export function initAnalytics(): void {
   // If user consented to tracking, enrich with store profile
   const data = getLandingData();
   const profile = data?.profile;
-  if (profile?.site_uuid) {
+  if (data && profile?.site_uuid) {
     posthog.identify(profile.site_uuid, {
       locale: data.locale,
       plugin_version: data.plugin_version,

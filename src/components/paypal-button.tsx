@@ -73,7 +73,7 @@ export const PayPalButton = () => {
         />
       )}
 
-      <PayPalScriptProvider options={{ 'client-id': 'AVpvTxbmTiVoiv2_XiHWYsme_DG4aUBJoFScTC0cRlorALCQHnw03_IztWZYSNiIaPRz8wkoSF6xIQC4', components: 'buttons', currency: 'USD' }}>
+      <PayPalScriptProvider options={{ clientId: 'AVpvTxbmTiVoiv2_XiHWYsme_DG4aUBJoFScTC0cRlorALCQHnw03_IztWZYSNiIaPRz8wkoSF6xIQC4', components: 'buttons', currency: 'USD' }}>
         <PayPalButtons
           fundingSource="paypal"
           style={{ layout: 'vertical', label: 'donate' }}
