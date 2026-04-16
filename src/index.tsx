@@ -13,7 +13,7 @@ import { reportProfile } from './lib/profile-report';
 
 import './index.css';
 
-// Initialize analytics (non-blocking, no-op if PostHog not configured)
+// Initialize analytics (always runs GA + PostHog; profile enrichment only with consent)
 initAnalytics();
 initI18n();
 // Report store profile to updates-server (fire-and-forget)
