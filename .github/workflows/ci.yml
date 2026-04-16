@@ -70,6 +70,17 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Skip if this commit already has a semver tag — prevents reruns from
+          # bumping the version and publishing a duplicate asset package for
+          # identical source, which would advance the @2 alias unnecessarily.
+          git fetch --tags --force origin
+          EXISTING_TAG="$(git tag --points-at "$AFTER_SHA" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' || true)"
+          if [ -n "$EXISTING_TAG" ]; then
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            echo "Commit $AFTER_SHA already tagged as $EXISTING_TAG; skipping release."
+            exit 0
+          fi
+
           if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
             DIFF_BASE="$(git rev-parse "$AFTER_SHA^" 2>/dev/null || git hash-object -t tree /dev/null)"
           else
@@ -126,6 +137,12 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish .release-package --access public
+
+      - name: Verify jsDelivr exact and alias URLs
+        if: steps.changes.outputs.release == 'true'
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: node scripts/verify-jsdelivr-alias.mjs "$VERSION"
 
       - name: Create GitHub release
         if: steps.changes.outputs.release == 'true'
