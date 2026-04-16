@@ -1,35 +1,48 @@
 import posthog from 'posthog-js';
+import ReactGA from 'react-ga4';
 import { getLandingData } from './landing-data';
 
+const POSTHOG_KEY = 'phc_BhTJzZ7fXMqcD4MiaUJQsQqPkEpu94yoSAthXFBWemvd';
+const POSTHOG_HOST = 'https://ph.wcpos.com';
+const GA_TRACKING_ID = 'G-08SJ28P1E5';
+
 export function initAnalytics(): void {
-  const data = getLandingData();
-  if (!data?.posthog?.api_key || !data?.posthog?.api_host || !data?.profile?.site_uuid) return;
+  // Google Analytics — always runs (same as before)
+  ReactGA.initialize([{ trackingId: GA_TRACKING_ID }]);
+  ReactGA.send({
+    hitType: 'pageview',
+    page: '/wp-admin/admin.php?page=woocommerce-pos',
+    title: 'Support WooCommerce POS',
+  });
 
-  const config = data.posthog;
-  const profile = data.profile;
-
-  posthog.init(config.api_key, {
-    api_host: config.api_host,
+  // PostHog — always runs (anonymous pageview)
+  posthog.init(POSTHOG_KEY, {
+    api_host: POSTHOG_HOST,
     persistence: 'memory',
     autocapture: false,
     capture_pageview: false,
   });
 
-  posthog.identify(profile.site_uuid, {
-    locale: profile.locale,
-    wc_version: profile.wc_version,
-    plugin_version: profile.plugin_version,
-    days_since_install: profile.days_since_install,
-    product_count: profile.product_count,
-    order_count: profile.order_count,
-    pos_user_count: profile.pos_user_count,
-    pro_active: profile.pro_active,
-    wc_currency: profile.wc_currency,
-    wc_country: profile.wc_country,
-    user_role: profile.user_role,
-  });
-
   posthog.capture('$pageview');
+
+  // If user consented to tracking, enrich with store profile
+  const data = getLandingData();
+  const profile = data?.profile;
+  if (profile?.site_uuid) {
+    posthog.identify(profile.site_uuid, {
+      locale: data.locale,
+      plugin_version: data.plugin_version,
+      pro_active: data.pro_active,
+      wc_version: profile.wc_version,
+      days_since_install: profile.days_since_install,
+      product_count: profile.product_count,
+      order_count: profile.order_count,
+      pos_user_count: profile.pos_user_count,
+      wc_currency: profile.wc_currency,
+      wc_country: profile.wc_country,
+      user_role: profile.user_role,
+    });
+  }
 }
 
 export function trackEvent(event: string, properties?: Record<string, unknown>): void {
