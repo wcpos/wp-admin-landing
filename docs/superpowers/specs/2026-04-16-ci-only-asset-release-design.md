@@ -114,9 +114,8 @@ The published npm tarball should contain only what jsDelivr needs to serve the l
 - `assets/js/welcome.js`
 - `assets/css/welcome.css`
 - `package.json`
-- optional `README.md` / `LICENSE` if desired
 
-It should not include source code, docs, old legacy assets, or CI-only files unless intentionally required.
+The verifier (`scripts/verify-release-package.mjs`) enforces this exact list — no source code, docs, legacy assets, CI-only files, or additional metadata like `README.md` / `LICENSE` are accepted.
 
 ### 4.2 Versioning
 
