@@ -26,6 +26,7 @@ export function initAnalytics(): void {
     persistence: 'memory',
     autocapture: false,
     capture_pageview: false,
+    disable_session_recording: true,
   });
 
   posthog.capture('$pageview');
