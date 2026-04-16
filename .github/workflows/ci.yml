@@ -60,8 +60,8 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ secrets.PROJECT_BOT_APP_ID }}
-          private-key: ${{ secrets.PROJECT_BOT_PRIVATE_KEY }}
+          app-id: ${{ secrets.WCPOS_BOT_APP_ID }}
+          private-key: ${{ secrets.WCPOS_BOT_PRIVATE_KEY }}
 
       - name: Check out PR head
         uses: actions/checkout@v4
