@@ -21,7 +21,6 @@ test('stages only welcome assets and package metadata for npm publishing', async
     buildDir,
     outputDir,
     version: '2.0.3',
-    packageName: '@wcpos/wp-admin-landing',
   });
 
   const files = [];
@@ -68,7 +67,6 @@ test('staging accepts the assets directory as the build root', async () => {
     buildDir,
     outputDir,
     version: '2.0.3',
-    packageName: '@wcpos/wp-admin-landing',
   });
 
   await assert.doesNotReject(() => fs.access(path.join(outputDir, 'assets/js/welcome.js')));

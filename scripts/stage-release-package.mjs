@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const DEFAULT_PACKAGE_NAME = '@wcpos/wp-admin-landing';
+const PACKAGE_NAME = '@wcpos/wp-admin-landing';
 const SOURCE_ASSET_PATHS = ['js/welcome.js', 'css/welcome.css'];
 
 async function pathExists(file) {
@@ -36,12 +36,7 @@ async function copyAsset(assetsRoot, outputRoot, relativeAssetPath) {
   await fs.copyFile(source, destination);
 }
 
-export async function stageReleasePackage({
-  buildDir,
-  outputDir,
-  version,
-  packageName = DEFAULT_PACKAGE_NAME,
-}) {
+export async function stageReleasePackage({ buildDir, outputDir, version }) {
   if (!buildDir || !outputDir || !version) {
     throw new Error('buildDir, outputDir, and version are required');
   }
@@ -56,7 +51,7 @@ export async function stageReleasePackage({
   }
 
   const pkg = {
-    name: packageName,
+    name: PACKAGE_NAME,
     version,
     files: ['assets'],
     publishConfig: {
@@ -78,8 +73,8 @@ function isCliEntry() {
 }
 
 if (isCliEntry()) {
-  const [buildDir, outputDir, version, packageName = DEFAULT_PACKAGE_NAME] = process.argv.slice(2);
-  stageReleasePackage({ buildDir, outputDir, version, packageName }).catch((error) => {
+  const [buildDir, outputDir, version] = process.argv.slice(2);
+  stageReleasePackage({ buildDir, outputDir, version }).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });
