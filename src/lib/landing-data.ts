@@ -40,6 +40,11 @@ export interface WCPOSLanding {
   updates_server?: UpdatesServerConfig;
 }
 
+type LandingBase = Pick<
+  WCPOSLanding,
+  'schema_version' | 'locale' | 'plugin_version' | 'pro_active'
+>;
+
 declare global {
   interface Window {
     wcpos?: {
@@ -84,10 +89,10 @@ function isUpdatesServerConfig(value: unknown): value is UpdatesServerConfig {
 }
 
 /** Type guard validating that a value has the required base fields of {@link WCPOSLanding}. */
-function isValidBase(value: unknown): value is WCPOSLanding {
+function isValidBase(value: unknown): value is LandingBase {
   if (!value || typeof value !== 'object') return false;
 
-  const landing = value as WCPOSLanding;
+  const landing = value as LandingBase;
   return (
     typeof landing.schema_version === 'number' &&
     typeof landing.locale === 'string' &&
