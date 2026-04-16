@@ -11,6 +11,11 @@ export function reportProfile(): void {
   fetch(data.updates_server.profile_url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data.profile),
+    body: JSON.stringify({
+      ...data.profile,
+      locale: data.locale,
+      plugin_version: data.plugin_version,
+      pro_active: data.pro_active,
+    }),
   }).catch(() => {});
 }
