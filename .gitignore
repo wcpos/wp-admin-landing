@@ -2,6 +2,3 @@
 .worktrees
 node_modules
 *.lock
-assets/js/welcome.js
-assets/css/welcome.css
-.release-package

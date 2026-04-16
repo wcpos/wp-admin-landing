@@ -2,11 +2,11 @@
   "name": "@wcpos/wp-admin-landing",
   "scripts": {
     "dev": "vite",
-    "build:release": "vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "test:scripts": "node --test tests/scripts/*.test.mjs",
-    "ci": "npm run typecheck && npm run build:release && npm run test:scripts"
+    "check:assets": "./scripts/check-generated-assets.sh",
+    "ci": "npm run typecheck && npm run check:assets"
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^8.2.0",
