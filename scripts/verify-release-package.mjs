@@ -43,6 +43,12 @@ export async function verifyReleasePackage(packageDir) {
   if (!pkg.version) {
     throw new Error('Staged package.json is missing version');
   }
+  if (!Array.isArray(pkg.files) || pkg.files.length !== 1 || pkg.files[0] !== 'assets') {
+    throw new Error('Staged package.json must include files: ["assets"]');
+  }
+  if (pkg.publishConfig?.access !== 'public') {
+    throw new Error('Staged package.json must set publishConfig.access to "public"');
+  }
 
   return Array.from(files).sort();
 }
