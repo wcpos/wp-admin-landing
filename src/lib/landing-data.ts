@@ -103,14 +103,14 @@ function isValidBase(value: unknown): value is LandingBase {
 
 /**
  * Reads and validates `window.wcpos.landing`, returning a typed {@link WCPOSLanding} object.
- * Consent-tier fields (`profile`, `updates_server`) are included only when both are valid.
+ * Consent-tier fields (`profile`, `updates_server`) are independently included when valid.
  * @returns The validated landing data, or `undefined` if base fields are missing or invalid.
  */
 export function getLandingData(): WCPOSLanding | undefined {
   const landing = window.wcpos?.landing;
   if (!isValidBase(landing)) return undefined;
 
-  // Consent tier: profile and updates_server are coupled — include both only if both are valid
+  // Consent tier: profile and updates_server are independently optional
   const validated: WCPOSLanding = {
     schema_version: landing.schema_version,
     locale: landing.locale,
@@ -119,8 +119,10 @@ export function getLandingData(): WCPOSLanding | undefined {
   };
 
   const raw = landing as Partial<WCPOSLanding>;
-  if (isConsentProfile(raw.profile) && isUpdatesServerConfig(raw.updates_server)) {
+  if (isConsentProfile(raw.profile)) {
     validated.profile = raw.profile;
+  }
+  if (isUpdatesServerConfig(raw.updates_server)) {
     validated.updates_server = raw.updates_server;
   }
 
