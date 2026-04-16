@@ -142,7 +142,22 @@ jobs:
         if: steps.changes.outputs.release == 'true'
         env:
           VERSION: ${{ steps.version.outputs.version }}
-        run: node scripts/verify-jsdelivr-alias.mjs "$VERSION"
+        run: |
+          set -euo pipefail
+          # Poll up to ~5 minutes — npm has already published at this point,
+          # so if we bail on transient CDN lag the "ensure version unpublished"
+          # guard would block reruns and strand the release half-published.
+          for attempt in 1 2 3 4 5 6 7 8 9 10; do
+            if node scripts/verify-jsdelivr-alias.mjs "$VERSION"; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 10 ]; then
+              echo "jsDelivr did not serve version $VERSION after 10 attempts." >&2
+              exit 1
+            fi
+            echo "Attempt $attempt failed; retrying in 30s…"
+            sleep 30
+          done
 
       - name: Create GitHub release
         if: steps.changes.outputs.release == 'true'
