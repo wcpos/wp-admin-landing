@@ -6,7 +6,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "check:assets": "./scripts/check-generated-assets.sh",
-    "ci": "npm run typecheck && npm run check:assets"
+    "ci": "npm run test && npm run typecheck && npm run check:assets",
+    "test": "node --test tests/analytics-config.test.mjs"
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^8.2.0",
