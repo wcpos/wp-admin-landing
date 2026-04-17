@@ -15,11 +15,12 @@ on:
         type: boolean
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-translations-source
   cancel-in-progress: true
 
 jobs:
   push-and-dispatch:
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: write
     runs-on: ubuntu-latest
