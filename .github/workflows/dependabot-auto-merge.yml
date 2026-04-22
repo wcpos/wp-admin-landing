@@ -10,5 +10,9 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     uses: wcpos/.github/.github/workflows/dependabot-auto-merge.yml@main
     secrets:
-      PROJECT_BOT_APP_ID: ${{ secrets.PROJECT_BOT_APP_ID }}
-      PROJECT_BOT_PRIVATE_KEY: ${{ secrets.PROJECT_BOT_PRIVATE_KEY }}
+      # Pass WCPOS_BOT credentials under the names the reusable workflow
+      # expects. wcpos-project-bot isn't installed on this repo (see #13);
+      # wcpos-bot is org-wide install with the perms needed to approve and
+      # enable auto-merge.
+      PROJECT_BOT_APP_ID: ${{ secrets.WCPOS_BOT_APP_ID }}
+      PROJECT_BOT_PRIVATE_KEY: ${{ secrets.WCPOS_BOT_PRIVATE_KEY }}
