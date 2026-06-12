@@ -469,7 +469,7 @@ git commit -m "feat: landingRuntime contract between bootstrap and variant bundl
 
 The decision logic is pure (no DOM/posthog imports) so `node --test` covers it. We test the compiled behaviour by porting the pure functions into the test via `tsx`-free re-implementation? No — keep it simple and robust: the module's pure core lives in plain TS with no imports; the test imports the **transpiled** logic via a tiny esbuild-free trick: we duplicate nothing, we run `npx tsc` to emit. That's heavyweight; instead the pure core goes in **`src/bootstrap/variant-decision.mjs`** (plain JS with JSDoc types) so node can import it directly, and `variant-loader.ts` imports it. JS-with-JSDoc is the repo-compatible way to share logic with node tests.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```js
 // tests/variant-loader.test.mjs
@@ -540,9 +540,9 @@ test('resolveAssets: stale or malformed payload rejected → hardcoded map', () 
 });
 ```
 
-- [ ] **Step 2: Run to verify failure** — `node --test tests/variant-loader.test.mjs` → FAIL (module not found)
+- [x] **Step 2: Run to verify failure** — `node --test tests/variant-loader.test.mjs` → FAIL (module not found)
 
-- [ ] **Step 3: Implement the pure core**
+- [x] **Step 3: Implement the pure core**
 
 ```js
 // src/bootstrap/variant-decision.mjs
@@ -593,9 +593,9 @@ export function resolveAssets(variant, payload, hardcodedMap, minAssetVersion) {
 }
 ```
 
-- [ ] **Step 4: Run tests** — `node --test tests/variant-loader.test.mjs` → PASS (8 tests)
+- [x] **Step 4: Run tests** — `node --test tests/variant-loader.test.mjs` → PASS (8 tests)
 
-- [ ] **Step 5: Implement the impure shell**
+- [x] **Step 5: Implement the impure shell**
 
 ```ts
 // src/bootstrap/variant-loader.ts
@@ -676,15 +676,17 @@ function injectAssets(assets: { js: string; css: string }): Promise<void> {
 }
 ```
 
-- [ ] **Step 6: Typecheck + tests** — `npx tsc --noEmit && node --test tests/variant-loader.test.mjs` → PASS
+- [x] **Step 6: Typecheck + tests** — `npx tsc --noEmit && node --test tests/variant-loader.test.mjs` → PASS
   (If tsc complains about importing `.mjs`, add `"allowJs": true` + `"checkJs": false` to `tsconfig.json` compilerOptions and include `src/**/*.mjs`.)
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/bootstrap/variant-decision.mjs src/bootstrap/variant-loader.ts tests/variant-loader.test.mjs tsconfig.json
 git commit -m "feat: variant loader — pure decision core, assignment cache, payload-overridable asset map"
 ```
+
+> **Amendment (execution):** loadVariant split into prepareVariant + injectAssets so the bootstrap can expose the runtime before chunk injection (injected scripts execute before onload).
 
 ---
 
