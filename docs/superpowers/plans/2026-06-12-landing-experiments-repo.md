@@ -1198,7 +1198,7 @@ git commit -m "build: BUILD_TARGET-driven triple IIFE build with per-entry CSS e
 
 These compile into **each variant bundle** (source-shared, not runtime-shared — they're UI). All copy via `t()` from the shared namespace; data via the snapshot JSONs; CTAs decorated + tracked via the runtime.
 
-- [ ] **Step 1: Implement**
+- [x] **Step 1: Implement**
 
 ```tsx
 // src/shared/components/awning.tsx
@@ -1379,9 +1379,9 @@ export const RoadmapCard = () => {
 };
 ```
 
-- [ ] **Step 2: Typecheck** — `npx tsc --noEmit` → PASS
+- [x] **Step 2: Typecheck** — `npx tsc --noEmit` → PASS
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/shared/components/ src/translations/en/wp-admin-landing-shared.json

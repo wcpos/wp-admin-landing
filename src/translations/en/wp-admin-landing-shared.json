@@ -14,5 +14,6 @@
   "roadmap_next": "NEXT",
   "roadmap_listen": "<b>Pro users shape the priorities.</b> There's no ticket queue — you tell me what your shop needs on Discord, and it shapes this list.",
   "fair_licence": "If you stop paying, Pro keeps working. Updates and support stop.",
-  "error_something_wrong": "Something went wrong: <1>{message}</1>"
+  "error_something_wrong": "Something went wrong: <1>{message}</1>",
+  "pro_active_thanks": "You're on Pro — thank you for keeping this project going."
 }
