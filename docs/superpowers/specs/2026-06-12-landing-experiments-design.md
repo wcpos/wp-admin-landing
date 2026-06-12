@@ -70,7 +70,7 @@ Layout: WP-admin-native card, awning stripe top. Two-column grid (letter 1.25fr 
 
 **Deliberate removal:** the legacy page's PayPal donate button and hire-me card are dropped from both new variants — they dilute the single Pro CTA. "Donate clicks" is therefore **not** a guardrail (corrected from an earlier draft); the legacy page keeps its donate path until v2 fully replaces it, and the removal is called out here as an intentional change.
 
-### 2.2 `free-plus` — "Free runs your counter. Pro is ready when you are." (LOCKED — picks resolved 2026-06-12)
+### 2.2 `free-plus` — "Free today. Pro when you're ready." (LOCKED — picks resolved 2026-06-12)
 
 Layout: awning stripe → hero (copy left; register imagery deferred until a real screenshot asset exists) → comparison table → roadmap card + reviews → review-ask strip. Kicker: "You're on the free plugin — it stays free". Red Get Pro CTA + both prices (control arm of exp-202608, same page-wide price keying as §2.1).
 
@@ -78,7 +78,7 @@ Layout: awning stripe → hero (copy left; register imagery deferred until a rea
 
 | Decision | Pick |
 |---|---|
-| Headline | *"Free runs your counter."* / *"Pro is ready when you are."* (red second line) — affirming, when-you're-ready framing per Paul's direction. The till/store and result-stack candidates move to the headline-test backlog |
+| Headline | *"Free today."* / *"Pro when you're ready."* (red second line) — Paul's pick from an 18-candidate set, 2026-06-12. Runner-up *"Your shop is growing. / Your register can too."* plus the till/store and result-stack candidates move to the headline-test backlog |
 | Demo treatment | **No demo link at all.** Both demo arms (text link, cream button) move to the challenger backlog. Consequence: no round-1 page has a demo surface — see §6.1 metric note |
 | Fair-licence placement | Directly under CTA: *"If you stop paying, Pro keeps working. Updates and support stop."* |
 | Comparison format | Check/cross table (7 result-led rows); workaround-copy cells remain the strongest tier-2 challenger |

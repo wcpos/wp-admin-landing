@@ -1635,15 +1635,15 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
 - Create: `src/variants/free-plus/index.tsx`, `src/variants/free-plus/hero.tsx`, `src/variants/free-plus/comparison.tsx`
 - Create: `src/translations/en/wp-admin-landing-free-plus.json`
 
-**Picks resolved by Paul 2026-06-12 (spec §2.2):** headline "Free runs your counter. / Pro is ready when you are."; **no demo link at all**; fair-licence under CTA; comparison table; disqualifier off (`disqualifier_*` keys shipped for the future test; lint-i18n checks usage→existence, not reverse, so unused keys are fine).
+**Picks resolved by Paul 2026-06-12 (spec §2.2):** headline "Free today. / Pro when you're ready."; **no demo link at all**; fair-licence under CTA; comparison table; disqualifier off (`disqualifier_*` keys shipped for the future test; lint-i18n checks usage→existence, not reverse, so unused keys are fine).
 
 - [ ] **Step 1: Namespace source**
 
 ```json
 {
   "kicker": "You're on the free plugin — it stays free",
-  "headline_1": "Free runs your counter.",
-  "headline_2": "Pro is ready when you are.",
+  "headline_1": "Free today.",
+  "headline_2": "Pro when you're ready.",
   "sub": "The free register already <b>sells, prints, and stays in sync with your store</b>. Pro adds what bigger shops grow into: <b>card readers, refunds on the spot, stock edits mid-shift, reports at close</b>.",
   "table_heading": "What you get",
   "table_note": "everything in Free carries into Pro",
