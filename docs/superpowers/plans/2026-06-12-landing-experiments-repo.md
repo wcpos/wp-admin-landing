@@ -1102,7 +1102,7 @@ git commit -m "ci: banned-word, computed-years, i18n-key, and snapshot-age lints
 - Modify: `vite.config.ts` (full replacement)
 - Modify: `package.json` build script
 
-- [ ] **Step 1: Replace vite.config.ts**
+- [x] **Step 1: Replace vite.config.ts**
 
 ```ts
 import { defineConfig, type Plugin } from 'vite';
@@ -1172,7 +1172,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 2: Update package.json scripts**
+- [x] **Step 2: Update package.json scripts**
 
 ```json
 "build": "npm run fetch:content || true && BUILD_TARGET=bootstrap vite build && BUILD_TARGET=indie vite build && BUILD_TARGET=free-plus vite build",
@@ -1180,9 +1180,9 @@ export default defineConfig({
 "dev": "BUILD_TARGET=${BUILD_TARGET:-bootstrap} vite"
 ```
 
-- [ ] **Step 3: Verify config loads** — `BUILD_TARGET=indie npx vite build --logLevel error` → FAILS only with "entry not found `src/variants/indie/index.tsx`" (config itself parses; entries arrive in Tasks 11–13).
+- [x] **Step 3: Verify config loads** — `BUILD_TARGET=indie npx vite build --logLevel error` → FAILS only with "entry not found `src/variants/indie/index.tsx`" (config itself parses; entries arrive in Tasks 11–13).
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add vite.config.ts package.json

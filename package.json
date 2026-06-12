@@ -1,8 +1,9 @@
 {
   "name": "@wcpos/wp-admin-landing",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "BUILD_TARGET=${BUILD_TARGET:-bootstrap} vite",
+    "build": "npm run fetch:content || true && BUILD_TARGET=bootstrap vite build && BUILD_TARGET=indie vite build && BUILD_TARGET=free-plus vite build",
+    "build:bootstrap": "BUILD_TARGET=bootstrap vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "check:assets": "./scripts/check-generated-assets.sh",
