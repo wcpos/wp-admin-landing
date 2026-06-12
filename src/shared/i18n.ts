@@ -7,10 +7,6 @@ import HttpBackend from 'i18next-http-backend';
 import { getLandingData } from './landing-data';
 import sharedEn from '../translations/en/wp-admin-landing-shared.json';
 
-// CDN project segment = source repo name. wcpos/translations stores sources at
-// source/js/{repo}/ and writes locale outputs to translations/js/{locale}/{repo}/.
-// This repo is wcpos/wp-admin-landing, so the segment is 'wp-admin-landing'.
-const PROJECT = 'wp-admin-landing';
 export const SHARED_NS = 'wp-admin-landing-shared';
 
 /** Bootstrap initialises shared strings; the variant chunk adds its own
@@ -35,7 +31,12 @@ export function initI18n(): typeof i18next {
         backends: [LocalStorageBackend, HttpBackend],
         backendOptions: [
           { prefix: 'wcpos_i18n_', expirationTime: 7 * 24 * 60 * 60 * 1000 },
-          { loadPath: `https://cdn.jsdelivr.net/gh/wcpos/translations@main/translations/js/{{lng}}/${PROJECT}/{{ns}}.json` },
+          // Self-contained: locale files live in this repo beside src/translations/en/
+          // and ship with the same release tag as the bundles. Locale dirs use WP locale
+          // codes (fr_FR, de_DE, es_ES, it_IT, nl_NL, pt_BR, ja, zh_CN, ko_KR, ar, hi_IN).
+          // Missing locale files 404 → chained backend falls back to bundled English
+          // (expected until translations are generated).
+          { loadPath: 'https://cdn.jsdelivr.net/gh/wcpos/wp-admin-landing@v2/src/translations/{{lng}}/{{ns}}.json' },
         ],
       },
     });

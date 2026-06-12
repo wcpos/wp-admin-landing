@@ -137,6 +137,8 @@ Build outputs: `assets/js/welcome.js` (bootstrap), `assets/js/variants/*.js`, `a
 
 **Namespaces:** one per variant — `wp-admin-landing-indie.json`, `wp-admin-landing-free-plus.json` + `wp-admin-landing-shared.json` (reviews strip, roadmap card, CTA atoms). Killing a variant stops its translation work. Source files live in this repo (`src/translations/en/`) and are mirrored to `wcpos/translations`; runtime loads via the existing chained backend (localStorage 7-day cache → jsdelivr `wcpos/translations@main`), bundled English as final fallback.
 
+> **Amendment (Paul, 2026-06-13):** translations are self-contained in this repo — locale files live at src/translations/<wp_locale>/ and are served from the same @v2 jsdelivr tag as the bundles. The wcpos/translations mirroring described above is retired (no landing strings leave this repo); translator context lives at src/translations/CONTEXT.md.
+
 **Idiom rules:** "ring up a sale", "till", and similar are locale-adapted, not machine-translated literally. The adeline review renders in original French for `fr`.
 
 **Gates and analysis:** parent test does not start until both variants pass translation review in all 12 locales (a translation lag reading as a variant effect is a named anti-pattern). `locale` is a super property; English cohort is a pre-registered analysis segment. RTL (`ar`) gets a layout QA pass.
