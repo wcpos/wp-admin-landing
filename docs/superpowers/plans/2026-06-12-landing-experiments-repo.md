@@ -788,6 +788,8 @@ git commit -m "feat: per-variant i18n namespaces with shared bundle"
 
 - [ ] **Step 1: Commit the initial snapshots** (hand-authored from the verified reviews/board; fetchers refresh them)
 
+> **Quote integrity (spec §2.1):** `quote_en`/`quote_fr` are VERBATIM reviewer text — typos and emoji preserved (the 🙂 and "killbot"/"glad tried it" are the reviewers' own), cuts marked with […], translations labelled in the UI. Never reword a quote. The banned-word/emoji lint must not scan `wporg-reviews.json` (reviewer speech, not product copy) — `lint-copy.mjs` only reads `src/translations/en/`, so this holds by construction.
+
 ```json
 // src/shared/wporg-reviews.json
 {
@@ -797,8 +799,8 @@ git commit -m "feat: per-variant i18n namespaces with shared bundle"
       "author": "adeline",
       "context": "ceramicist · Annecy, France",
       "stars": 5,
-      "quote_en": "Over a year with WCPOS — fast at the register even in the Saturday rush, stock syncs automatically between my site and the till. Paul answers on Discord, even on weekends. I took the lifetime licence.",
-      "quote_fr": "On prend rarement le temps de laisser un avis quand tout va bien. Ça fait plus d'un an que j'utilise WCPOS, et j'ai pris la licence Pro à vie. Paul est réactif sur Discord, même le week-end.",
+      "quote_fr": "Ça fait plus d'un an que j'utilise WCPOS, et j'ai pris la licence Pro à vie il y a quelques mois, qui vaut le coup je pense. Paul est réactif sur Discord. Il a toujours répondu rapidement à mes questions, même le week-end […]",
+      "quote_en": "I've been using WCPOS for over a year, and a few months ago I took the lifetime Pro licence — worth it, I think. Paul is responsive on Discord. He has always answered my questions quickly, even on weekends […]",
       "translated": true,
       "url": "https://wordpress.org/support/topic/plus-dun-an-dutilisation-je-recommande/",
       "avatar": null
@@ -807,7 +809,7 @@ git commit -m "feat: per-variant i18n namespaces with shared bundle"
       "author": "nckllnpssy",
       "context": "WordPress.org review",
       "stars": 5,
-      "quote_en": "The best Woo POS plugin available. And it's free! I did a lot of research before choosing — no subscription, no commission on sales. Bought the Pro version: a bargain.",
+      "quote_en": "I did a lot of research when looking for a POS for my existing WC site, and nearly overlooked this one because it was free. But I'm glad tried it. It does everything you want without asking for subscriptions or a percentage of your sales – I bought the pro version for the few extra features, and it is a bargain.",
       "translated": false,
       "url": "https://wordpress.org/support/topic/the-best-woo-pos-plugin-available-and-its-free/",
       "avatar": null
@@ -816,7 +818,7 @@ git commit -m "feat: per-variant i18n namespaces with shared bundle"
       "author": "rodriguekgl",
       "context": "WordPress.org review",
       "stars": 5,
-      "quote_en": "Great POS for your WooCommerce store — the desktop version makes it better for places with weak internet connectivity. Keep up the great work killbot.",
+      "quote_en": "Great POS for your WooCommerce store, it has the desktop version which makes it better for place with weak internet connectivity. I believe there are more great features coming up 🙂 Keep up the great work killbot.",
       "translated": false,
       "url": "https://wordpress.org/support/topic/great-pos-for-your-woocommerce-store/",
       "avatar": null
@@ -1494,8 +1496,8 @@ git commit -m "feat: bootstrap entry — analytics, flag-before-identify, runtim
 {
   "eyebrow": "{month} {year} · TO THE SHOPKEEPER RUNNING THE FREE REGISTER",
   "opening": "Hi — I'm Paul. I built the register you're using.",
-  "para1": "That's me on the right, {yearsAgo} years ago. I opened Urban Locavore in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. <b>POS plugins for WordPress have come and gone since then. This one hasn't.</b> {releaseYears} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, sync, work offline. It stays free.",
-  "para1_no_photo": "I opened Urban Locavore in Perth in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. <b>POS plugins for WordPress have come and gone since then. This one hasn't.</b> {releaseYears} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, sync, work offline. It stays free.",
+  "para1": "That's me on the right, {yearsAgo} years ago. I opened Urban Locavore in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. <b>POS plugins for WordPress have come and gone since then. This one hasn't.</b> {releaseYears} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, stay in sync. It stays free.",
+  "para1_no_photo": "I opened Urban Locavore in Perth in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. <b>POS plugins for WordPress have come and gone since then. This one hasn't.</b> {releaseYears} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, stay in sync. It stays free.",
   "para2": "<b>Pro is why it's still here.</b> It adds extra tools for managing your store — card readers, refunds at the till, end-of-day reports, multi-store — and it funds every release, free ones included. No investors, no acquisition exit waiting. Shopkeepers fund it directly.",
   "para3": "And Pro users have a direct line: tell me what your shop needs, and it shapes what I build next.",
   "photo_caption": "Urban Locavore, Perth — the store that started it all",
@@ -1642,14 +1644,14 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
   "kicker": "You're on the free plugin — it stays free",
   "headline_1": "Free runs your counter.",
   "headline_2": "Pro is ready when you are.",
-  "sub": "The free register already <b>sells, prints, and syncs — even offline</b>. Pro adds what bigger shops grow into: <b>card readers, refunds on the spot, stock edits mid-shift, reports at close</b>.",
+  "sub": "The free register already <b>sells, prints, and stays in sync with your store</b>. Pro adds what bigger shops grow into: <b>card readers, refunds on the spot, stock edits mid-shift, reports at close</b>.",
   "table_heading": "What you get",
   "table_note": "everything in Free carries into Pro",
   "col_what": "What you can do",
   "col_free": "Free",
   "col_pro": "Pro",
-  "row1_name": "Take sales, print receipts, work offline",
-  "row1_desc": "Cash & external card · thermal printers · offline-first sync",
+  "row1_name": "Take sales, print receipts, stay in sync",
+  "row1_desc": "Cash & external card · thermal printers · live WooCommerce sync",
   "row2_name": "Take card payments at the counter",
   "row2_desc": "Stripe Terminal, SumUp, Vipps MobilePay — or any WooCommerce gateway",
   "row3_name": "Refund a customer on the spot",

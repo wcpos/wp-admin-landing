@@ -47,7 +47,7 @@ Layout: WP-admin-native card, awning stripe top. Two-column grid (letter 1.25fr 
 - Floated polaroid-framed photo of Paul at Urban Locavore. Caption: *"Urban Locavore, Perth — the store that started it all"*. Asset: `assets/img/paul-urban-locavore.jpg` + WebP, lazy-loaded. **Owner: Paul; deadline: translation freeze (month 0). Contingency if unavailable:** drop the polaroid and the sentence "That's me on the right, {{yearsAgo}} years ago." becomes "I opened Urban Locavore in 2011…" (pre-approved fallback).
 - Eyebrow: `JUNE 2026 · TO THE SHOPKEEPER RUNNING THE FREE REGISTER` (month computed).
 - Opening: *"Hi — I'm Paul. I built the register you're using."*
-- Para 1: *"That's me on the right, {{yearsAgo}} years ago. I opened Urban Locavore in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. **POS plugins for WordPress have come and gone since then. This one hasn't.** {{releaseYears}} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, sync, work offline. It stays free."*
+- Para 1: *"That's me on the right, {{yearsAgo}} years ago. I opened Urban Locavore in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. **POS plugins for WordPress have come and gone since then. This one hasn't.** {{releaseYears}} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, stay in sync. It stays free."* (Offline claims are deliberately avoided page-wide while the offline checkout flow is still being completed — Paul, 2026-06-12.)
 - Para 2: *"**Pro is why it's still here.** It adds extra tools for managing your store — card readers, refunds at the till, end-of-day reports, multi-store — and it funds every release, free ones included. No investors, no acquisition exit waiting. Shopkeepers fund it directly."*
 - Para 3: *"And Pro users have a direct line: tell me what your shop needs, and it shapes what I build next."*
 - Signature block (avatar, name, "developer & former shopkeeper · github.com/kilbot").
@@ -62,7 +62,7 @@ Layout: WP-admin-native card, awning stripe top. Two-column grid (letter 1.25fr 
 - Below the card: proof chip — **6,000+** "stores run WooCommerce POS / on WordPress.org since May 2014".
 
 **Reviews strip (full width, white):**
-- Three real WordPress.org reviews, quoted faithfully, each linking to its thread, with real gravatars fetched at build time (`scripts/fetch-wporg-reviews.mjs`):
+- Three real WordPress.org reviews, **quoted verbatim — reviewers' exact words including typos and emoji; cuts marked with […]; translations labelled as translations; never reworded or condensed**. Each links to its thread, with real gravatars fetched at build time (`scripts/fetch-wporg-reviews.mjs`):
   - adeline (ceramicist, Annecy, France) — translated from French, marked *"translated from French"* (shown in original French for `fr` locale) — [thread](https://wordpress.org/support/topic/plus-dun-an-dutilisation-je-recommande/)
   - nckllnpssy — [thread](https://wordpress.org/support/topic/the-best-woo-pos-plugin-available-and-its-free/)
   - rodriguekgl — [thread](https://wordpress.org/support/topic/great-pos-for-your-woocommerce-store/)
