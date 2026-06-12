@@ -59,4 +59,10 @@ literally.** Use the natural equivalent a shopkeeper in the target language woul
 ## Launch gate
 
 The parent experiment cannot launch until **both variants pass translation review in all
-11 locales** (spec §4).
+shipped locales** (spec §4; Paul may stage the launch gate on the highest-traffic locales first).
+
+## Locale-specific notes
+
+- **ro_RO:** `{yearsAgo} ani` / `{releaseYears} ani` deliberately omit the linking particle "de" — Romanian requires bare `ani` for 2–19 and `de ani` for ≥20; runtime values stay under 20 until ~2034. Revisit with ICU plurals before then.
+- **th:** fixed dates in UI chips use Buddhist Era years; years inside the brand story (2011/2014) stay CE.
+- **RTL (ar, he_IL):** placeholders are LTR tokens inside RTL text; no direction-control characters in the JSON — layout handles RTL. Both need the §4 RTL layout QA pass.

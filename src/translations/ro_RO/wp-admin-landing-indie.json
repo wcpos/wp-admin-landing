@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · PROPRIETARULUI DE MAGAZIN CARE FOLOSEȘTE CASA DE MARCAT GRATUITĂ",
+  "opening": "Bună ziua — sunt Paul. Eu am construit casa de marcat pe care o folosiți.",
+  "para1": "Acela sunt eu în dreapta, acum {yearsAgo} ani. Am deschis Urban Locavore în 2011 cu sute de produse deja în WooCommerce, dar fără nicio modalitate de a le vinde la tejghea — așa că mi-am construit singur o casă de marcat. Când magazinul s-a închis în 2014, am publicat-o pe WordPress.org pentru oricine avea nevoie de ea. <b>Pluginuri POS pentru WordPress au venit și au dispărut de atunci. Acesta nu.</b> {releaseYears} ani de lansări, un singur dezvoltator, continui să livrez — iar versiunea gratuită este în continuare varianta autentică: înregistrați vânzări, imprimați chitanțe, rămâneți sincronizat cu magazinul. Rămâne gratuită.",
+  "para1_no_photo": "Am deschis Urban Locavore în Perth în 2011 cu sute de produse deja în WooCommerce, dar fără nicio modalitate de a le vinde la tejghea — așa că mi-am construit singur o casă de marcat. Când magazinul s-a închis în 2014, am publicat-o pe WordPress.org pentru oricine avea nevoie de ea. <b>Pluginuri POS pentru WordPress au venit și au dispărut de atunci. Acesta nu.</b> {releaseYears} ani de lansări, un singur dezvoltator, continui să livrez — iar versiunea gratuită este în continuare varianta autentică: înregistrați vânzări, imprimați chitanțe, rămâneți sincronizat cu magazinul. Rămâne gratuită.",
+  "para2": "<b>Pro este motivul pentru care proiectul există în continuare.</b> Adaugă instrumente suplimentare pentru gestionarea magazinului dumneavoastră — cititoare de carduri, rambursări direct la casă, rapoarte de închidere a casei, funcționare în mai multe locații — și finanțează fiecare lansare, inclusiv pe cele gratuite. Fără investitori, fără așteptarea unei achiziții. Proiectul este susținut direct de proprietarii de magazine.",
+  "para3": "Iar utilizatorii Pro au o legătură directă cu mine: spuneți-mi ce are nevoie magazinul dumneavoastră, și asta modelează ce construiesc în continuare.",
+  "photo_caption": "Urban Locavore, Perth — magazinul de la care a pornit totul",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "dezvoltator și fost proprietar de magazin · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro costă <b>{annual}/an sau {lifetime} o singură dată</b>. Dacă o licență expiră, Pro continuă să funcționeze; doar actualizările se opresc."
+}

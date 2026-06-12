@@ -1,0 +1,19 @@
+{
+  "get_pro": "Dùng Pro",
+  "price_both": "{annual}/năm · {lifetime} trọn đời",
+  "price_annual_only": "{annual}/năm",
+  "proof_chip_line": "cửa hàng đang chạy WooCommerce POS\ntrên WordPress.org từ tháng 5 năm 2014",
+  "reviews_heading": "Từ đánh giá trên WordPress.org",
+  "translated_from_french": "dịch từ tiếng Pháp",
+  "read_on_wporg": "Xem trên WordPress.org →",
+  "review_cta_line": "Bạn đang dùng quầy thu ngân miễn phí? Một đánh giá sẽ giúp các chủ cửa hàng khác tìm thấy plugin này.",
+  "review_cta_link": "Để lại đánh giá trên WordPress.org →",
+  "roadmap_title": "Tôi đang xây dựng gì",
+  "roadmap_subtitle": "Xem bảng trực tiếp →",
+  "roadmap_done": "XONG",
+  "roadmap_next": "TIẾP",
+  "roadmap_listen": "<b>Người dùng Pro định hình các ưu tiên.</b> Không có hàng đợi — bạn nói với tôi cửa hàng cần gì trên Discord, và điều đó định hình danh sách này.",
+  "fair_licence": "Nếu bạn ngừng trả phí, Pro vẫn tiếp tục hoạt động. Cập nhật và hỗ trợ sẽ dừng lại.",
+  "error_something_wrong": "Đã xảy ra lỗi: <1>{message}</1>",
+  "pro_active_thanks": "Bạn đang dùng Pro — cảm ơn bạn đã giúp dự án này tiếp tục."
+}

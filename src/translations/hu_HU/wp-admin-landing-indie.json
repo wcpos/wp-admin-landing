@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{year} {month} · AZ INGYENES KASSZÁT HASZNÁLÓ BOLTOSNAK",
+  "opening": "Szia — Paul vagyok. Én építettem azt a kasszát, amelyet most használsz.",
+  "para1": "Ez én vagyok jobbra a képen, {yearsAgo} évvel ezelőtt. 2011-ben nyitottam meg az Urban Locavore-t: több száz termék már fent volt a WooCommerce-ben, de semmi módom sem volt eladni őket a pultnál — ezért megcsináltam magamnak a kasszát. Amikor a bolt 2014-ben bezárt, feltettem a WordPress.org-ra, hogy bárki, akinek szüksége van rá, használhassa. <b>WordPress-hez készült POS-bővítmények jöttek és mentek azóta. Ez nem ment sehova.</b> {releaseYears} évnyi kiadás, egy fejlesztő, még mindig megy — és az ingyenes verzió még mindig a valódi dolog: rögzíted az eladásokat, nyomtatsz, szinkronban maradsz. Ingyenes marad.",
+  "para1_no_photo": "2011-ben nyitottam meg az Urban Locavore-t Perth-ben: több száz termék már fent volt a WooCommerce-ben, de semmi módom sem volt eladni őket a pultnál — ezért megcsináltam magamnak a kasszát. Amikor a bolt 2014-ben bezárt, feltettem a WordPress.org-ra, hogy bárki, akinek szüksége van rá, használhassa. <b>WordPress-hez készült POS-bővítmények jöttek és mentek azóta. Ez nem ment sehova.</b> {releaseYears} évnyi kiadás, egy fejlesztő, még mindig megy — és az ingyenes verzió még mindig a valódi dolog: rögzíted az eladásokat, nyomtatsz, szinkronban maradsz. Ingyenes marad.",
+  "para2": "<b>A Pro az, ami miatt még mindig létezik ez az egész.</b> Extra eszközöket ad a bolt kezeléséhez — kártyaolvasók, visszatérítések a kasszánál, napi zárás-riportok, több telephelyes üzemeltetés — és minden kiadást finanszíroz, az ingyeneseket is. Sem befektetők, sem felvásárlás nem vár a háttérben. Boltosok finanszírozzák közvetlenül.",
+  "para3": "A Pro felhasználóknak pedig közvetlen kapcsolatuk van hozzám: megmondod, mire van szükséged, és az formálja, mit építek legközelebb.",
+  "photo_caption": "Urban Locavore, Perth — a bolt, amelyből minden elindult",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "fejlesztő és volt boltos · github.com/kilbot",
+  "ps": "<b>Ui.</b> — A Pro <b>{annual}/év vagy {lifetime} egyszeri díj</b>. Ha lejár a licenc, a Pro tovább működik; csak a frissítések állnak le."
+}

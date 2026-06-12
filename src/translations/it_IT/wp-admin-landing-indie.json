@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · A CHI GESTISCE LA CASSA GRATUITA",
+  "opening": "Ciao — sono Paul. Ho costruito la cassa che stai usando.",
+  "para1": "Nella foto a destra sono io, {yearsAgo} anni fa. Ho aperto Urban Locavore nel 2011 con centinaia di prodotti già in WooCommerce e nessun modo per venderli al bancone — così mi sono costruito una cassa da solo. Quando il negozio ha chiuso nel 2014, l'ho messa su WordPress.org per chiunque ne avesse bisogno. <b>Da allora i plugin POS per WordPress sono arrivati e spariti. Questo no.</b> {releaseYears} anni di rilasci, un solo sviluppatore, ancora in produzione — e la versione gratuita è ancora la cosa vera: vendi, stampa, resta sincronizzato. Rimane gratuita.",
+  "para1_no_photo": "Ho aperto Urban Locavore a Perth nel 2011 con centinaia di prodotti già in WooCommerce e nessun modo per venderli al bancone — così mi sono costruito una cassa da solo. Quando il negozio ha chiuso nel 2014, l'ho messa su WordPress.org per chiunque ne avesse bisogno. <b>Da allora i plugin POS per WordPress sono arrivati e spariti. Questo no.</b> {releaseYears} anni di rilasci, un solo sviluppatore, ancora in produzione — e la versione gratuita è ancora la cosa vera: vendi, stampa, resta sincronizzato. Rimane gratuita.",
+  "para2": "<b>Pro è il motivo per cui esiste ancora.</b> Aggiunge strumenti extra per gestire il tuo negozio — lettori di carte, rimborsi alla cassa, report di chiusura giornaliera, multi-punto vendita — e finanzia ogni rilascio, compresi quelli gratuiti. Nessun investitore, nessuna exit in vista. Sono i negozianti a finanziarlo direttamente.",
+  "para3": "E gli utenti Pro hanno un canale diretto: dimmi cosa ti serve per il tuo negozio, e questo influisce su ciò che costruisco dopo.",
+  "photo_caption": "Urban Locavore, Perth — il negozio da cui è iniziato tutto",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "sviluppatore ed ex negoziante · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro è <b>{annual}/anno oppure {lifetime} una volta sola</b>. Se una licenza scade, Pro continua a funzionare; smetti solo di ricevere aggiornamenti."
+}

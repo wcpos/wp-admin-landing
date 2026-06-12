@@ -12,7 +12,8 @@
     "lint:snapshots": "node scripts/lint-snapshots.mjs",
     "fetch:content": "node scripts/fetch-roadmap.mjs && node scripts/fetch-wporg-reviews.mjs",
     "test": "node --test 'tests/*.test.mjs'",
-    "ci": "npm run test && npm run typecheck && npm run lint:copy && npm run lint:i18n && npm run lint:snapshots && npm run check:assets"
+    "ci": "npm run test && npm run typecheck && npm run lint:copy && npm run lint:i18n && npm run lint:translations && npm run lint:snapshots && npm run check:assets",
+    "lint:translations": "node scripts/lint-translations.mjs"
   },
   "dependencies": {
     "i18next": "^26.0.5",

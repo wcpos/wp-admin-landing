@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{year} 年 {month} · 寫給使用免費收銀機的店主",
+  "opening": "您好——我是 Paul，我開發了您正在使用的這套收銀系統。",
+  "para1": "右邊那張照片裡是 {yearsAgo} 年前的我。2011 年，我在 Perth 開了 Urban Locavore，WooCommerce 裡已有數百個商品，卻沒有任何辦法在櫃台銷售——於是我自己寫了一套收銀機。2014 年店舖結束營業後，我把它發布到 WordPress.org，供任何有需要的人免費使用。<b>WordPress 上的 POS 外掛來了又去，這個卻沒有。</b>一位開發者，{releaseYears} 年持續發版，至今仍在更新——而免費版依然貨真價實：收款、列印、與後台即時同步。它始終免費。",
+  "para1_no_photo": "2011 年，我在 Perth 開了 Urban Locavore，WooCommerce 裡已有數百個商品，卻沒有任何辦法在櫃台銷售——於是我自己寫了一套收銀機。2014 年店舖結束營業後，我把它發布到 WordPress.org，供任何有需要的人免費使用。<b>WordPress 上的 POS 外掛來了又去，這個卻沒有。</b>一位開發者，{releaseYears} 年持續發版，至今仍在更新——而免費版依然貨真價實：收款、列印、與後台即時同步。它始終免費。",
+  "para2": "<b>Pro 是它還在這裡的原因。</b>Pro 提供管理店舖的進階工具——讀卡機、當場退款、日結報告、多店管理——同時為每一次更新提供資金，包括免費版的更新。沒有投資人，沒有等待被收購的退出計畫。是店主們直接支撐著它。",
+  "para3": "Pro 使用者有直達管道：告訴我您的店舖需要什麼，它就會影響我下一步要開發的功能。",
+  "photo_caption": "Urban Locavore，Perth——一切開始的地方",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "開發者兼前任店主 · github.com/kilbot",
+  "ps": "<b>附言：</b>Pro 售價 <b>{annual}/年，或 {lifetime} 買斷</b>。授權到期後 Pro 仍可繼續使用，只是不再收到更新。"
+}

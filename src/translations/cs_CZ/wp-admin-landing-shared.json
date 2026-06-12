@@ -1,0 +1,19 @@
+{
+  "get_pro": "Získat Pro",
+  "price_both": "{annual}/rok · {lifetime} jednorázově",
+  "price_annual_only": "{annual}/rok",
+  "proof_chip_line": "obchodů používá WooCommerce POS\nna WordPress.org od května 2014",
+  "reviews_heading": "Z recenzí na WordPress.org",
+  "translated_from_french": "přeloženo z francouzštiny",
+  "read_on_wporg": "Číst na WordPress.org →",
+  "review_cta_line": "Provozujete svůj obchod na bezplatné pokladně? Recenze pomůže ostatním majitelům ji najít.",
+  "review_cta_link": "Napsat recenzi na WordPress.org →",
+  "roadmap_title": "Co právě stavím",
+  "roadmap_subtitle": "Zobrazit živý přehled →",
+  "roadmap_done": "HOTOVO",
+  "roadmap_next": "CHYSTÁME",
+  "roadmap_listen": "<b>Pro uživatelé určují priority.</b> Žádná fronta tiketů — řeknete mi na Discordu, co váš obchod potřebuje, a to tvaruje tento seznam.",
+  "fair_licence": "Pokud přestanete platit, Pro dál funguje. Aktualizace a podpora se zastaví.",
+  "error_something_wrong": "Něco se pokazilo: <1>{message}</1>",
+  "pro_active_thanks": "Používáte Pro — děkuji, že tento projekt udržujete při životě."
+}

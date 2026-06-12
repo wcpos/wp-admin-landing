@@ -1,0 +1,19 @@
+{
+  "get_pro": "לשדרג ל-Pro",
+  "price_both": "{annual}/שנה · {lifetime} לתמיד",
+  "price_annual_only": "{annual}/שנה",
+  "proof_chip_line": "חנויות משתמשות ב-WooCommerce POS\nב-WordPress.org מאז מאי 2014",
+  "reviews_heading": "מתוך הביקורות ב-WordPress.org",
+  "translated_from_french": "תורגם מצרפתית",
+  "read_on_wporg": "קרא ב-WordPress.org →",
+  "review_cta_line": "מנהל את הקופה שלך עם הגרסה החינמית? ביקורת קצרה עוזרת לבעלי חנויות אחרים למצוא אותה.",
+  "review_cta_link": "כתוב ביקורת ב-WordPress.org →",
+  "roadmap_title": "מה אני בונה",
+  "roadmap_subtitle": "לצפייה בלוח העדכני →",
+  "roadmap_done": "בוצע",
+  "roadmap_next": "בקרוב",
+  "roadmap_listen": "<b>משתמשי Pro מעצבים את סדר העדיפויות.</b> אין תור לפניות — אתה אומר לי מה החנות שלך צריכה ב-Discord, וזה מעצב את הרשימה הזו.",
+  "fair_licence": "אם תפסיק לשלם, Pro ימשיך לעבוד. רק עדכונים ותמיכה יפסקו.",
+  "error_something_wrong": "משהו השתבש: <1>{message}</1>",
+  "pro_active_thanks": "אתה על Pro — תודה שאתה מחזיק את הפרויקט הזה חי."
+}

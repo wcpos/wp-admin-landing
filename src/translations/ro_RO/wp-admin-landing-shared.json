@@ -1,0 +1,19 @@
+{
+  "get_pro": "Obțineți Pro",
+  "price_both": "{annual}/an · {lifetime} o singură dată",
+  "price_annual_only": "{annual}/an",
+  "proof_chip_line": "magazine folosesc WooCommerce POS\npe WordPress.org din mai 2014",
+  "reviews_heading": "Din recenziile de pe WordPress.org",
+  "translated_from_french": "tradus din franceză",
+  "read_on_wporg": "Citiți pe WordPress.org →",
+  "review_cta_line": "Folosiți casa de marcat gratuită? O recenzie îi ajută pe alți proprietari de magazine s-o găsească.",
+  "review_cta_link": "Lăsați o recenzie pe WordPress.org →",
+  "roadmap_title": "Ce construiesc",
+  "roadmap_subtitle": "Vedeți tabloul live →",
+  "roadmap_done": "GATA",
+  "roadmap_next": "URMEAZĂ",
+  "roadmap_listen": "<b>Utilizatorii Pro stabilesc prioritățile.</b> Nu există coadă de tichete — îmi spuneți pe Discord ce are nevoie magazinul dumneavoastră, și asta modelează această listă.",
+  "fair_licence": "Dacă nu mai plătiți, Pro continuă să funcționeze. Actualizările și suportul se opresc.",
+  "error_something_wrong": "A apărut o eroare: <1>{message}</1>",
+  "pro_active_thanks": "Aveți Pro activ — vă mulțumesc că țineți acest proiect în viață."
+}

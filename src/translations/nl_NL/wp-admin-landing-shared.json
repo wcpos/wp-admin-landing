@@ -1,0 +1,19 @@
+{
+  "get_pro": "Pro aanschaffen",
+  "price_both": "{annual}/jaar · {lifetime} eenmalig",
+  "price_annual_only": "{annual}/jaar",
+  "proof_chip_line": "winkels draaien WooCommerce POS\nop WordPress.org sinds mei 2014",
+  "reviews_heading": "Uit de WordPress.org-recensies",
+  "translated_from_french": "vertaald uit het Frans",
+  "read_on_wporg": "Lees op WordPress.org →",
+  "review_cta_line": "Gebruik je de gratis kassa? Een recensie helpt andere winkeliers om hem te vinden.",
+  "review_cta_link": "Schrijf een recensie op WordPress.org →",
+  "roadmap_title": "Waar ik aan werk",
+  "roadmap_subtitle": "Bekijk het live bord →",
+  "roadmap_done": "KLAAR",
+  "roadmap_next": "VOLGEND",
+  "roadmap_listen": "<b>Pro-gebruikers bepalen de prioriteiten.</b> Geen ticketwachtrij — je vertelt me op Discord wat jouw winkel nodig heeft, en dat vormt deze lijst.",
+  "fair_licence": "Als je stopt met betalen, blijft Pro gewoon werken. Updates en ondersteuning stoppen.",
+  "error_something_wrong": "Er is iets misgegaan: <1>{message}</1>",
+  "pro_active_thanks": "Je gebruikt Pro — bedankt dat je dit project gaande houdt."
+}

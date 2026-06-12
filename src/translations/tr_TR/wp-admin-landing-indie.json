@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · ÜCRETSİZ KASAYI KULLANAN ESNAFA",
+  "opening": "Merhaba — Ben Paul. Kullandığınız kasayı ben yaptım.",
+  "para1": "Sağdaki kişi benim, {yearsAgo} yıl önce. 2011'de Urban Locavore'u açtığımda WooCommerce'de yüzlerce ürün hazırdı ama tezgahta satış yapmanın bir yolu yoktu — o yüzden kasayı kendim yaptım. Mağaza 2014'te kapanınca, ihtiyacı olanlara açık olsun diye WordPress.org'a koydum. <b>WordPress için POS eklentileri geldi geçti. Bu kalmaya devam etti.</b> {releaseYears} yıldır sürüm çıkıyor, tek geliştirici, hâlâ devam ediyor — ve ücretsiz sürüm gerçek bir şey olmaya devam ediyor: satış yap, fiş bas, mağazanla senkronlu kal. Ücretsiz kalıyor.",
+  "para1_no_photo": "2011'de Perth'te Urban Locavore'u açtığımda WooCommerce'de yüzlerce ürün hazırdı ama tezgahta satış yapmanın bir yolu yoktu — o yüzden kasayı kendim yaptım. Mağaza 2014'te kapanınca, ihtiyacı olanlara açık olsun diye WordPress.org'a koydum. <b>WordPress için POS eklentileri geldi geçti. Bu kalmaya devam etti.</b> {releaseYears} yıldır sürüm çıkıyor, tek geliştirici, hâlâ devam ediyor — ve ücretsiz sürüm gerçek bir şey olmaya devam ediyor: satış yap, fiş bas, mağazanla senkronlu kal. Ücretsiz kalıyor.",
+  "para2": "<b>Pro, bunun hâlâ burada olmasının nedeni.</b> Mağazanızı yönetmek için ekstra araçlar ekler — kart okuyucular, kasada iade, gün sonu raporları, çoklu mağaza — ve her sürümü, ücretsizler dahil, finanse eder. Yatırımcı yok, bekleyen bir satın alma çıkışı yok. Doğrudan esnaf tarafından destekleniyor.",
+  "para3": "Pro kullanıcıların da doğrudan bir hattı var: mağazanızın neye ihtiyacı olduğunu söyleyin, bu da sıradaki geliştirdiğim şeyi belirler.",
+  "photo_caption": "Urban Locavore, Perth — her şeyin başladığı mağaza",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "geliştirici ve eski esnaf · github.com/kilbot",
+  "ps": "<b>Not:</b> — Pro <b>{annual}/yıl veya tek seferlik {lifetime}</b>. Lisans süresi dolarsa Pro çalışmaya devam eder; yalnızca güncelleme almayı bırakırsınız."
+}

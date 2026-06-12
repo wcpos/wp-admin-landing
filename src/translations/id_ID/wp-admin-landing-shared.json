@@ -1,0 +1,19 @@
+{
+  "get_pro": "Dapatkan Pro",
+  "price_both": "{annual}/thn · {lifetime} seumur hidup",
+  "price_annual_only": "{annual}/tahun",
+  "proof_chip_line": "toko menggunakan WooCommerce POS\ndi WordPress.org sejak Mei 2014",
+  "reviews_heading": "Dari ulasan WordPress.org",
+  "translated_from_french": "diterjemahkan dari bahasa Prancis",
+  "read_on_wporg": "Baca di WordPress.org →",
+  "review_cta_line": "Menggunakan kasir gratis untuk mengelola toko Anda? Ulasan Anda membantu pemilik toko lain menemukannya.",
+  "review_cta_link": "Tulis ulasan di WordPress.org →",
+  "roadmap_title": "Yang sedang saya bangun",
+  "roadmap_subtitle": "Lihat papan langsung →",
+  "roadmap_done": "SELESAI",
+  "roadmap_next": "BERIKUTNYA",
+  "roadmap_listen": "<b>Pengguna Pro membentuk prioritas.</b> Tidak ada antrean tiket — Anda cukup memberitahu saya apa yang dibutuhkan toko Anda di Discord, dan itu yang menentukan daftar ini.",
+  "fair_licence": "Jika Anda berhenti berlangganan, Pro tetap berfungsi. Pembaruan dan dukungan berhenti.",
+  "error_something_wrong": "Terjadi kesalahan: <1>{message}</1>",
+  "pro_active_thanks": "Anda menggunakan Pro — terima kasih telah mendukung proyek ini."
+}

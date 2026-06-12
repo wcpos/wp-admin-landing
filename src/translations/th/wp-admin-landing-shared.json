@@ -1,0 +1,19 @@
+{
+  "get_pro": "อัปเกรดเป็น Pro",
+  "price_both": "{annual}/ปี · {lifetime} จ่ายครั้งเดียว",
+  "price_annual_only": "{annual}/ปี",
+  "proof_chip_line": "ร้านค้าใช้งาน WooCommerce POS\nบน WordPress.org ตั้งแต่พฤษภาคม 2557",
+  "reviews_heading": "รีวิวจาก WordPress.org",
+  "translated_from_french": "แปลจากภาษาฝรั่งเศส",
+  "read_on_wporg": "อ่านบน WordPress.org →",
+  "review_cta_line": "ใช้แคชเชียร์ฟรีอยู่ใช่ไหม? รีวิวสั้น ๆ ช่วยให้เจ้าของร้านอื่นเจอปลั๊กอินนี้ได้ง่ายขึ้น",
+  "review_cta_link": "เขียนรีวิวบน WordPress.org →",
+  "roadmap_title": "สิ่งที่กำลังพัฒนา",
+  "roadmap_subtitle": "ดู Roadmap สด →",
+  "roadmap_done": "เสร็จแล้ว",
+  "roadmap_next": "ถัดไป",
+  "roadmap_listen": "<b>ผู้ใช้ Pro กำหนดทิศทางการพัฒนา</b> ไม่มีคิว ticket — บอกผมตรง ๆ บน Discord ว่าร้านคุณต้องการอะไร แล้วมันจะกลายเป็นสิ่งที่ผมสร้าง",
+  "fair_licence": "หยุดจ่ายเมื่อไรก็ได้ — Pro ยังใช้งานได้ต่อไป แค่ไม่ได้รับอัปเดตและการสนับสนุน",
+  "error_something_wrong": "เกิดข้อผิดพลาด: <1>{message}</1>",
+  "pro_active_thanks": "คุณใช้ Pro อยู่ — ขอบคุณที่ช่วยให้โปรเจกต์นี้เดินหน้าต่อไป"
+}

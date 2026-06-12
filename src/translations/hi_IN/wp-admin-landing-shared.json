@@ -1,0 +1,19 @@
+{
+  "get_pro": "Pro लें",
+  "price_both": "{annual}/साल · {lifetime} लाइफटाइम",
+  "price_annual_only": "{annual}/साल",
+  "proof_chip_line": "स्टोर WooCommerce POS चला रहे हैं\nWordPress.org पर मई 2014 से",
+  "reviews_heading": "WordPress.org की समीक्षाओं से",
+  "translated_from_french": "फ्रेंच से अनुवादित",
+  "read_on_wporg": "WordPress.org पर पढ़ें →",
+  "review_cta_line": "फ्री रजिस्टर पर दुकान चला रहे हैं? एक समीक्षा से दूसरे स्टोर मालिकों को इसे खोजने में मदद होगी।",
+  "review_cta_link": "WordPress.org पर समीक्षा दें →",
+  "roadmap_title": "मैं क्या बना रहा हूं",
+  "roadmap_subtitle": "लाइव बोर्ड देखें →",
+  "roadmap_done": "हो गया",
+  "roadmap_next": "आगे",
+  "roadmap_listen": "<b>Pro यूज़र्स प्राथमिकताएं तय करते हैं।</b> कोई टिकट कतार नहीं है — आप Discord पर बताएं कि आपकी दुकान को क्या चाहिए, और वही इस लिस्ट को आकार देता है।",
+  "fair_licence": "भुगतान बंद करने पर Pro काम करता रहता है। अपडेट और सपोर्ट बंद हो जाते हैं।",
+  "error_something_wrong": "कुछ गड़बड़ हो गई: <1>{message}</1>",
+  "pro_active_thanks": "आप Pro पर हैं — इस प्रोजेक्ट को जारी रखने के लिए शुक्रिया।"
+}

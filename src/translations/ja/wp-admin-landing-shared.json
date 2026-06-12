@@ -1,0 +1,19 @@
+{
+  "get_pro": "Proを入手",
+  "price_both": "{annual}/年 · {lifetime} 買い切り",
+  "price_annual_only": "{annual}/年",
+  "proof_chip_line": "2014年5月からWordPress.orgで\nWooCommerce POSを使う店舗数",
+  "reviews_heading": "WordPress.orgのレビューより",
+  "translated_from_french": "フランス語から翻訳",
+  "read_on_wporg": "WordPress.orgで読む →",
+  "review_cta_line": "無料のレジをお使いですか？レビューを書くと、同じ悩みを抱える店主が見つけやすくなります。",
+  "review_cta_link": "WordPress.orgにレビューを書く →",
+  "roadmap_title": "開発中の機能",
+  "roadmap_subtitle": "ライブボードを見る →",
+  "roadmap_done": "完了",
+  "roadmap_next": "予定",
+  "roadmap_listen": "<b>優先順位はProユーザーが決めます。</b> チケット待ちはありません。Discordでお店に必要なことを教えてください。それがこのリストに反映されます。",
+  "fair_licence": "支払いを止めても、Proは動き続けます。アップデートとサポートが止まるだけです。",
+  "error_something_wrong": "エラーが発生しました: <1>{message}</1>",
+  "pro_active_thanks": "Proをご利用いただきありがとうございます。このプロジェクトを続けられるのはあなたのおかげです。"
+}

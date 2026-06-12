@@ -1,0 +1,19 @@
+{
+  "get_pro": "Αποκτήστε Pro",
+  "price_both": "{annual}/έτος · {lifetime} εφάπαξ",
+  "price_annual_only": "{annual}/έτος",
+  "proof_chip_line": "καταστήματα χρησιμοποιούν WooCommerce POS\nστο WordPress.org από τον Μάιο 2014",
+  "reviews_heading": "Από τις αξιολογήσεις στο WordPress.org",
+  "translated_from_french": "μεταφρασμένο από τα γαλλικά",
+  "read_on_wporg": "Διαβάστε στο WordPress.org →",
+  "review_cta_line": "Χρησιμοποιείτε το δωρεάν ταμείο; Μια αξιολόγηση βοηθά άλλους ιδιοκτήτες καταστημάτων να το ανακαλύψουν.",
+  "review_cta_link": "Αφήστε αξιολόγηση στο WordPress.org →",
+  "roadmap_title": "Τι φτιάχνω",
+  "roadmap_subtitle": "Δείτε τον ζωντανό πίνακα →",
+  "roadmap_done": "ΕΓΙΝΕ",
+  "roadmap_next": "ΕΠΟΜΕΝΟ",
+  "roadmap_listen": "<b>Οι χρήστες Pro διαμορφώνουν τις προτεραιότητες.</b> Δεν υπάρχει ουρά αιτημάτων — μου λέτε στο Discord τι χρειάζεται το κατάστημά σας, και αυτό διαμορφώνει αυτή τη λίστα.",
+  "fair_licence": "Αν σταματήσετε να πληρώνετε, το Pro συνεχίζει να λειτουργεί. Σταματούν οι ενημερώσεις και η υποστήριξη.",
+  "error_something_wrong": "Κάτι πήγε στραβά: <1>{message}</1>",
+  "pro_active_thanks": "Είστε στο Pro — σας ευχαριστώ που κρατάτε αυτό το project ζωντανό."
+}

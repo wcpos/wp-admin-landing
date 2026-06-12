@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · TILL DIG SOM DRIVER DEN KOSTNADSFRIA KASSAN",
+  "opening": "Hej — jag heter Paul. Jag byggde kassan du använder.",
+  "para1": "Det där är jag till höger, för {yearsAgo} år sedan. Jag öppnade Urban Locavore 2011 med hundratals produkter redan i WooCommerce och inget sätt att sälja dem i kassan — så jag byggde en kassa själv. När butiken stängde 2014 lade jag ut den på WordPress.org för alla som behövde den. <b>POS-tillägg för WordPress har kommit och gått sedan dess. Det här har inte gjort det.</b> {releaseYears} år av versioner, en enda utvecklare, fortfarande i drift — och gratisversionen är fortfarande det riktiga: slå in köp, skriv ut kvitton, håll allt synkat. Den förblir gratis.",
+  "para1_no_photo": "Jag öppnade Urban Locavore i Perth 2011 med hundratals produkter redan i WooCommerce och inget sätt att sälja dem i kassan — så jag byggde en kassa själv. När butiken stängde 2014 lade jag ut den på WordPress.org för alla som behövde den. <b>POS-tillägg för WordPress har kommit och gått sedan dess. Det här har inte gjort det.</b> {releaseYears} år av versioner, en enda utvecklare, fortfarande i drift — och gratisversionen är fortfarande det riktiga: slå in köp, skriv ut kvitton, håll allt synkat. Den förblir gratis.",
+  "para2": "<b>Pro är anledningen till att det här fortfarande finns.</b> Det lägger till extra verktyg för att sköta din butik — kortläsare, återbetalningar vid kassan, dagsavslut, flera butiker — och det finansierar varje version, även gratisuppdateringarna. Inga investerare, inget uppköp på gång. Butiksägare finansierar det direkt.",
+  "para3": "Och Pro-användare har en direkt linje: berätta vad din butik behöver, så styr det vad jag bygger härnäst.",
+  "photo_caption": "Urban Locavore, Perth — butiken som startade allt",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "utvecklare & fd. butiksägare · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro kostar <b>{annual}/år eller {lifetime} engångspris</b>. Om en licens löper ut fortsätter Pro att fungera; du slutar bara få uppdateringar."
+}

@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · VOOR DE WINKELIER MET DE GRATIS KASSA",
+  "opening": "Hoi — ik ben Paul. Ik heb de kassa gebouwd die je nu gebruikt.",
+  "para1": "Dat ben ik rechts, {yearsAgo} jaar geleden. Ik opende Urban Locavore in 2011 met honderden producten al in WooCommerce maar geen manier om ze aan de toonbank te verkopen — dus bouwde ik zelf een kassa. Toen de winkel in 2014 sloot, zette ik hem op WordPress.org voor iedereen die hem kon gebruiken. <b>POS-plugins voor WordPress zijn sindsdien gekomen en gegaan. Deze niet.</b> {releaseYears} jaar aan releases, één ontwikkelaar, nog steeds actief — en de gratis versie is nog altijd de echte deal: verkopen, bonnen drukken, gesynchroniseerd blijven. En gratis blijft hij.",
+  "para1_no_photo": "Ik opende Urban Locavore in Perth in 2011 met honderden producten al in WooCommerce maar geen manier om ze aan de toonbank te verkopen — dus bouwde ik zelf een kassa. Toen de winkel in 2014 sloot, zette ik hem op WordPress.org voor iedereen die hem kon gebruiken. <b>POS-plugins voor WordPress zijn sindsdien gekomen en gegaan. Deze niet.</b> {releaseYears} jaar aan releases, één ontwikkelaar, nog steeds actief — en de gratis versie is nog altijd de echte deal: verkopen, bonnen drukken, gesynchroniseerd blijven. En gratis blijft hij.",
+  "para2": "<b>Pro is de reden dat dit project er nog is.</b> Het voegt extra tools toe voor het beheer van je winkel — kaartlezers, terugbetalingen aan de kassa, dagafsluitingsrapporten, meerdere locaties — en het financiert elke release, ook de gratis versies. Geen investeerders, geen exit in het vooruitzicht. Winkeliers betalen het rechtstreeks.",
+  "para3": "Pro-gebruikers hebben ook een directe lijn: vertel me wat jouw winkel nodig heeft, en dat bepaalt wat ik als volgende bouw.",
+  "photo_caption": "Urban Locavore, Perth — de winkel die alles in gang zette",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "ontwikkelaar & voormalig winkelier · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro kost <b>{annual}/jaar of {lifetime} eenmalig</b>. Als een licentie verloopt, blijft Pro gewoon werken; je ontvangt alleen geen updates meer."
+}

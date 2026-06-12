@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · TIL BUTIKSEJEREN MED DEN GRATIS KASSE",
+  "opening": "Hej — jeg hedder Paul. Jeg har bygget den kasse, du bruger.",
+  "para1": "Det er mig til højre på billedet, for {yearsAgo} år siden. Jeg åbnede Urban Locavore i 2011 med hundredvis af produkter allerede i WooCommerce og ingen måde at slå et salg ind ved disken — så jeg byggede en kasse selv. Da butikken lukkede i 2014, lagde jeg den på WordPress.org til alle, der havde brug for den. <b>POS-plugins til WordPress er kommet og gået siden da. Dette her er ikke.</b> {releaseYears} år med udgivelser, én udvikler, stadig i gang — og gratisversionen er stadig det rigtige: sælg, udskriv, hold synkroniseret. Den forbliver gratis.",
+  "para1_no_photo": "Jeg åbnede Urban Locavore i Perth i 2011 med hundredvis af produkter allerede i WooCommerce og ingen måde at slå et salg ind ved disken — så jeg byggede en kasse selv. Da butikken lukkede i 2014, lagde jeg den på WordPress.org til alle, der havde brug for den. <b>POS-plugins til WordPress er kommet og gået siden da. Dette her er ikke.</b> {releaseYears} år med udgivelser, én udvikler, stadig i gang — og gratisversionen er stadig det rigtige: sælg, udskriv, hold synkroniseret. Den forbliver gratis.",
+  "para2": "<b>Pro er grunden til, at den stadig findes.</b> Den tilføjer ekstra værktøjer til at styre din butik — kortlæsere, refusioner ved kassen, kasseopgørelse ved lukketid, flere lokationer — og den finansierer alle udgivelser, også gratisudgivelserne. Ingen investorer, ingen exitplan. Butiksejerne finansierer det direkte.",
+  "para3": "Og Pro-brugere har en direkte linje: fortæl mig, hvad din butik har brug for, og det former, hvad jeg bygger næste gang.",
+  "photo_caption": "Urban Locavore, Perth — butikken der startede det hele",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "udvikler & tidligere butiksejer · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro koster <b>{annual}/år eller {lifetime} én gang</b>. Udløber en licens, fortsætter Pro med at virke; du stopper blot med at modtage opdateringer."
+}

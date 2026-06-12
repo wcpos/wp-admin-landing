@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · GỬI ĐẾN CHỦ CỬA HÀNG ĐANG DÙNG QUẦY THU NGÂN MIỄN PHÍ",
+  "opening": "Xin chào — tôi là Paul. Tôi đã tự xây dựng quầy thu ngân mà bạn đang dùng.",
+  "para1": "Đó là tôi ở bên phải, {yearsAgo} năm trước. Tôi mở Urban Locavore năm 2011 với hàng trăm sản phẩm đã có sẵn trong WooCommerce nhưng không có cách nào để bán chúng tại quầy — vậy là tôi tự xây dựng một quầy thu ngân. Khi cửa hàng đóng cửa năm 2014, tôi đưa nó lên WordPress.org cho bất kỳ ai cần. <b>Các plugin POS cho WordPress đã đến rồi đi kể từ đó. Plugin này thì không.</b> {releaseYears} năm phát hành liên tục, một lập trình viên, vẫn đang ra phiên bản mới — và bản miễn phí vẫn là thứ thật sự: lên đơn, in hóa đơn, đồng bộ liên tục. Nó vẫn miễn phí.",
+  "para1_no_photo": "Tôi mở Urban Locavore ở Perth năm 2011 với hàng trăm sản phẩm đã có sẵn trong WooCommerce nhưng không có cách nào để bán chúng tại quầy — vậy là tôi tự xây dựng một quầy thu ngân. Khi cửa hàng đóng cửa năm 2014, tôi đưa nó lên WordPress.org cho bất kỳ ai cần. <b>Các plugin POS cho WordPress đã đến rồi đi kể từ đó. Plugin này thì không.</b> {releaseYears} năm phát hành liên tục, một lập trình viên, vẫn đang ra phiên bản mới — và bản miễn phí vẫn là thứ thật sự: lên đơn, in hóa đơn, đồng bộ liên tục. Nó vẫn miễn phí.",
+  "para2": "<b>Pro là lý do plugin này vẫn còn tồn tại.</b> Nó bổ sung thêm các công cụ để quản lý cửa hàng của bạn — máy đọc thẻ, hoàn tiền tại quầy, báo cáo kết ca cuối ngày, nhiều cửa hàng — và nó tài trợ cho mọi phiên bản, kể cả bản miễn phí. Không có nhà đầu tư, không chờ đợi để bán lại. Các chủ cửa hàng tài trợ trực tiếp.",
+  "para3": "Và người dùng Pro có kênh liên lạc trực tiếp: nói với tôi cửa hàng của bạn cần gì, và điều đó định hình những gì tôi xây dựng tiếp theo.",
+  "photo_caption": "Urban Locavore, Perth — cửa hàng khởi đầu tất cả",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "lập trình viên & cựu chủ cửa hàng · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro có giá <b>{annual}/năm hoặc {lifetime} một lần</b>. Nếu giấy phép hết hạn, Pro vẫn tiếp tục hoạt động; bạn chỉ ngừng nhận cập nhật."
+}

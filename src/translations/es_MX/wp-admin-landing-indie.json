@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · AL DUEÑO DE TIENDA QUE USA LA CAJA GRATIS",
+  "opening": "Hola — soy Paul. Yo hice la caja que estás usando.",
+  "para1": "Ese soy yo a la derecha, hace {yearsAgo} años. Abrí Urban Locavore en 2011 con cientos de productos ya en WooCommerce y sin manera de cobrar en el mostrador — así que hice mi propia caja. Cuando la tienda cerró en 2014, la publiqué en WordPress.org para quien la necesitara. <b>Desde entonces han llegado y desaparecido muchos plugins de punto de venta para WordPress. Este no.</b> {releaseYears} años de lanzamientos, un solo desarrollador, sin parar — y la versión gratuita sigue siendo la real: cobra, imprime, mantente sincronizado. Y sigue siendo gratis.",
+  "para1_no_photo": "Abrí Urban Locavore en Perth en 2011 con cientos de productos ya en WooCommerce y sin manera de cobrar en el mostrador — así que hice mi propia caja. Cuando la tienda cerró en 2014, la publiqué en WordPress.org para quien la necesitara. <b>Desde entonces han llegado y desaparecido muchos plugins de punto de venta para WordPress. Este no.</b> {releaseYears} años de lanzamientos, un solo desarrollador, sin parar — y la versión gratuita sigue siendo la real: cobra, imprime, mantente sincronizado. Y sigue siendo gratis.",
+  "para2": "<b>Pro es la razón de que esto siga existiendo.</b> Agrega herramientas adicionales para administrar tu tienda — lectores de tarjetas, devoluciones en la caja, reportes al cierre del día, multi-tienda — y financia cada lanzamiento, incluidos los gratuitos. Sin inversionistas, sin una salida por adquisición esperando. Son los dueños de tienda quienes lo sostienen directamente.",
+  "para3": "Y los usuarios Pro tienen línea directa: dime lo que necesita tu tienda y eso define lo que construyo después.",
+  "photo_caption": "Urban Locavore, Perth — la tienda donde todo empezó",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "desarrollador y ex-comerciante · github.com/kilbot",
+  "ps": "<b>P.D.</b> — Pro cuesta <b>{annual}/año o {lifetime} pago único</b>. Si una licencia vence, Pro sigue funcionando; solo dejas de recibir actualizaciones."
+}

@@ -1,0 +1,19 @@
+{
+  "get_pro": "Pro'ya Geç",
+  "price_both": "{annual}/yıl · {lifetime} tek seferlik",
+  "price_annual_only": "{annual}/yıl",
+  "proof_chip_line": "mağaza WooCommerce POS kullanıyor\nWordPress.org'da Mayıs 2014'ten beri",
+  "reviews_heading": "WordPress.org yorumlarından",
+  "translated_from_french": "Fransızcadan çevrildi",
+  "read_on_wporg": "WordPress.org'da oku →",
+  "review_cta_line": "Ücretsiz kasayı mı kullanıyorsunuz? Bir yorum, diğer mağaza sahiplerinin onu bulmasına yardımcı olur.",
+  "review_cta_link": "WordPress.org'da yorum bırakın →",
+  "roadmap_title": "Neler geliştiriyorum",
+  "roadmap_subtitle": "Canlı panoyu gör →",
+  "roadmap_done": "TAMAMLANDI",
+  "roadmap_next": "SIRA",
+  "roadmap_listen": "<b>Pro kullanıcılar öncelikleri belirler.</b> Bilet kuyruğu yok — Discord'da mağazanızın neye ihtiyaç duyduğunu söyleyin, bu listeyi o şekillendirir.",
+  "fair_licence": "Ödemeyi bırakırsanız Pro çalışmaya devam eder. Güncelleme ve destek durur.",
+  "error_something_wrong": "Bir şeyler ters gitti: <1>{message}</1>",
+  "pro_active_thanks": "Pro kullanıcısısınız — bu projeyi ayakta tuttuğunuz için teşekkürler."
+}

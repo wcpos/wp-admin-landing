@@ -1,0 +1,19 @@
+{
+  "get_pro": "Pro verzió",
+  "price_both": "{annual}/év · {lifetime} egyszeri",
+  "price_annual_only": "{annual}/év",
+  "proof_chip_line": "bolt használja a WooCommerce POS-t\na WordPress.org-on 2014 májusa óta",
+  "reviews_heading": "A WordPress.org értékeléseiből",
+  "translated_from_french": "fordítva franciából",
+  "read_on_wporg": "Olvasd el a WordPress.org-on →",
+  "review_cta_line": "Az ingyenes kasszát használod? Egy értékelés segít más boltosoknak megtalálni.",
+  "review_cta_link": "Írj értékelést a WordPress.org-on →",
+  "roadmap_title": "Amin dolgozom",
+  "roadmap_subtitle": "Nézd meg az élő táblát →",
+  "roadmap_done": "KÉSZ",
+  "roadmap_next": "KÖVETKEZIK",
+  "roadmap_listen": "<b>A Pro felhasználók alakítják a sorrendet.</b> Nincs jegyrendszer — a Discordon megmondod, mire van szükséged, és ez formálja a listát.",
+  "fair_licence": "Ha nem fizetsz tovább, a Pro működik. A frissítések és a támogatás leáll.",
+  "error_something_wrong": "Valami nem stimmel: <1>{message}</1>",
+  "pro_active_thanks": "Pro előfizetőnk vagy — köszönöm, hogy életben tartod ezt a projektet."
+}
