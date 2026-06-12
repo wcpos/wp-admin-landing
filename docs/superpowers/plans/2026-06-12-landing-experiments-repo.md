@@ -1710,7 +1710,7 @@ export const Hero = () => {
             loading="lazy"
             width={2048}
             height={1536}
-            className="wcpos:w-full wcpos:rounded-lg wcpos:shadow-2xl"
+            className="wcpos:w-full wcpos:rounded wcpos:shadow-xl"
           />
         </picture>
         <figcaption className="wcpos:mt-2 wcpos:text-center wcpos:text-[11px] wcpos:text-gray-500">{t('hero_img_caption')}</figcaption>
