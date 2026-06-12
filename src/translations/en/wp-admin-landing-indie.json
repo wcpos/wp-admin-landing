@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · TO THE SHOPKEEPER RUNNING THE FREE REGISTER",
+  "opening": "Hi — I'm Paul. I built the register you're using.",
+  "para1": "That's me on the right, {yearsAgo} years ago. I opened Urban Locavore in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. <b>POS plugins for WordPress have come and gone since then. This one hasn't.</b> {releaseYears} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, stay in sync. It stays free.",
+  "para1_no_photo": "I opened Urban Locavore in Perth in 2011 with hundreds of products already in WooCommerce and no way to sell them at the counter — so I built a register myself. When the shop closed in 2014, I put it on WordPress.org for anyone who needed it. <b>POS plugins for WordPress have come and gone since then. This one hasn't.</b> {releaseYears} years of releases, one developer, still shipping — and the free version is still the real thing: sell, print, stay in sync. It stays free.",
+  "para2": "<b>Pro is why it's still here.</b> It adds extra tools for managing your store — card readers, refunds at the till, end-of-day reports, multi-store — and it funds every release, free ones included. No investors, no acquisition exit waiting. Shopkeepers fund it directly.",
+  "para3": "And Pro users have a direct line: tell me what your shop needs, and it shapes what I build next.",
+  "photo_caption": "Urban Locavore, Perth — the store that started it all",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "developer & former shopkeeper · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro is <b>{annual}/yr or {lifetime} once</b>. If a licence lapses, Pro keeps working; you just stop getting updates."
+}

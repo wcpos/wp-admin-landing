@@ -1494,7 +1494,7 @@ git commit -m "feat: bootstrap entry — analytics, flag-before-identify, runtim
 - Create: `src/variants/indie/index.tsx`, `src/variants/indie/letter.tsx`
 - Create: `src/translations/en/wp-admin-landing-indie.json`
 
-- [ ] **Step 1: Create the namespace source** (locked copy, computed placeholders)
+- [x] **Step 1: Create the namespace source** (locked copy, computed placeholders)
 
 ```json
 {
@@ -1513,7 +1513,7 @@ git commit -m "feat: bootstrap entry — analytics, flag-before-identify, runtim
 
 > The `ps` string contains "you just stop getting updates" — "just" here is the approved locked copy; add an allowlist entry in `scripts/lint-copy.mjs`: `const ALLOW = new Set(['ps']);` and skip keys in ALLOW for the `\bjust\b` rule only (implement as: run BANNED checks, but skip the `just` regex when `ALLOW.has(key)`).
 
-- [ ] **Step 2: Implement the letter + page**
+- [x] **Step 2: Implement the letter + page**
 
 ```tsx
 // src/variants/indie/letter.tsx
@@ -1622,9 +1622,9 @@ async function mount(): Promise<void> {
 void mount();
 ```
 
-- [ ] **Step 3: Build + lints** — `BUILD_TARGET=indie npx vite build && npm run lint:copy && npm run lint:i18n` → PASS
+- [x] **Step 3: Build + lints** — `BUILD_TARGET=indie npx vite build && npm run lint:copy && npm run lint:i18n` → PASS
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/variants/indie/ src/translations/en/wp-admin-landing-indie.json scripts/lint-copy.mjs
