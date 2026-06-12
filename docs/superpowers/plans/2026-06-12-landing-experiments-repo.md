@@ -1633,18 +1633,16 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
 - Create: `src/variants/free-plus/index.tsx`, `src/variants/free-plus/hero.tsx`, `src/variants/free-plus/comparison.tsx`
 - Create: `src/translations/en/wp-admin-landing-free-plus.json`
 
-Defaults applied: Headline A, Demo B (cream button), Fair-licence B (under CTA), Comparison A (table), Disqualifier off (`disqualifier_*` keys shipped for the future test, unused → exclude `src/variants/free-plus` unused-key check is not part of lint-i18n (it checks usage→existence, not reverse), fine).
+**Picks resolved by Paul 2026-06-12 (spec §2.2):** headline "Free runs your counter. / Pro is ready when you are."; **no demo link at all**; fair-licence under CTA; comparison table; disqualifier off (`disqualifier_*` keys shipped for the future test; lint-i18n checks usage→existence, not reverse, so unused keys are fine).
 
 - [ ] **Step 1: Namespace source**
 
 ```json
 {
   "kicker": "You're on the free plugin — it stays free",
-  "headline_1": "Free is the till.",
-  "headline_2": "Pro runs the store.",
+  "headline_1": "Free runs your counter.",
+  "headline_2": "Pro is ready when you are.",
   "sub": "The free register already <b>sells, prints, and syncs — even offline</b>. Pro adds what bigger shops grow into: <b>card readers, refunds on the spot, stock edits mid-shift, reports at close</b>.",
-  "try_demo": "Try the live demo",
-  "demo_microcopy": "Full Pro. Login demo / demo. No signup.",
   "table_heading": "What you get",
   "table_note": "everything in Free carries into Pro",
   "col_what": "What you can do",
@@ -1675,14 +1673,11 @@ Defaults applied: Headline A, Demo B (cream button), Fair-licence B (under CTA),
 ```tsx
 // src/variants/free-plus/hero.tsx
 import { Trans, useTranslation } from 'react-i18next';
-import { readRuntime } from '../../shared/runtime';
 import { CtaRow } from '../../shared/components/cta-row';
 
 export const Hero = () => {
   const { t } = useTranslation('wp-admin-landing-free-plus');
   const { t: ts } = useTranslation('wp-admin-landing-shared');
-  const rt = readRuntime();
-  const demoHref = rt.decorateOutboundUrl(rt.constants.DEMO_URL, rt.variant);
   return (
     <div className="wcpos:flex wcpos:flex-col wcpos:items-start wcpos:gap-4 wcpos:p-8 lg:wcpos:p-12">
       <span className="wcpos:inline-flex wcpos:items-center wcpos:gap-2 wcpos:rounded-full wcpos:bg-[#F5E5C0] wcpos:px-3 wcpos:py-1 wcpos:text-[11px] wcpos:font-bold wcpos:uppercase wcpos:tracking-widest wcpos:text-[#996a13]">
@@ -1694,19 +1689,7 @@ export const Hero = () => {
       <p className="wcpos:max-w-md wcpos:leading-relaxed wcpos:text-gray-600">
         <Trans ns="wp-admin-landing-free-plus" i18nKey="sub" components={{ b: <b className="wcpos:text-gray-900" /> }} />
       </p>
-      <div className="wcpos:flex wcpos:flex-wrap wcpos:items-center wcpos:gap-4">
-        <CtaRow location="hero" />
-        <a
-          href={demoHref}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => rt.trackEvent('demo_opened')}
-          className="wcpos:inline-flex wcpos:rounded-md wcpos:border wcpos:border-gray-900 wcpos:bg-[#F5E5C0] wcpos:px-5 wcpos:py-2 wcpos:text-sm wcpos:font-semibold"
-        >
-          {t('try_demo')}
-        </a>
-      </div>
-      <span className="wcpos:text-xs wcpos:text-gray-500">{t('demo_microcopy')}</span>
+      <CtaRow location="hero" />
       <span className="wcpos:text-xs wcpos:text-gray-400">{ts('fair_licence')}</span>
     </div>
   );

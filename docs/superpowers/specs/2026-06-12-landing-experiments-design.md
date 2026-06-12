@@ -1,7 +1,7 @@
 # Landing Page Experiments — Variants, Delivery, i18n, and the PostHog Program
 
 **Phase:** 2–3 of the landing page initiative (conversion redesign + A/B testing; phase 1 plumbing shipped 2026-04)
-**Status:** Indie variant locked (as round-1 control treatments). Free-plus layout locked, five copy/layout decisions pending (owner + deadline in §2.2). Personalised variant shelved (backlog).
+**Status:** Indie variant locked (as round-1 control treatments). Free-plus locked (picks resolved 2026-06-12, §2.2). Personalised variant shelved (backlog).
 **Primary goal:** Increase free→Pro conversion, measured honestly, iterated through PostHog experiments.
 **Companion doc:** [Experiment backlog appendix](2026-06-12-landing-experiments-backlog.md) — the full 25-experiment registry with arm copy.
 
@@ -70,21 +70,21 @@ Layout: WP-admin-native card, awning stripe top. Two-column grid (letter 1.25fr 
 
 **Deliberate removal:** the legacy page's PayPal donate button and hire-me card are dropped from both new variants — they dilute the single Pro CTA. "Donate clicks" is therefore **not** a guardrail (corrected from an earlier draft); the legacy page keeps its donate path until v2 fully replaces it, and the removal is called out here as an intentional change.
 
-### 2.2 `free-plus` — "Free is the till. Pro runs the store." (layout locked; 5 decisions PENDING)
+### 2.2 `free-plus` — "Free runs your counter. Pro is ready when you are." (LOCKED — picks resolved 2026-06-12)
 
-Layout: awning stripe → hero (copy left, stylised register illustration right) → comparison zone → roadmap/reviews footer grid → footer note. Kicker: "You're on the free plugin — it stays free". Red Get Pro CTA + both prices (control arm of exp-202608, same page-wide price keying as §2.1).
+Layout: awning stripe → hero (copy left; register imagery deferred until a real screenshot asset exists) → comparison table → roadmap card + reviews → review-ask strip. Kicker: "You're on the free plugin — it stays free". Red Get Pro CTA + both prices (control arm of exp-202608, same page-wide price keying as §2.1).
 
-**Pending picks — owner: Paul; deadline: before month-0 translation work begins (target week 2 of month 0). Defaults if undecided: Headline A, Demo B, Fair-licence B, Comparison A, Disqualifier A (off).** Each unpicked arm enters the tier-2 challenger queue.
+**Resolved picks (Paul, 2026-06-12):**
 
-| Decision | Arms |
+| Decision | Pick |
 |---|---|
-| Headline | A: "Free is the till. / Pro runs the store." · B: "Tap the card at the till. / Refund on the spot. / One report at close." |
-| Demo treatment | A: text link "or ring up a sale on the live demo" · B: cream secondary button "Try the live demo" + "Full Pro. Login demo / demo. No signup." |
-| Fair-licence placement | A: footer note · B: directly under CTA ("If you stop paying, Pro keeps working. Updates and support stop.") |
-| Comparison format | A: check/cross table (7 result-led rows) · B: workaround-copy cells ("On Free today" vs "With Pro") · C: day timeline (9:02 / 11:40 / 14:15 / 18:05) |
-| Disqualifier | A: none · B: full final copy: *"Is Free already enough for you? If you only take cash and rarely do refunds at the till, Free is probably all you need — and that's fine. Pro is for stores where cards, refunds, and end-of-day reports are daily work."* |
+| Headline | *"Free runs your counter."* / *"Pro is ready when you are."* (red second line) — affirming, when-you're-ready framing per Paul's direction. The till/store and result-stack candidates move to the headline-test backlog |
+| Demo treatment | **No demo link at all.** Both demo arms (text link, cream button) move to the challenger backlog. Consequence: no round-1 page has a demo surface — see §6.1 metric note |
+| Fair-licence placement | Directly under CTA: *"If you stop paying, Pro keeps working. Updates and support stop."* |
+| Comparison format | Check/cross table (7 result-led rows); workaround-copy cells remain the strongest tier-2 challenger |
+| Disqualifier | Off (copy retained in translation JSON for the future test) |
 
-Shared elements: roadmap DONE/NEXT strip (same build-time board data) with the note *"Pro users' requests shape this list."*, reviews (same fetched set), "6,000+ stores · WordPress.org" header.
+Shared elements **identical to indie**: the "What I'm building" roadmap card (§2.1 — board-link only), the three-review strip with gravatars, and the leave-a-review ask (`review_cta_clicked`). "6,000+ stores · WordPress.org" header on the reviews strip.
 
 ### 2.3 `personalised` — SHELVED
 
@@ -182,7 +182,7 @@ Checkout happens on wcpos.com; the plugin only sees `pro_active` later. Strategy
 ### 6.1 Principles
 
 - **Decision metric:** cumulative engage rate per unique site (Action "Landing Engaged" = `upgrade_cta_clicked` OR `demo_opened`), first-exposure cohorts (canonical exposure only; sites whose *first* render was a fallback are excluded as a contamination segment), `pro_active=false` on step 1.
-- **Metric asymmetry, acknowledged:** indie cannot fire `demo_opened` by design (no demo link); the composite is intentional — we compare whole-page strategies, not matched buttons. **CTA-only engage rate is a pre-registered named secondary**; if the composite winner loses on CTA-only, the decision write-up must address it before shipping at 100%.
+- **Metric note (updated with the §2.2 picks):** neither round-1 page has a demo surface, so `demo_opened` cannot fire and the composite degenerates to a clean CTA-vs-CTA comparison for the parent — the earlier asymmetry caveat is moot. `demo_opened` stays in the Action definition for future demo-arm challengers; if a later experiment introduces a demo surface on one arm only, the CTA-only secondary lens becomes mandatory again.
 - **Purchases:** guardrail/directional only, at every tier.
 - **Concurrency:** at MID traffic, parent + at most one orthogonal child, where *orthogonal* requires the treated surface to **exist identically in every parent arm**. At LOW, parent only. Off-landing-surface tests (consent prompt) are exempt.
 - **Peeking policy:** kill-only looks at day 14/28 (SRM p<.001, one-arm `landing_error` spike, primary < −30% at p<.01); otherwise one decision at the pre-registered horizon. Minimum 4 whole weeks. Novelty check at decision (>50% lift decay first-ever vs previously-exposed → extend 2 weeks once).
@@ -198,7 +198,7 @@ Checkout happens on wcpos.com; the plugin only sees `pro_active` later. Strategy
 | 1 | `landing-variant` | **indie vs free-plus** (50/50, all traffic) | THE experiment. Horizon: accrued-unit target per §6.1 (estimate 10–14 weeks at MID; 6 months at LOW at +75–100% MDE floor). Winner ships 100%. Draw → ship cheaper-to-maintain arm, record the bound |
 | 2 | `exp-202607-all-consent-ask` | consent prompt rewrite (plugin surface, exempt) | itemized honest disclosure vs current; metric: grant rate; copy must not promise a personalised page (none exists in round 1) |
 | 3 | `exp-202608-all-price-visibility` | **control: "$129/yr · $399 lifetime" (the locked §2 treatment) vs challenger: "$129/yr" only** | The one MID-concurrent child. The flag keys **every price string on the page** (CTA rows, indie P.S., footers) so the challenger arm shows no lifetime price anywhere. Uniform across parent arms; staggered ≥1 week after parent; SKU-mix rule armed. A challenger win updates the locked default in a spec revision |
-| 4 | `exp-202609-all-demo-autologin` | typed demo/demo vs signed auto-login deep link | **Post-parent-decision (month 5+), winner-scoped** — it cannot run beside the parent because the demo surface doesn't exist in indie (violates §6.1 orthogonality); only meaningful if the winner has a demo link. Conditional-on-click analysis; requires the §7c endpoint |
+| 4 | `exp-202609-all-demo-autologin` | typed demo/demo vs signed auto-login deep link | **Double-gated:** no round-1 page has a demo surface (§2.2 picks), so this runs only after (a) the parent decides AND (b) a demo-link challenger from the backlog wins on the winner page. Conditional-on-click analysis; requires the §7c endpoint |
 
 ### 6.3 Tier 2/3 (post-winner, summarised)
 
@@ -264,7 +264,7 @@ Winner-scoped children run sequentially from the pre-registered queue: CTA sub-l
 1. **Traffic tier unknown** — month-0 baselines decide every MDE and the calendar; nothing pre-registers before they exist.
 2. Demo auto-login endpoint ops posture (signed tokens, rate limits, per-session sandbox) — gates tier-1 #4 (now post-parent, so not urgent).
 3. Consent-endpoint timing in the plugin — gates only the personalised variant's future return.
-4. Free-plus picks — **owner Paul, deadline week 2 of month 0, defaults specified in §2.2.**
+4. ~~Free-plus picks~~ — **resolved 2026-06-12** (§2.2).
 5. `wcpos-brand` "since 2012" corrections — owner/timing TBD (separate repo, cosmetic).
 
 ## 11. Out of scope (this spec)
