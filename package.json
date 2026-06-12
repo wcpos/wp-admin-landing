@@ -6,8 +6,12 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "check:assets": "./scripts/check-generated-assets.sh",
-    "ci": "npm run test && npm run typecheck && npm run check:assets",
-    "test": "node --test tests/analytics-config.test.mjs"
+    "lint:copy": "node scripts/lint-copy.mjs",
+    "lint:i18n": "node scripts/lint-i18n-keys.mjs",
+    "lint:snapshots": "node scripts/lint-snapshots.mjs",
+    "fetch:content": "node scripts/fetch-roadmap.mjs && node scripts/fetch-wporg-reviews.mjs",
+    "test": "node --test 'tests/*.test.mjs'",
+    "ci": "npm run test && npm run typecheck && npm run lint:copy && npm run lint:i18n && npm run lint:snapshots && npm run check:assets"
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^8.2.0",

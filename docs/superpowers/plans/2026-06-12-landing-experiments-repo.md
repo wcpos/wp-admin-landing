@@ -949,7 +949,7 @@ git commit -m "feat: build-time roadmap and review fetchers with fail-closed sna
 - Test: `tests/lint-copy.test.mjs`
 - Modify: `package.json` (scripts)
 
-- [ ] **Step 1: Write the failing test for the lint core**
+- [x] **Step 1: Write the failing test for the lint core**
 
 ```js
 // tests/lint-copy.test.mjs
@@ -973,9 +973,9 @@ test('clean strings pass', () => {
 });
 ```
 
-- [ ] **Step 2: Run to verify failure** — `node --test tests/lint-copy.test.mjs` → FAIL
+- [x] **Step 2: Run to verify failure** — `node --test tests/lint-copy.test.mjs` → FAIL
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 ```js
 // scripts/lint-copy.mjs
@@ -1074,7 +1074,7 @@ if (failures) process.exit(1);
 console.log('lint-snapshots: clean.');
 ```
 
-- [ ] **Step 4: Wire into package.json** (`scripts` section)
+- [x] **Step 4: Wire into package.json** (`scripts` section)
 
 ```json
 "lint:copy": "node scripts/lint-copy.mjs",
@@ -1085,9 +1085,9 @@ console.log('lint-snapshots: clean.');
 "ci": "npm run test && npm run typecheck && npm run lint:copy && npm run lint:i18n && npm run lint:snapshots && npm run check:assets"
 ```
 
-- [ ] **Step 5: Run** — `node --test tests/lint-copy.test.mjs && npm run lint:copy && npm run lint:snapshots` → all PASS/clean (`lint:i18n` passes trivially until variants exist).
+- [x] **Step 5: Run** — `node --test tests/lint-copy.test.mjs && npm run lint:copy && npm run lint:snapshots` → all PASS/clean (`lint:i18n` passes trivially until variants exist).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add scripts/lint-copy.mjs scripts/lint-i18n-keys.mjs scripts/lint-snapshots.mjs tests/lint-copy.test.mjs package.json
