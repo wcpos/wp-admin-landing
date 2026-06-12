@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'src/translations/en/wp-admin-landing.json'
+      - 'src/translations/en/wp-admin-landing-*.json'
   workflow_dispatch:
     inputs:
       force:
@@ -37,7 +37,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           mkdir -p /tmp/translations-out
-          cp src/translations/en/wp-admin-landing.json /tmp/translations-out/
+          cp src/translations/en/wp-admin-landing-*.json /tmp/translations-out/
 
           git checkout --orphan translations-source
           git rm -rf .
