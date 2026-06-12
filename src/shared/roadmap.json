@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-06-12",
+  "done": [
+    "Refunds at the register",
+    "Receipt template gallery",
+    "Thermal receipt settings"
+  ],
+  "next": [
+    "Prevent overselling at the register",
+    "Native Bluetooth card readers",
+    "Split payments",
+    "Cash float & shift management"
+  ]
+}

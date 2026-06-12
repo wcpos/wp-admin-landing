@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-06-12",
+  "reviews": [
+    {
+      "author": "adeline",
+      "context": "ceramicist · Annecy, France",
+      "stars": 5,
+      "quote_fr": "Ça fait plus d'un an que j'utilise WCPOS, et j'ai pris la licence Pro à vie il y a quelques mois, qui vaut le coup je pense. Paul est réactif sur Discord. Il a toujours répondu rapidement à mes questions, même le week-end […]",
+      "quote_en": "I've been using WCPOS for over a year, and a few months ago I took the lifetime Pro licence — worth it, I think. Paul is responsive on Discord. He has always answered my questions quickly, even on weekends […]",
+      "translated": true,
+      "url": "https://wordpress.org/support/topic/plus-dun-an-dutilisation-je-recommande/",
+      "avatar": "https://secure.gravatar.com/avatar/1aa601f2c69c5338ee58e7487c6eaaff94c647f776decf64e5189763d1e5dc61?s=100&#038;d=retro&#038;r=g"
+    },
+    {
+      "author": "nckllnpssy",
+      "context": "WordPress.org review",
+      "stars": 5,
+      "quote_en": "I did a lot of research when looking for a POS for my existing WC site, and nearly overlooked this one because it was free. But I'm glad tried it. It does everything you want without asking for subscriptions or a percentage of your sales – I bought the pro version for the few extra features, and it is a bargain.",
+      "translated": false,
+      "url": "https://wordpress.org/support/topic/the-best-woo-pos-plugin-available-and-its-free/",
+      "avatar": "https://secure.gravatar.com/avatar/bfedd73991a055ddea7b6603ff7e35bfed4ed871a8666499cb85707b28d8c42c?s=100&#038;d=retro&#038;r=g"
+    },
+    {
+      "author": "rodriguekgl",
+      "context": "WordPress.org review",
+      "stars": 5,
+      "quote_en": "Great POS for your WooCommerce store, it has the desktop version which makes it better for place with weak internet connectivity. I believe there are more great features coming up 🙂 Keep up the great work killbot.",
+      "translated": false,
+      "url": "https://wordpress.org/support/topic/great-pos-for-your-woocommerce-store/",
+      "avatar": "https://secure.gravatar.com/avatar/18602ee5f87355ce120b191117e7a55979f04db45e466e7f27fb5a2886208aaa?s=100&#038;d=retro&#038;r=g"
+    }
+  ]
+}

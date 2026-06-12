@@ -788,7 +788,7 @@ git commit -m "feat: per-variant i18n namespaces with shared bundle"
 - Create: `scripts/fetch-wporg-reviews.mjs`, `scripts/fetch-roadmap.mjs`, `scripts/roadmap-curation.json`
 - Create: `src/shared/wporg-reviews.json`, `src/shared/roadmap.json` (initial committed snapshots)
 
-- [ ] **Step 1: Commit the initial snapshots** (hand-authored from the verified reviews/board; fetchers refresh them)
+- [x] **Step 1: Commit the initial snapshots** (hand-authored from the verified reviews/board; fetchers refresh them)
 
 > **Quote integrity (spec §2.1):** `quote_en`/`quote_fr` are VERBATIM reviewer text — typos and emoji preserved (the 🙂 and "killbot"/"glad tried it" are the reviewers' own), cuts marked with […], translations labelled in the UI. Never reword a quote. The banned-word/emoji lint must not scan `wporg-reviews.json` (reviewer speech, not product copy) — `lint-copy.mjs` only reads `src/translations/en/`, so this holds by construction.
 
@@ -866,7 +866,7 @@ git commit -m "feat: per-variant i18n namespaces with shared bundle"
 }
 ```
 
-- [ ] **Step 2: Implement the roadmap fetcher** (uses `gh` CLI; warn-only, fail-closed per §8)
+- [x] **Step 2: Implement the roadmap fetcher** (uses `gh` CLI; warn-only, fail-closed per §8)
 
 ```js
 // scripts/fetch-roadmap.mjs
@@ -903,7 +903,7 @@ writeFileSync(OUT, JSON.stringify({
 console.log('fetch-roadmap: snapshot refreshed.');
 ```
 
-- [ ] **Step 3: Implement the reviews fetcher** (refreshes gravatars + verifies threads still exist; quote text stays curated)
+- [x] **Step 3: Implement the reviews fetcher** (refreshes gravatars + verifies threads still exist; quote text stays curated)
 
 ```js
 // scripts/fetch-wporg-reviews.mjs
@@ -930,10 +930,10 @@ writeFileSync(PATH, JSON.stringify(snapshot, null, 2) + '\n');
 console.log('fetch-wporg-reviews: snapshot refreshed.');
 ```
 
-- [ ] **Step 4: Run both** — `node scripts/fetch-roadmap.mjs && node scripts/fetch-wporg-reviews.mjs`
+- [x] **Step 4: Run both** — `node scripts/fetch-roadmap.mjs && node scripts/fetch-wporg-reviews.mjs`
 Expected: both print "snapshot refreshed" (or fail-closed warnings); `git diff src/shared/*.json` shows only `generated_at`/avatar changes.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add scripts/fetch-roadmap.mjs scripts/fetch-wporg-reviews.mjs scripts/roadmap-curation.json src/shared/wporg-reviews.json src/shared/roadmap.json

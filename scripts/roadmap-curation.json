@@ -1,0 +1,15 @@
+{
+  "_comment": "display ↔ board mapping. board_title null = not yet on the board (warn; Paul to create the epic so the card stays verifiable against the linked project).",
+  "done_limit": 3,
+  "next": [
+    { "display": "Prevent overselling at the register", "board_title": "Prevent overselling at POS" },
+    { "display": "Native Bluetooth card readers", "board_title": null },
+    { "display": "Split payments", "board_title": "Split payment support" },
+    { "display": "Cash float & shift management", "board_title": "Cash float management" }
+  ],
+  "done": [
+    { "display": "Refunds at the register", "board_title": "Refund support" },
+    { "display": "Receipt template gallery", "board_title": null },
+    { "display": "Thermal receipt settings", "board_title": null }
+  ]
+}
