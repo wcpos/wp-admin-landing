@@ -708,7 +708,7 @@ git commit -m "feat: variant loader — pure decision core, assignment cache, pa
   "review_cta_line": "Running your shop on the free register? A review helps other store owners find it.",
   "review_cta_link": "Leave a review on WordPress.org →",
   "roadmap_title": "What I'm building",
-  "roadmap_subtitle": "The live board — every item links to the public project.",
+  "roadmap_subtitle": "See the live board →",
   "roadmap_done": "DONE",
   "roadmap_next": "NEXT",
   "roadmap_listen": "<b>Pro users shape the priorities.</b> There's no ticket queue — you tell me what your shop needs on Discord, and it shapes this list.",

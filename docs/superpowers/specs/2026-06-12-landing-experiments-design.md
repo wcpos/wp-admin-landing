@@ -55,7 +55,7 @@ Layout: WP-admin-native card, awning stripe top. Two-column grid (letter 1.25fr 
 - No demo link (the demo-link arm stays in the backlog as a future challenger).
 
 **Sidebar — "What I'm building" (dark card):**
-- Subtitle links to the live board: `github.com/orgs/wcpos/projects/4/views/1`.
+- Subtitle is a single link to the kanban board: `github.com/orgs/wcpos/projects/4/views/1`. **Items are plain text — no per-item issue links**, only the one board link.
 - Items pulled **at build time from the GitHub Projects API** (`scripts/fetch-roadmap.mjs`), rendered as DONE/NEXT tag rows. Current snapshot: DONE — Refunds at the register, Receipt template gallery, Thermal receipt settings; NEXT — Prevent overselling at the register, Native Bluetooth card readers, Split payments, Cash float & shift management.
 - Honesty callout: *"**Pro users shape the priorities.** There's no ticket queue — you tell me what your shop needs on Discord, and it shapes this list."* ("shape", not "set" — no voting mechanism exists; same rule as the free-plus rewording below.)
 - CTA row: red **Get Pro** + "$129/yr · $399 lifetime" (control arm of exp-202608).
