@@ -1890,18 +1890,18 @@ git commit -m "build: triple-target assets + local dev harness"
 - Keep: `assets/js/landing.js`, `assets/css/landing.css` (old-plugin artifacts, spec §11)
 - Modify: `package.json` — remove `react-ga4`, `@paypal/react-paypal-js`, `classnames` (donate/hire-me removed per spec §2.1; verify with `rg` they're unreferenced)
 
-- [ ] **Step 1: Verify nothing imports the old tree** — `rg -l "from '\.\./lib/|from './lib/|components/hero|paypal" src/` → only matches inside the directories being deleted.
+- [x] **Step 1: Verify nothing imports the old tree** — `rg -l "from '\.\./lib/|from './lib/|components/hero|paypal" src/` → only matches inside the directories being deleted.
 
-- [ ] **Step 2: Delete + prune deps**
+- [x] **Step 2: Delete + prune deps**
 
 ```bash
 git rm -r src/index.tsx src/lib src/components src/hooks src/translations/en/wp-admin-landing.json
 npm uninstall react-ga4 @paypal/react-paypal-js classnames
 ```
 
-- [ ] **Step 3: Full verification** — `npm run ci && npm run build` → PASS; `git status` shows only intended deletions + lockfile.
+- [x] **Step 3: Full verification** — `npm run ci && npm run build` → PASS; `git status` shows only intended deletions + lockfile.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add -A
