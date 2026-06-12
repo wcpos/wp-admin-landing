@@ -1642,7 +1642,7 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
 
 **Picks resolved by Paul 2026-06-12 (spec §2.2):** headline "Free today. / Pro when you're ready."; **no demo link at all**; fair-licence under CTA; comparison table; disqualifier off (`disqualifier_*` keys shipped for the future test; lint-i18n checks usage→existence, not reverse, so unused keys are fine).
 
-- [ ] **Step 1: Namespace source**
+- [x] **Step 1: Namespace source**
 
 ```json
 {
@@ -1677,7 +1677,7 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
 }
 ```
 
-- [ ] **Step 2: Implement hero**
+- [x] **Step 2: Implement hero**
 
 ```tsx
 // src/variants/free-plus/hero.tsx
@@ -1724,7 +1724,7 @@ export const Hero = () => {
 };
 ```
 
-- [ ] **Step 3: Implement comparison + page**
+- [x] **Step 3: Implement comparison + page**
 
 ```tsx
 // src/variants/free-plus/comparison.tsx
@@ -1823,9 +1823,9 @@ void mount();
 
 (The hero register illustration from the mockup is intentionally deferred — it needs either a real screenshot asset or an SVG illustration; tracked as a follow-up against the spec's imagery rule "real screenshots preferred". The layout works without it; add `assets/img/` screenshot when produced, as a plain `<img>` in `Hero`.)
 
-- [ ] **Step 4: Build + lints** — `BUILD_TARGET=free-plus npx vite build && npm run lint:copy && npm run lint:i18n` → PASS
+- [x] **Step 4: Build + lints** — `BUILD_TARGET=free-plus npx vite build && npm run lint:copy && npm run lint:i18n` → PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/variants/free-plus/ src/translations/en/wp-admin-landing-free-plus.json
