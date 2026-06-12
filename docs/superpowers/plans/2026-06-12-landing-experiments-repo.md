@@ -408,7 +408,7 @@ git commit -m "feat: PostHog identity fix — localStorage persistence, anon boo
 **Files:**
 - Create: `src/shared/runtime.ts`
 
-- [ ] **Step 1: Implement** (no isolated test — exercised by variant-loader tests and the build; type errors are the failure mode here)
+- [x] **Step 1: Implement** (no isolated test — exercised by variant-loader tests and the build; type errors are the failure mode here)
 
 ```ts
 // src/shared/runtime.ts
@@ -450,9 +450,9 @@ export function readRuntime(): LandingRuntime {
 }
 ```
 
-- [ ] **Step 2: Typecheck** — `npx tsc --noEmit` → PASS
+- [x] **Step 2: Typecheck** — `npx tsc --noEmit` → PASS
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/shared/runtime.ts
