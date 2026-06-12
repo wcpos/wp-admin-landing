@@ -1395,7 +1395,7 @@ git commit -m "feat: shared landing components (awning, CTA, proof chip, reviews
 **Files:**
 - Create: `src/bootstrap/index.tsx`, `src/bootstrap/skeleton.ts`
 
-- [ ] **Step 1: Implement skeleton**
+- [x] **Step 1: Implement skeleton**
 
 ```ts
 // src/bootstrap/skeleton.ts
@@ -1408,7 +1408,7 @@ export function clearSkeleton(el: HTMLElement): void {
 }
 ```
 
-- [ ] **Step 2: Implement orchestration**
+- [x] **Step 2: Implement orchestration**
 
 ```tsx
 // src/bootstrap/index.tsx
@@ -1475,14 +1475,16 @@ void main();
 
 **Ordering note (spec §3.1.4 vs §5.1):** `loadVariant` resolves the flag *and injects the chunk*; the runtime is exposed after `identify()` so the variant (which only runs once its script loads and reads the runtime) can never observe a pre-identify world. Script injection happening before `identify()` is fine — variants do nothing until `readRuntime()` succeeds.
 
-- [ ] **Step 3: Build** — `BUILD_TARGET=bootstrap npx vite build` → PASS, emits `assets/js/welcome.js` + `assets/css/welcome.css`.
+- [x] **Step 3: Build** — `BUILD_TARGET=bootstrap npx vite build` → PASS, emits `assets/js/welcome.js` + `assets/css/welcome.css`.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/bootstrap/index.tsx src/bootstrap/skeleton.ts
 git commit -m "feat: bootstrap entry — analytics, flag-before-identify, runtime exposure, variant injection"
 ```
+
+> **Amendment (execution):** skeleton is cleared by the bootstrap immediately before chunk injection (clearing inside signalRendered would wipe the React tree the variant just mounted into the same element); signalRendered now only fires the render event.
 
 ---
 
