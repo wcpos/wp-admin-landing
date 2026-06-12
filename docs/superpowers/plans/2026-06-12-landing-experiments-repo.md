@@ -696,7 +696,7 @@ git commit -m "feat: variant loader — pure decision core, assignment cache, pa
 - Create: `src/shared/i18n.ts`
 - Create: `src/translations/en/wp-admin-landing-shared.json`
 
-- [ ] **Step 1: Create the shared namespace source**
+- [x] **Step 1: Create the shared namespace source**
 
 ```json
 {
@@ -719,7 +719,7 @@ git commit -m "feat: variant loader — pure decision core, assignment cache, pa
 }
 ```
 
-- [ ] **Step 2: Implement variant-aware init** (move + modify of `src/lib/i18n.ts`)
+- [x] **Step 2: Implement variant-aware init** (move + modify of `src/lib/i18n.ts`)
 
 ```ts
 // src/shared/i18n.ts
@@ -771,9 +771,9 @@ export function addVariantNamespace(i18n: typeof i18next, ns: string, en: Record
 }
 ```
 
-- [ ] **Step 3: Typecheck** — `npx tsc --noEmit` → PASS (note: `resolveJsonModule` must already be on; if not, add to tsconfig)
+- [x] **Step 3: Typecheck** — `npx tsc --noEmit` → PASS (note: `resolveJsonModule` must already be on; if not, add to tsconfig)
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/shared/i18n.ts src/translations/en/wp-admin-landing-shared.json

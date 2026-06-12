@@ -1,0 +1,18 @@
+{
+  "get_pro": "Get Pro",
+  "price_both": "{annual}/yr · {lifetime} lifetime",
+  "price_annual_only": "{annual}/year",
+  "proof_chip_line": "stores run WooCommerce POS\non WordPress.org since May 2014",
+  "reviews_heading": "From the WordPress.org reviews",
+  "translated_from_french": "translated from French",
+  "read_on_wporg": "Read on WordPress.org →",
+  "review_cta_line": "Running your shop on the free register? A review helps other store owners find it.",
+  "review_cta_link": "Leave a review on WordPress.org →",
+  "roadmap_title": "What I'm building",
+  "roadmap_subtitle": "See the live board →",
+  "roadmap_done": "DONE",
+  "roadmap_next": "NEXT",
+  "roadmap_listen": "<b>Pro users shape the priorities.</b> There's no ticket queue — you tell me what your shop needs on Discord, and it shapes this list.",
+  "fair_licence": "If you stop paying, Pro keeps working. Updates and support stop.",
+  "error_something_wrong": "Something went wrong: <1>{message}</1>"
+}
