@@ -70,7 +70,7 @@ Legacy `src/index.tsx`, `src/components/*`, `src/lib/*` are deleted at the end (
 - Create: `src/shared/constants.ts`
 - Test: `tests/constants.test.mjs`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```js
 // tests/constants.test.mjs
@@ -105,12 +105,12 @@ test('yearsSince handles pre-anniversary dates', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `node --test tests/constants.test.mjs`
 Expected: FAIL — `ENOENT … src/shared/constants.ts`
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 ```ts
 // src/shared/constants.ts
@@ -147,11 +147,11 @@ export function yearsSinceRounded(date: Date, now: Date = new Date()): number {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `node --test tests/constants.test.mjs` — Expected: PASS (3 subtests)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/shared/constants.ts tests/constants.test.mjs
