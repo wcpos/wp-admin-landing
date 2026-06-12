@@ -7,7 +7,10 @@ import HttpBackend from 'i18next-http-backend';
 import { getLandingData } from './landing-data';
 import sharedEn from '../translations/en/wp-admin-landing-shared.json';
 
-const PROJECT = 'woocommerce-pos';
+// CDN project segment = source repo name. wcpos/translations stores sources at
+// source/js/{repo}/ and writes locale outputs to translations/js/{locale}/{repo}/.
+// This repo is wcpos/wp-admin-landing, so the segment is 'wp-admin-landing'.
+const PROJECT = 'wp-admin-landing';
 export const SHARED_NS = 'wp-admin-landing-shared';
 
 /** Bootstrap initialises shared strings; the variant chunk adds its own
