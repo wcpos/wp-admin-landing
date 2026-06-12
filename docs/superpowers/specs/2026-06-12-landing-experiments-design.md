@@ -72,7 +72,9 @@ Layout: WP-admin-native card, awning stripe top. Two-column grid (letter 1.25fr 
 
 ### 2.2 `free-plus` — "Free today. Pro when you're ready." (LOCKED — picks resolved 2026-06-12)
 
-Layout: awning stripe → hero (copy left; register imagery deferred until a real screenshot asset exists) → comparison table → roadmap card + reviews → review-ask strip. Kicker: "You're on the free plugin — it stays free". Red Get Pro CTA + both prices (control arm of exp-202608, same page-wide price keying as §2.1).
+Layout: awning stripe → hero (copy left, **real Pro screenshot right**) → comparison table → roadmap card + reviews → review-ask strip. Kicker: "You're on the free plugin — it stays free". Red Get Pro CTA + both prices (control arm of exp-202608, same page-wide price keying as §2.1).
+
+**Hero image (resolved 2026-06-12):** real screenshot of the Pro **Reports page** (end-of-day report: sales chart, order list, totals by cashier — a Pro-only surface, deliberately *not* the free register the reader already uses daily). Source: Paul, 2048×1536 (2× of the ~512px display slot), internally consistent demo data (net + tax = total verified). Asset: `assets/img/reports-hero.png` + WebP derivative, lazy-loaded with `srcset` (1024w/2048w). Caption: *"End-of-day reports — totals by cashier, payment method, and store (Pro)"*.
 
 **Resolved picks (Paul, 2026-06-12):**
 

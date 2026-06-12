@@ -1634,6 +1634,7 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
 **Files:**
 - Create: `src/variants/free-plus/index.tsx`, `src/variants/free-plus/hero.tsx`, `src/variants/free-plus/comparison.tsx`
 - Create: `src/translations/en/wp-admin-landing-free-plus.json`
+- Create: `assets/img/reports-hero.png` (copy from `/Users/kilbot/Downloads/reports.png`, 2048×1536) + derivatives: `reports-hero.webp` (2048w), `reports-hero-1024.webp` — generate via `sips -Z 1024` + `cwebp -q 80` (or `sips -s format webp` on macOS 15+); commit all three
 
 **Picks resolved by Paul 2026-06-12 (spec §2.2):** headline "Free today. / Pro when you're ready."; **no demo link at all**; fair-licence under CTA; comparison table; disqualifier off (`disqualifier_*` keys shipped for the future test; lint-i18n checks usage→existence, not reverse, so unused keys are fine).
 
@@ -1645,6 +1646,8 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
   "headline_1": "Free today.",
   "headline_2": "Pro when you're ready.",
   "sub": "The free register already <b>sells, prints, and stays in sync with your store</b>. Pro adds what bigger shops grow into: <b>card readers, refunds on the spot, stock edits mid-shift, reports at close</b>.",
+  "hero_img_alt": "End-of-day report in WooCommerce POS Pro — sales chart, order list, and totals",
+  "hero_img_caption": "End-of-day reports — totals by cashier, payment method, and store (Pro)",
   "table_heading": "What you get",
   "table_note": "everything in Free carries into Pro",
   "col_what": "What you can do",
@@ -1675,24 +1678,43 @@ git commit -m "feat: indie variant — the letter, roadmap card, reviews (locked
 ```tsx
 // src/variants/free-plus/hero.tsx
 import { Trans, useTranslation } from 'react-i18next';
+import { readRuntime } from '../../shared/runtime';
 import { CtaRow } from '../../shared/components/cta-row';
 
 export const Hero = () => {
   const { t } = useTranslation('wp-admin-landing-free-plus');
   const { t: ts } = useTranslation('wp-admin-landing-shared');
+  const rt = readRuntime();
+  const imgBase = `${rt.constants.CDN_BASE}/img`;
   return (
-    <div className="wcpos:flex wcpos:flex-col wcpos:items-start wcpos:gap-4 wcpos:p-8 lg:wcpos:p-12">
-      <span className="wcpos:inline-flex wcpos:items-center wcpos:gap-2 wcpos:rounded-full wcpos:bg-[#F5E5C0] wcpos:px-3 wcpos:py-1 wcpos:text-[11px] wcpos:font-bold wcpos:uppercase wcpos:tracking-widest wcpos:text-[#996a13]">
-        {t('kicker')}
-      </span>
-      <h1 className="wcpos:text-4xl wcpos:font-bold wcpos:leading-tight wcpos:tracking-tight">
-        {t('headline_1')}<br /><span className="wcpos:text-[#CD2C24]">{t('headline_2')}</span>
-      </h1>
-      <p className="wcpos:max-w-md wcpos:leading-relaxed wcpos:text-gray-600">
-        <Trans ns="wp-admin-landing-free-plus" i18nKey="sub" components={{ b: <b className="wcpos:text-gray-900" /> }} />
-      </p>
-      <CtaRow location="hero" />
-      <span className="wcpos:text-xs wcpos:text-gray-400">{ts('fair_licence')}</span>
+    <div className="wcpos:grid wcpos:gap-8 lg:wcpos:grid-cols-2">
+      <div className="wcpos:flex wcpos:flex-col wcpos:items-start wcpos:gap-4 wcpos:p-8 lg:wcpos:p-12 lg:wcpos:pr-0">
+        <span className="wcpos:inline-flex wcpos:items-center wcpos:gap-2 wcpos:rounded-full wcpos:bg-[#F5E5C0] wcpos:px-3 wcpos:py-1 wcpos:text-[11px] wcpos:font-bold wcpos:uppercase wcpos:tracking-widest wcpos:text-[#996a13]">
+          {t('kicker')}
+        </span>
+        <h1 className="wcpos:text-4xl wcpos:font-bold wcpos:leading-tight wcpos:tracking-tight">
+          {t('headline_1')}<br /><span className="wcpos:text-[#CD2C24]">{t('headline_2')}</span>
+        </h1>
+        <p className="wcpos:max-w-md wcpos:leading-relaxed wcpos:text-gray-600">
+          <Trans ns="wp-admin-landing-free-plus" i18nKey="sub" components={{ b: <b className="wcpos:text-gray-900" /> }} />
+        </p>
+        <CtaRow location="hero" />
+        <span className="wcpos:text-xs wcpos:text-gray-400">{ts('fair_licence')}</span>
+      </div>
+      <figure className="wcpos:m-0 wcpos:flex wcpos:flex-col wcpos:justify-center wcpos:p-8 lg:wcpos:p-10">
+        <picture>
+          <source type="image/webp" srcSet={`${imgBase}/reports-hero.webp 2048w, ${imgBase}/reports-hero-1024.webp 1024w`} sizes="(min-width: 1024px) 512px, 100vw" />
+          <img
+            src={`${imgBase}/reports-hero.png`}
+            alt={t('hero_img_alt')}
+            loading="lazy"
+            width={2048}
+            height={1536}
+            className="wcpos:w-full wcpos:rounded-lg wcpos:shadow-2xl"
+          />
+        </picture>
+        <figcaption className="wcpos:mt-2 wcpos:text-center wcpos:text-[11px] wcpos:text-gray-500">{t('hero_img_caption')}</figcaption>
+      </figure>
     </div>
   );
 };
