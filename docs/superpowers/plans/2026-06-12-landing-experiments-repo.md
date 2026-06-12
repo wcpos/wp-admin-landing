@@ -200,7 +200,7 @@ git commit -m "feat: shared landing-data with optional anon_id field"
 - Create: `src/shared/analytics.ts`
 - Test: rewrite `tests/analytics-config.test.mjs`
 
-- [ ] **Step 1: Rewrite the config test (source-grep pattern, matching the existing test's style)**
+- [x] **Step 1: Rewrite the config test (source-grep pattern, matching the existing test's style)**
 
 ```js
 // tests/analytics-config.test.mjs  (full replacement)
@@ -242,9 +242,9 @@ test('flag-before-identify: identify lives in identifyConsented, not init', () =
 });
 ```
 
-- [ ] **Step 2: Run to verify it fails** — `node --test tests/analytics-config.test.mjs` → FAIL (`ENOENT … src/shared/analytics.ts`)
+- [x] **Step 2: Run to verify it fails** — `node --test tests/analytics-config.test.mjs` → FAIL (`ENOENT … src/shared/analytics.ts`)
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 ```ts
 // src/shared/analytics.ts
@@ -390,11 +390,11 @@ export function decorateOutboundUrl(base: string, variant: string): string {
 }
 ```
 
-- [ ] **Step 4: Run tests** — `node --test tests/analytics-config.test.mjs` → PASS. (`npm test` will still fail on the old bundle-grep test until Task 14 rebuilds assets — that legacy second test was deleted by this rewrite, confirm `rg 'welcome.js' tests/` returns nothing.)
+- [x] **Step 4: Run tests** — `node --test tests/analytics-config.test.mjs` → PASS. (`npm test` will still fail on the old bundle-grep test until Task 14 rebuilds assets — that legacy second test was deleted by this rewrite, confirm `rg 'welcome.js' tests/` returns nothing.)
 
-- [ ] **Step 5: Typecheck** — `npx tsc --noEmit` → PASS
+- [x] **Step 5: Typecheck** — `npx tsc --noEmit` → PASS
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/shared/analytics.ts tests/analytics-config.test.mjs
