@@ -166,7 +166,7 @@ git commit -m "feat: verified-facts constants module with computed year helpers"
 - Create: `src/shared/landing-data.ts` (move of `src/lib/landing-data.ts`)
 - Modify: nothing else yet (old file deleted in Task 15)
 
-- [ ] **Step 1: Copy `src/lib/landing-data.ts` → `src/shared/landing-data.ts`**, then apply this diff to the new file:
+- [x] **Step 1: Copy `src/lib/landing-data.ts` → `src/shared/landing-data.ts`**, then apply this diff to the new file:
 
 ```ts
 // In interface WCPOSLanding, after pro_active:
@@ -181,11 +181,11 @@ git commit -m "feat: verified-facts constants module with computed year helpers"
 
 `anon_id` is optional and validated independently, same pattern as `profile`/`updates_server` — old plugins simply omit it.
 
-- [ ] **Step 2: Typecheck**
+- [x] **Step 2: Typecheck**
 
 Run: `npx tsc --noEmit` — Expected: PASS (new file compiles; old `src/lib/` files still present and untouched)
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/shared/landing-data.ts
