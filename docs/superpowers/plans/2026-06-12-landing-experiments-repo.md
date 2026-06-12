@@ -1840,7 +1840,7 @@ git commit -m "feat: free-plus variant — till/store hero, comparison table, de
 - Modify: `scripts/check-generated-assets.sh` expectations (if it pins file lists)
 - Create: `dev/index.html` (local harness)
 
-- [ ] **Step 1: Local dev harness** (manual QA without WordPress)
+- [x] **Step 1: Local dev harness** (manual QA without WordPress)
 
 ```html
 <!-- dev/index.html — open via `npx vite preview` or any static server from repo root -->
@@ -1866,15 +1866,15 @@ git commit -m "feat: free-plus variant — till/store hero, comparison table, de
 </html>
 ```
 
-- [ ] **Step 2: Full build** — `npm run build` → emits `assets/js/welcome.js`, `assets/js/variants/{indie,free-plus}.js`, `assets/css/{welcome,variants/indie,variants/free-plus}.css`.
+- [x] **Step 2: Full build** — `npm run build` → emits `assets/js/welcome.js`, `assets/js/variants/{indie,free-plus}.js`, `assets/css/{welcome,variants/indie,variants/free-plus}.css`.
 
-- [ ] **Step 3: Inspect `scripts/check-generated-assets.sh`**; if it verifies "built assets match src", run `npm run check:assets` and fix whatever expectations it pins (read the script first — likely rebuilds and diffs; new files must be committed for it to pass).
+- [x] **Step 3: Inspect `scripts/check-generated-assets.sh`**; if it verifies "built assets match src", run `npm run check:assets` and fix whatever expectations it pins (read the script first — likely rebuilds and diffs; new files must be committed for it to pass).
 
-- [ ] **Step 4: Manual QA in the harness:** variant loads (will be `free-plus` fallback if ph.wcpos.com flag doesn't exist yet — expected pre-launch), skeleton clears, CTA decorated URL contains `lv=`/`aid=`, no console errors. Toggle `pro_active: true` → CTA replaced by thanks line.
+- [x] **Step 4: Manual QA in the harness:** variant loads (will be `free-plus` fallback if ph.wcpos.com flag doesn't exist yet — expected pre-launch), skeleton clears, CTA decorated URL contains `lv=`/`aid=`, no console errors. Toggle `pro_active: true` → CTA replaced by thanks line.
 
-- [ ] **Step 5: Run everything** — `npm run ci` → PASS
+- [x] **Step 5: Run everything** — `npm run ci` → PASS
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add dev/index.html assets/
