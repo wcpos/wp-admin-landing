@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · ILMAISEN KASSAN TAKANA TOIMIVALLE KAUPPIAALLE",
+  "opening": "Hei — olen Paul. Rakensin kassan, jota käytät.",
+  "para1": "Tuo oikealla olen minä, {yearsAgo} vuotta sitten. Avasin Urban Locavoren vuonna 2011 — tuotteita oli jo satakaupalla WooCommercessa, mutta myyntiä ei voinut tehdä tiskillä millään. Niinpä rakensin kassan itse. Kun kauppa suljettiin vuonna 2014, laitoin sen WordPress.orgiin kaikkien saataville. <b>WordPress-pohjaisia kassakone-lisäosia on tullut ja mennyt siitä lähtien. Tämä on jäänyt.</b> {releaseYears} vuotta julkaisuja, yksi kehittäjä, edelleen toiminnassa — ja ilmainen versio on edelleen oikea juttu: kirjaa myynti, tulosta kuitti, pysy synkronoituna. Se pysyy ilmaisena.",
+  "para1_no_photo": "Avasin Urban Locavoren Perthissä vuonna 2011 — tuotteita oli jo satakaupalla WooCommercessa, mutta myyntiä ei voinut tehdä tiskillä millään. Niinpä rakensin kassan itse. Kun kauppa suljettiin vuonna 2014, laitoin sen WordPress.orgiin kaikkien saataville. <b>WordPress-pohjaisia kassakone-lisäosia on tullut ja mennyt siitä lähtien. Tämä on jäänyt.</b> {releaseYears} vuotta julkaisuja, yksi kehittäjä, edelleen toiminnassa — ja ilmainen versio on edelleen oikea juttu: kirjaa myynti, tulosta kuitti, pysy synkronoituna. Se pysyy ilmaisena.",
+  "para2": "<b>Pro on syy, miksi tämä on yhä olemassa.</b> Se lisää ylimääräisiä työkaluja kauppasi hallintaan — kortinlukulaitteet, palautukset kassalla, päivän päätösraportit, useampi toimipiste — ja rahoittaa jokaisen julkaisun, myös ilmaiset. Ei sijoittajia, ei suunniteltua exit-myyntiä. Kauppiaat rahoittavat sen suoraan.",
+  "para3": "Ja Pro-käyttäjillä on suora yhteys: kerro, mitä kauppasi tarvitsee, niin se muokkaa sitä, mitä rakennan seuraavaksi.",
+  "photo_caption": "Urban Locavore, Perth — kauppa, josta kaikki alkoi",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "kehittäjä & entinen kauppias · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro maksaa <b>{annual}/vuosi tai {lifetime} kertamaksuna</b>. Jos lisenssi vanhenee, Pro jatkaa toimintaansa — et vain enää saa päivityksiä."
+}

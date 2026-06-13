@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · UNTUK PEMILIK TOKO YANG MENGGUNAKAN KASIR GRATIS",
+  "opening": "Halo — saya Paul. Saya yang membangun kasir yang Anda gunakan ini.",
+  "para1": "Itu saya di sebelah kanan, {yearsAgo} tahun yang lalu. Saya membuka Urban Locavore pada 2011 dengan ratusan produk yang sudah ada di WooCommerce, tapi tidak ada cara untuk menjualnya di kasir — jadi saya membangun kasirnya sendiri. Ketika toko tutup pada 2014, saya unggah ke WordPress.org untuk siapa saja yang membutuhkannya. <b>Plugin kasir untuk WordPress datang dan pergi sejak saat itu. Yang ini tidak.</b> {releaseYears} tahun rilis, satu developer, masih terus berjalan — dan versi gratisnya tetap sungguhan: memproses penjualan, mencetak struk, sinkron dengan toko. Tetap gratis.",
+  "para1_no_photo": "Saya membuka Urban Locavore di Perth pada 2011 dengan ratusan produk yang sudah ada di WooCommerce, tapi tidak ada cara untuk menjualnya di kasir — jadi saya membangun kasirnya sendiri. Ketika toko tutup pada 2014, saya unggah ke WordPress.org untuk siapa saja yang membutuhkannya. <b>Plugin kasir untuk WordPress datang dan pergi sejak saat itu. Yang ini tidak.</b> {releaseYears} tahun rilis, satu developer, masih terus berjalan — dan versi gratisnya tetap sungguhan: memproses penjualan, mencetak struk, sinkron dengan toko. Tetap gratis.",
+  "para2": "<b>Pro-lah yang membuat ini tetap ada.</b> Pro menambahkan alat ekstra untuk mengelola toko Anda — pembaca kartu, pengembalian dana di kasir, laporan tutup kasir, multi-toko — dan mendanai setiap rilis, termasuk yang gratis. Tidak ada investor, tidak ada rencana dijual. Pemilik toko yang mendanainya langsung.",
+  "para3": "Dan pengguna Pro punya jalur langsung: ceritakan apa yang dibutuhkan toko Anda, dan itu yang menentukan apa yang saya bangun selanjutnya.",
+  "photo_caption": "Urban Locavore, Perth — toko yang mengawali semuanya",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "developer & mantan pemilik toko · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro seharga <b>{annual}/thn atau {lifetime} selamanya</b>. Jika lisensi habis, Pro tetap berfungsi; Anda hanya tidak mendapatkan pembaruan lagi."
+}

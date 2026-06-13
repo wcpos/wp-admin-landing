@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · AO LOJISTA QUE USA O REGISTO GRATUITO",
+  "opening": "Olá — sou o Paul. Fui eu que construí o registo que estás a usar.",
+  "para1": "Sou eu aí na foto, há {yearsAgo} anos. Abri o Urban Locavore em 2011 com centenas de produtos já no WooCommerce e sem forma nenhuma de os vender ao balcão — por isso construí eu próprio um sistema de caixa. Quando a loja fechou em 2014, publiquei-o no WordPress.org para quem precisasse. <b>Plugins de POS para WordPress foram aparecendo e desaparecendo desde então. Este ficou.</b> {releaseYears} anos de lançamentos, um só programador, sempre a entregar — e a versão gratuita continua a ser a versão real: registar vendas, imprimir, manter tudo sincronizado. E continua gratuita.",
+  "para1_no_photo": "Abri o Urban Locavore em Perth em 2011 com centenas de produtos já no WooCommerce e sem forma nenhuma de os vender ao balcão — por isso construí eu próprio um sistema de caixa. Quando a loja fechou em 2014, publiquei-o no WordPress.org para quem precisasse. <b>Plugins de POS para WordPress foram aparecendo e desaparecendo desde então. Este ficou.</b> {releaseYears} anos de lançamentos, um só programador, sempre a entregar — e a versão gratuita continua a ser a versão real: registar vendas, imprimir, manter tudo sincronizado. E continua gratuita.",
+  "para2": "<b>O Pro é a razão pela qual este projeto ainda existe.</b> Acrescenta ferramentas para gerir melhor a tua loja — leitores de cartão, devoluções na caixa, relatórios de fecho de caixa, multi-loja — e financia cada lançamento, incluindo os gratuitos. Sem investidores, sem saída para uma aquisição à espera. São os lojistas que o sustentam diretamente.",
+  "para3": "E os utilizadores Pro têm linha direta: dizes-me o que a tua loja precisa, e é isso que molda o que construo a seguir.",
+  "photo_caption": "Urban Locavore, Perth — a loja que deu início a tudo",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "programador e ex-lojista · github.com/kilbot",
+  "ps": "<b>P.S.</b> — O Pro custa <b>{annual}/ano ou {lifetime} uma única vez</b>. Se a licença caducar, o Pro continua a funcionar; deixas simplesmente de receber atualizações."
+}

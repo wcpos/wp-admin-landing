@@ -1,0 +1,19 @@
+{
+  "get_pro": "احصل على Pro",
+  "price_both": "{annual}/سنة · {lifetime} مدى الحياة",
+  "price_annual_only": "{annual}/سنة",
+  "proof_chip_line": "متجرًا يستخدم WooCommerce POS\nعلى WordPress.org منذ مايو 2014",
+  "reviews_heading": "من تقييمات WordPress.org",
+  "translated_from_french": "مترجم من الفرنسية",
+  "read_on_wporg": "اقرأ على WordPress.org →",
+  "review_cta_line": "هل تدير متجرك بالإصدار المجاني؟ تقييمك يساعد أصحاب المتاجر الآخرين في العثور عليه.",
+  "review_cta_link": "اكتب تقييمًا على WordPress.org →",
+  "roadmap_title": "ما أعمل عليه",
+  "roadmap_subtitle": "تابع اللوحة المباشرة →",
+  "roadmap_done": "تم",
+  "roadmap_next": "قادم",
+  "roadmap_listen": "<b>مستخدمو Pro يحددون الأولويات.</b> لا قائمة انتظار — أخبرني بما يحتاجه متجرك على Discord وسيُشكّل هذه القائمة.",
+  "fair_licence": "إذا انتهى اشتراكك، يستمر Pro في العمل. تتوقف فقط التحديثات والدعم.",
+  "error_something_wrong": "حدث خطأ ما: <1>{message}</1>",
+  "pro_active_thanks": "أنت على Pro — شكرًا لإبقاء هذا المشروع حيًّا."
+}

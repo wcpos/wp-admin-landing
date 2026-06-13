@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · AU COMMERÇANT QUI UTILISE LA CAISSE GRATUITE",
+  "opening": "Bonjour — je m'appelle Paul. J'ai construit la caisse que vous utilisez.",
+  "para1": "C'est moi à droite, il y a {yearsAgo} ans. J'ai ouvert Urban Locavore en 2011 avec des centaines de produits déjà dans WooCommerce et aucun moyen de les vendre en magasin — alors j'ai construit une caisse moi-même. Quand la boutique a fermé en 2014, je l'ai publiée sur WordPress.org pour tous ceux qui en avaient besoin. <b>Des extensions de caisse pour WordPress sont apparues et disparues depuis. Celle-ci est toujours là.</b> {releaseYears} ans de versions, un seul développeur, toujours actif — et la version gratuite reste la vraie chose : encaisser, imprimer, rester synchronisé. Elle reste gratuite.",
+  "para1_no_photo": "J'ai ouvert Urban Locavore à Perth en 2011 avec des centaines de produits déjà dans WooCommerce et aucun moyen de les vendre en magasin — alors j'ai construit une caisse moi-même. Quand la boutique a fermé en 2014, je l'ai publiée sur WordPress.org pour tous ceux qui en avaient besoin. <b>Des extensions de caisse pour WordPress sont apparues et disparues depuis. Celle-ci est toujours là.</b> {releaseYears} ans de versions, un seul développeur, toujours actif — et la version gratuite reste la vraie chose : encaisser, imprimer, rester synchronisé. Elle reste gratuite.",
+  "para2": "<b>Pro, c'est ce qui fait tenir le projet.</b> Il ajoute des outils supplémentaires pour gérer votre boutique — lecteurs de carte, remboursements à la caisse, rapports de clôture, multi-sites — et il finance chaque version, y compris les versions gratuites. Pas d'investisseurs, pas de rachat en vue. Ce sont les commerçants qui le financent directement.",
+  "para3": "Et les utilisateurs Pro ont un accès direct : dites-moi ce dont votre boutique a besoin, et ça façonne ce que je développe ensuite.",
+  "photo_caption": "Urban Locavore, Perth — la boutique qui a tout lancé",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "développeur et ancien commerçant · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro est à <b>{annual}/an ou {lifetime} en une fois</b>. Si une licence expire, Pro continue de fonctionner ; vous cessez simplement de recevoir les mises à jour."
+}

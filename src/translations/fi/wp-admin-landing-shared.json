@@ -1,0 +1,19 @@
+{
+  "get_pro": "Hanki Pro",
+  "price_both": "{annual}/vuosi · {lifetime} kertamaksu",
+  "price_annual_only": "{annual}/vuosi",
+  "proof_chip_line": "kauppaa käyttää WooCommerce POSia\nWordPress.orgissa toukokuusta 2014",
+  "reviews_heading": "WordPress.org-arvosteluja",
+  "translated_from_french": "käännetty ranskasta",
+  "read_on_wporg": "Lue WordPress.orgissa →",
+  "review_cta_line": "Käytätkö ilmaista kassaa kaupassasi? Arvostelu auttaa muita kauppiaita löytämään sen.",
+  "review_cta_link": "Jätä arvostelu WordPress.orgissa →",
+  "roadmap_title": "Mitä rakennan",
+  "roadmap_subtitle": "Katso live-taulu →",
+  "roadmap_done": "VALMIS",
+  "roadmap_next": "SEURAAVAKSI",
+  "roadmap_listen": "<b>Pro-käyttäjät muovaavat prioriteetit.</b> Ei tikettijärjestelmää — kerro Discordissa, mitä kauppasi tarvitsee, ja se muokkaa tätä listaa.",
+  "fair_licence": "Jos lopetat maksamisen, Pro jatkaa toimintaansa. Päivitykset ja tuki loppuvat.",
+  "error_something_wrong": "Jokin meni pieleen: <1>{message}</1>",
+  "pro_active_thanks": "Olet Pro-käyttäjä — kiitos, että pidät tämän projektin hengissä."
+}

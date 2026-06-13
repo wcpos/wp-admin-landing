@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · TIL DEG SOM BRUKER DEN GRATIS KASSEN",
+  "opening": "Hei — jeg heter Paul. Jeg lagde kassen du bruker.",
+  "para1": "Det er meg til høyre, for {yearsAgo} år siden. Jeg åpnet Urban Locavore i 2011 med hundrevis av produkter allerede i WooCommerce og ingen måte å slå inn salg i kassen på — så jeg bygde en selv. Da butikken stengte i 2014, la jeg den ut på WordPress.org for alle som trengte den. <b>POS-tillegg for WordPress har kommet og gått siden da. Dette har ikke det.</b> {releaseYears} år med utgivelser, én utvikler, fortsatt i drift — og gratisversjonen er fortsatt det ekte: slå inn salg, skriv ut kvitteringer, hold deg synkronisert. Den forblir gratis.",
+  "para1_no_photo": "Jeg åpnet Urban Locavore i Perth i 2011 med hundrevis av produkter allerede i WooCommerce og ingen måte å slå inn salg i kassen på — så jeg bygde en selv. Da butikken stengte i 2014, la jeg den ut på WordPress.org for alle som trengte den. <b>POS-tillegg for WordPress har kommet og gått siden da. Dette har ikke det.</b> {releaseYears} år med utgivelser, én utvikler, fortsatt i drift — og gratisversjonen er fortsatt det ekte: slå inn salg, skriv ut kvitteringer, hold deg synkronisert. Den forblir gratis.",
+  "para2": "<b>Pro er grunnen til at den fortsatt finnes.</b> Den legger til ekstra verktøy for å drive butikken din — kortlesere, refusjoner i kassen, dagsoppgjør, flerbutikk — og den finansierer alle utgivelser, inkludert de gratis. Ingen investorer, ingen exit-plan. Butikkeiere finansierer det direkte.",
+  "para3": "Og Pro-brukere har en direkte linje: si meg hva butikken din trenger, og det former hva jeg bygger neste gang.",
+  "photo_caption": "Urban Locavore, Perth — butikken som startet det hele",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "utvikler & tidligere butikkeier · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro koster <b>{annual}/år eller {lifetime} én gang</b>. Hvis lisensen utløper, fortsetter Pro å fungere; du slutter bare å få oppdateringer."
+}

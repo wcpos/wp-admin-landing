@@ -1,0 +1,19 @@
+{
+  "get_pro": "获取 Pro",
+  "price_both": "{annual}/年 · {lifetime} 买断",
+  "price_annual_only": "{annual}/年",
+  "proof_chip_line": "家店铺使用 WooCommerce POS\n自 2014 年 5 月起在 WordPress.org 上线",
+  "reviews_heading": "来自 WordPress.org 的评价",
+  "translated_from_french": "译自法文",
+  "read_on_wporg": "在 WordPress.org 查看原文 →",
+  "review_cta_line": "您正在使用免费收银台？留下一条评价，帮助其他店主找到它。",
+  "review_cta_link": "在 WordPress.org 留下评价 →",
+  "roadmap_title": "我正在做什么",
+  "roadmap_subtitle": "查看开发进度 →",
+  "roadmap_done": "已完成",
+  "roadmap_next": "计划中",
+  "roadmap_listen": "<b>Pro 用户的反馈决定优先级。</b>没有工单排队——您在 Discord 上告诉我您的店铺需要什么，它就会影响这份列表。",
+  "fair_licence": "如果您停止续费，Pro 依然可以使用，但更新和支持会停止。",
+  "error_something_wrong": "出了点问题：<1>{message}</1>",
+  "pro_active_thanks": "您正在使用 Pro——感谢您支持这个项目持续运转。"
+}

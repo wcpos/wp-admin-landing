@@ -1,0 +1,19 @@
+{
+  "get_pro": "Отримати Pro",
+  "price_both": "{annual}/рік · {lifetime} назавжди",
+  "price_annual_only": "{annual}/рік",
+  "proof_chip_line": "магазинів працюють на WooCommerce POS\nна WordPress.org з травня 2014 року",
+  "reviews_heading": "Відгуки з WordPress.org",
+  "translated_from_french": "перекладено з французької",
+  "read_on_wporg": "Читати на WordPress.org →",
+  "review_cta_line": "Ви користуєтесь безкоштовною касою? Ваш відгук допоможе іншим власникам магазинів її знайти.",
+  "review_cta_link": "Залишити відгук на WordPress.org →",
+  "roadmap_title": "Що я будую",
+  "roadmap_subtitle": "Переглянути дошку →",
+  "roadmap_done": "ГОТОВО",
+  "roadmap_next": "ДАЛІ",
+  "roadmap_listen": "<b>Pro-користувачі визначають пріоритети.</b> Жодних тікетів — ви говорите мені в Discord, що потрібно вашому магазину, і це формує цей список.",
+  "fair_licence": "Якщо ви припините платити, Pro продовжить працювати. Оновлення та підтримка припиняться.",
+  "error_something_wrong": "Щось пішло не так: <1>{message}</1>",
+  "pro_active_thanks": "Ви на Pro — дякую, що підтримуєте цей проєкт."
+}

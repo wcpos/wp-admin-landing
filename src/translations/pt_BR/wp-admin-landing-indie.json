@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · AO LOJISTA QUE USA O CAIXA GRATUITO",
+  "opening": "Oi — eu sou o Paul. Fui eu que construí o caixa que você está usando.",
+  "para1": "Sou eu aí na foto, {yearsAgo} anos atrás. Abri o Urban Locavore em 2011 com centenas de produtos já no WooCommerce e sem nenhuma forma de vendê-los no balcão — então construí um caixa eu mesmo. Quando a loja fechou em 2014, publiquei no WordPress.org para quem precisasse. <b>Plugins de PDV para WordPress vieram e foram. Este ficou.</b> {releaseYears} anos de lançamentos, um único desenvolvedor, ainda entregando — e a versão gratuita ainda é a de verdade: vender, imprimir, manter tudo sincronizado. E continua gratuita.",
+  "para1_no_photo": "Abri o Urban Locavore em Perth em 2011 com centenas de produtos já no WooCommerce e sem nenhuma forma de vendê-los no balcão — então construí um caixa eu mesmo. Quando a loja fechou em 2014, publiquei no WordPress.org para quem precisasse. <b>Plugins de PDV para WordPress vieram e foram. Este ficou.</b> {releaseYears} anos de lançamentos, um único desenvolvedor, ainda entregando — e a versão gratuita ainda é a de verdade: vender, imprimir, manter tudo sincronizado. E continua gratuita.",
+  "para2": "<b>O Pro é o motivo pelo qual o projeto ainda existe.</b> Ele adiciona ferramentas para você gerenciar melhor sua loja — maquininhas de cartão, devoluções no caixa, relatórios de fechamento, multi-loja — e financia cada lançamento, incluindo os gratuitos. Sem investidores, sem venda para um grupo maior esperando na fila. São os lojistas que mantêm isso vivo.",
+  "para3": "E os usuários Pro têm acesso direto a mim: me conta o que a sua loja precisa, e isso define o que eu construo a seguir.",
+  "photo_caption": "Urban Locavore, Perth — a loja que deu início a tudo",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "desenvolvedor e ex-lojista · github.com/kilbot",
+  "ps": "<b>P.S.</b> — O Pro custa <b>{annual}/ano ou {lifetime} uma única vez</b>. Se a licença vencer, o Pro continua funcionando; você só para de receber atualizações."
+}

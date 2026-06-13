@@ -1,17 +1,21 @@
 {
   "name": "@wcpos/wp-admin-landing",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "BUILD_TARGET=${BUILD_TARGET:-bootstrap} vite",
+    "build": "npm run fetch:content || true && BUILD_TARGET=bootstrap vite build && BUILD_TARGET=indie vite build && BUILD_TARGET=free-plus vite build",
+    "build:bootstrap": "BUILD_TARGET=bootstrap vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "check:assets": "./scripts/check-generated-assets.sh",
-    "ci": "npm run test && npm run typecheck && npm run check:assets",
-    "test": "node --test tests/analytics-config.test.mjs"
+    "lint:copy": "node scripts/lint-copy.mjs",
+    "lint:i18n": "node scripts/lint-i18n-keys.mjs",
+    "lint:snapshots": "node scripts/lint-snapshots.mjs",
+    "fetch:content": "node scripts/fetch-roadmap.mjs && node scripts/fetch-wporg-reviews.mjs",
+    "test": "node --test 'tests/*.test.mjs'",
+    "ci": "npm run test && npm run typecheck && npm run lint:copy && npm run lint:i18n && npm run lint:translations && npm run lint:snapshots && npm run check:assets",
+    "lint:translations": "node scripts/lint-translations.mjs"
   },
   "dependencies": {
-    "@paypal/react-paypal-js": "^8.2.0",
-    "classnames": "2.3.2",
     "i18next": "^26.0.5",
     "i18next-chained-backend": "^5.0.3",
     "i18next-http-backend": "^3.0.5",
@@ -20,7 +24,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "4.0.10",
-    "react-ga4": "^2.1.0",
     "react-i18next": "^17.0.3"
   },
   "devDependencies": {

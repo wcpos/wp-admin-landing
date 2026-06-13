@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · MAJITELI OBCHODU, KTERÝ POUŽÍVÁ BEZPLATNOU POKLADNU",
+  "opening": "Ahoj — jsem Paul. Postavil jsem pokladnu, kterou právě používáte.",
+  "para1": "To jsem já vpravo, před {yearsAgo} lety. V roce 2011 jsem otevřel Urban Locavore se stovkami produktů už v systému WooCommerce — ale bez možnosti prodávat za pultem. Tak jsem si pokladnu postavil sám. Když se obchod v roce 2014 zavřel, dal jsem ji na WordPress.org pro každého, kdo ji potřeboval. <b>POS pluginy pro WordPress od té doby přicházely a odcházely. Tento ne.</b> {releaseYears} let vydání, jeden vývojář, stále aktivní — a bezplatná verze je pořád ta pravá věc: namarkovat prodej, tisknout, zůstat synchronizovaný. A zůstane zdarma.",
+  "para1_no_photo": "V roce 2011 jsem otevřel Urban Locavore v Perth se stovkami produktů už v systému WooCommerce — ale bez možnosti prodávat za pultem. Tak jsem si pokladnu postavil sám. Když se obchod v roce 2014 zavřel, dal jsem ji na WordPress.org pro každého, kdo ji potřeboval. <b>POS pluginy pro WordPress od té doby přicházely a odcházely. Tento ne.</b> {releaseYears} let vydání, jeden vývojář, stále aktivní — a bezplatná verze je pořád ta pravá věc: namarkovat prodej, tisknout, zůstat synchronizovaný. A zůstane zdarma.",
+  "para2": "<b>Pro je důvod, proč to pořád existuje.</b> Přidává nástroje pro správu vašeho obchodu — čtečky karet, vrácení peněz u pokladny, uzávěrky pokladny, více provozoven — a financuje každé vydání, včetně těch bezplatných. Žádní investoři, žádný plánovaný exit. Financují to přímo majitelé obchodů.",
+  "para3": "A Pro uživatelé mají přímou linku: řekněte mi, co váš obchod potřebuje, a to ovlivní, co postavím příště.",
+  "photo_caption": "Urban Locavore, Perth — obchod, ze kterého vše vzešlo",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "vývojář a bývalý majitel obchodu · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro stojí <b>{annual}/rok nebo {lifetime} jednorázově</b>. Pokud licence vyprší, Pro dál funguje; jen přestanete dostávat aktualizace."
+}

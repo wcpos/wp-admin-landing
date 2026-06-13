@@ -1,0 +1,19 @@
+{
+  "get_pro": "Obter Pro",
+  "price_both": "{annual}/ano · {lifetime} vitalício",
+  "price_annual_only": "{annual}/ano",
+  "proof_chip_line": "lojas usam o WooCommerce POS\nno WordPress.org desde maio de 2014",
+  "reviews_heading": "Das avaliações no WordPress.org",
+  "translated_from_french": "traduzido do francês",
+  "read_on_wporg": "Ler no WordPress.org →",
+  "review_cta_line": "Usando o caixa gratuito na sua loja? Uma avaliação ajuda outros lojistas a encontrá-lo.",
+  "review_cta_link": "Deixar uma avaliação no WordPress.org →",
+  "roadmap_title": "O que estou desenvolvendo",
+  "roadmap_subtitle": "Ver o quadro ao vivo →",
+  "roadmap_done": "FEITO",
+  "roadmap_next": "EM BREVE",
+  "roadmap_listen": "<b>Os usuários Pro moldam as prioridades.</b> Não há fila de tickets — você me conta o que a sua loja precisa no Discord, e isso define esta lista.",
+  "fair_licence": "Se você cancelar, o Pro continua funcionando. Atualizações e suporte param.",
+  "error_something_wrong": "Algo deu errado: <1>{message}</1>",
+  "pro_active_thanks": "Você está no Pro — obrigado por manter este projeto vivo."
+}

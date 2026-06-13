@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{year} 年 {month} · 写给使用免费收银台的店主",
+  "opening": "你好——我是 Paul，我开发了你正在使用的这套收银系统。",
+  "para1": "右边那张照片里是 {yearsAgo} 年前的我。2011 年，我在 Perth 开了 Urban Locavore，WooCommerce 里已经有几百个产品，却没有任何方法在柜台上卖出去——于是我自己写了一个收银台。2014 年店铺关门后，我把它发布到 WordPress.org，供任何需要它的人免费使用。<b>WordPress 上的 POS 插件来了又去。这个没有。</b>一个开发者，{releaseYears} 年持续发版，至今仍在更新——而且免费版依然是真材实料：收款、打印、与后台实时同步。它会一直免费。",
+  "para1_no_photo": "2011 年，我在 Perth 开了 Urban Locavore，WooCommerce 里已经有几百个产品，却没有任何方法在柜台上卖出去——于是我自己写了一个收银台。2014 年店铺关门后，我把它发布到 WordPress.org，供任何需要它的人免费使用。<b>WordPress 上的 POS 插件来了又去。这个没有。</b>一个开发者，{releaseYears} 年持续发版，至今仍在更新——而且免费版依然是真材实料：收款、打印、与后台实时同步。它会一直免费。",
+  "para2": "<b>Pro 是它还在这里的原因。</b>Pro 为管理店铺提供额外工具——刷卡机、当场退款、日结报告、多门店支持——同时为每一次更新提供资金，包括免费版的更新。没有投资人，没有等待被收购的退出计划。是店主们直接支撑着它。",
+  "para3": "Pro 用户有直通渠道：告诉我你的店铺需要什么，它就会影响我下一步要做什么。",
+  "photo_caption": "Urban Locavore，Perth——一切开始的地方",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "开发者兼前任店主 · github.com/kilbot",
+  "ps": "<b>附言：</b>Pro 售价 <b>{annual}/年，或 {lifetime} 买断</b>。授权到期后 Pro 仍可继续使用，只是不再收到更新。"
+}

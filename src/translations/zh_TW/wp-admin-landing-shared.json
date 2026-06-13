@@ -1,0 +1,19 @@
+{
+  "get_pro": "升級 Pro",
+  "price_both": "{annual}/年 · {lifetime} 買斷",
+  "price_annual_only": "{annual}/年",
+  "proof_chip_line": "家店舖使用 WooCommerce POS\n自 2014 年 5 月起在 WordPress.org 上線",
+  "reviews_heading": "來自 WordPress.org 的評價",
+  "translated_from_french": "譯自法文",
+  "read_on_wporg": "在 WordPress.org 查看原文 →",
+  "review_cta_line": "您正在使用免費收銀機？留下一則評價，幫助其他店主找到它。",
+  "review_cta_link": "在 WordPress.org 留下評價 →",
+  "roadmap_title": "我正在開發什麼",
+  "roadmap_subtitle": "查看開發進度 →",
+  "roadmap_done": "已完成",
+  "roadmap_next": "規劃中",
+  "roadmap_listen": "<b>Pro 使用者的意見決定開發優先順序。</b>沒有工單排隊——您在 Discord 上告訴我店舖需要什麼，它就會影響這份清單。",
+  "fair_licence": "若您停止續費，Pro 仍可繼續使用，但更新與支援將停止。",
+  "error_something_wrong": "發生錯誤：<1>{message}</1>",
+  "pro_active_thanks": "您正在使用 Pro——感謝您支持這個專案持續運作。"
+}

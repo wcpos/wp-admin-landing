@@ -1,0 +1,19 @@
+{
+  "get_pro": "Pro 구매",
+  "price_both": "{annual}/년 · {lifetime} 평생 이용",
+  "price_annual_only": "{annual}/년",
+  "proof_chip_line": "2014년 5월부터 WordPress.org에서\nWooCommerce POS를 사용 중인 매장 수",
+  "reviews_heading": "WordPress.org 리뷰에서",
+  "translated_from_french": "프랑스어 번역",
+  "read_on_wporg": "WordPress.org에서 읽기 →",
+  "review_cta_line": "무료 포스기를 사용 중이신가요? 리뷰 한 줄이 같은 고민을 가진 다른 점주에게 큰 도움이 됩니다.",
+  "review_cta_link": "WordPress.org에 리뷰 남기기 →",
+  "roadmap_title": "개발 중인 기능",
+  "roadmap_subtitle": "현황 보드 보기 →",
+  "roadmap_done": "완료",
+  "roadmap_next": "예정",
+  "roadmap_listen": "<b>우선순위는 Pro 사용자들이 만들어 갑니다.</b> 티켓 대기열은 없습니다. Discord에서 매장에 필요한 것을 말씀해 주시면, 그것이 이 목록에 반영됩니다.",
+  "fair_licence": "결제를 중단해도 Pro는 계속 작동합니다. 업데이트와 지원만 중단됩니다.",
+  "error_something_wrong": "오류가 발생했습니다: <1>{message}</1>",
+  "pro_active_thanks": "Pro를 사용해 주셔서 감사합니다. 덕분에 이 프로젝트를 계속 이어가고 있습니다."
+}

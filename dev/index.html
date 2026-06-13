@@ -1,0 +1,21 @@
+<!-- dev/index.html — open via `npx vite preview` or any static server from repo root -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>landing dev harness</title>
+<script>
+  window.wcpos = { landing: {
+    schema_version: 2, locale: 'en_US', plugin_version: '1.10.0',
+    pro_active: false, anon_id: 'dev-anon-0001'
+  }};
+  window.wp = { element: {} }; // replaced below
+</script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script>window.wp = { element: { createRoot: ReactDOM.createRoot, render: ReactDOM.render } };</script>
+</head>
+<body style="background:#f0f0f1;padding:24px;">
+<div id="woocommerce-pos-upgrade"></div>
+<link rel="stylesheet" href="../assets/css/welcome.css">
+<script src="../assets/js/welcome.js"></script>
+</body>
+</html>

@@ -2,35 +2,34 @@ import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-/**
- * Vite inlines CSS into the JS bundle for IIFE builds.
- * WordPress needs separate CSS files (enqueued via wp_enqueue_style).
- * This plugin extracts the inlined CSS back into a separate asset.
- */
-function extractCss(): Plugin {
+type Target = 'bootstrap' | 'indie' | 'free-plus';
+const target = (process.env.BUILD_TARGET ?? 'bootstrap') as Target;
+
+const TARGETS: Record<Target, { entry: string; js: string; css: string }> = {
+  bootstrap: { entry: 'src/bootstrap/index.tsx', js: 'js/welcome.js', css: 'css/welcome.css' },
+  indie: { entry: 'src/variants/indie/index.tsx', js: 'js/variants/indie.js', css: 'css/variants/indie.css' },
+  'free-plus': { entry: 'src/variants/free-plus/index.tsx', js: 'js/variants/free-plus.js', css: 'css/variants/free-plus.css' },
+};
+const t = TARGETS[target];
+
+/** Re-extracts Vite's inlined CSS into a separate file (WordPress enqueues CSS
+ *  separately). Parameterised per target — the old version hardcoded welcome.css. */
+function extractCss(cssFileName: string): Plugin {
   return {
     name: 'extract-css',
     apply: 'build',
     enforce: 'post',
     generateBundle(_, bundle) {
       let cssExtracted = false;
-      for (const [fileName, chunk] of Object.entries(bundle)) {
+      for (const chunk of Object.values(bundle)) {
         if (chunk.type === 'chunk' && chunk.code) {
-          // Match Vite's CSS injection pattern: document.createElement("style"); ... .textContent=`...`
           const cssMatch = chunk.code.match(
             /var \w+=document\.createElement\("style"\);\w+\.textContent=`([\s\S]*?)`[,;]document\.head\.appendChild/
           );
           if (cssMatch) {
             cssExtracted = true;
-            // Unescape JS template literal escapes (e.g. \\: → \: for Tailwind's wcpos: prefix)
             const css = cssMatch[1].replace(/\\(.)/g, '$1');
-            // Emit the CSS as a separate asset
-            this.emitFile({
-              type: 'asset',
-              fileName: 'css/welcome.css',
-              source: css,
-            });
-            // Remove the CSS injection code from the JS
+            this.emitFile({ type: 'asset', fileName: cssFileName, source: css });
             chunk.code = chunk.code.replace(
               /var \w+=document\.createElement\("style"\);\w+\.textContent=`[\s\S]*?`[,;]document\.head\.appendChild\(\w+\);/,
               ''
@@ -38,38 +37,29 @@ function extractCss(): Plugin {
           }
         }
       }
-      if (!cssExtracted) {
-        this.warn('extract-css: No inline CSS found — Vite may have changed its CSS injection pattern.');
-      }
+      if (!cssExtracted) this.warn(`extract-css(${cssFileName}): no inline CSS found.`);
     },
   };
 }
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), extractCss()],
+  plugins: [react(), tailwindcss(), extractCss(t.css)],
   build: {
     outDir: 'assets',
     emptyOutDir: false,
     rollupOptions: {
-      input: 'src/index.tsx',
+      input: t.entry,
+      // Variants must NOT bundle posthog/i18next — they use window.wcpos.landingRuntime.
+      // React stays external everywhere (wp.element). react-i18next IS bundled per
+      // variant (it binds to the runtime's i18next instance via I18nextProvider).
       external: ['react', 'react-dom', '@wordpress/element'],
       output: {
-        entryFileNames: 'js/welcome.js',
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) return 'css/welcome.css';
-          return 'assets/[name][extname]';
-        },
-        globals: {
-          'react': 'React',
-          'react-dom': 'ReactDOM',
-          '@wordpress/element': 'wp.element',
-        },
+        entryFileNames: t.js,
+        assetFileNames: (info) => (info.name?.endsWith('.css') ? t.css : 'assets/[name][extname]'),
+        globals: { react: 'React', 'react-dom': 'ReactDOM', '@wordpress/element': 'wp.element' },
         format: 'iife',
       },
     },
   },
-  server: {
-    port: 9000,
-    cors: true,
-  },
+  server: { port: 9000, cors: true },
 });

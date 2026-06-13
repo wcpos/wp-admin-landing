@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · AN DEN SHOPBETREIBER HINTER DER KOSTENLOSEN KASSE",
+  "opening": "Hallo — ich bin Paul. Ich habe die Kasse gebaut, die du gerade benutzt.",
+  "para1": "Das bin ich rechts im Bild, vor {yearsAgo} Jahren. Ich habe Urban Locavore 2011 eröffnet — mit Hunderten von Produkten bereits in WooCommerce und keiner Möglichkeit, sie an der Theke zu verkaufen. Also habe ich selbst eine Kasse gebaut. Als der Laden 2014 schloss, habe ich sie auf WordPress.org gestellt, für jeden, der sie brauchte. <b>POS-Plugins für WordPress kamen und gingen seither. Dieses hier nicht.</b> {releaseYears} Jahre Releases, ein Entwickler, noch immer aktiv — und die kostenlose Version ist noch immer das Echte: kassieren, drucken, synchron bleiben. Sie bleibt kostenlos.",
+  "para1_no_photo": "Ich habe Urban Locavore in Perth 2011 eröffnet — mit Hunderten von Produkten bereits in WooCommerce und keiner Möglichkeit, sie an der Theke zu verkaufen. Also habe ich selbst eine Kasse gebaut. Als der Laden 2014 schloss, habe ich sie auf WordPress.org gestellt, für jeden, der sie brauchte. <b>POS-Plugins für WordPress kamen und gingen seither. Dieses hier nicht.</b> {releaseYears} Jahre Releases, ein Entwickler, noch immer aktiv — und die kostenlose Version ist noch immer das Echte: kassieren, drucken, synchron bleiben. Sie bleibt kostenlos.",
+  "para2": "<b>Pro ist der Grund, warum es das noch gibt.</b> Es ergänzt zusätzliche Werkzeuge für die Verwaltung deines Shops — Kartenlesegeräte, Rückerstattungen an der Kasse, Tagesabschlussberichte, Filialbetrieb — und finanziert jeden Release, auch die kostenlosen. Keine Investoren, kein geplanter Exit. Shopbetreiber finanzieren es direkt.",
+  "para3": "Und Pro-Nutzer haben einen direkten Draht: Sag mir, was dein Shop braucht, und das formt, was ich als Nächstes baue.",
+  "photo_caption": "Urban Locavore, Perth — der Laden, der alles ins Rollen brachte",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "Entwickler & ehemaliger Shopbetreiber · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro kostet <b>{annual}/Jahr oder {lifetime} einmalig</b>. Läuft eine Lizenz aus, funktioniert Pro weiter; du bekommst nur keine Updates mehr."
+}

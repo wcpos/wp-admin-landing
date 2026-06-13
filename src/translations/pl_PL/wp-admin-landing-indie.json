@@ -1,0 +1,12 @@
+{
+  "eyebrow": "{month} {year} · DO WŁAŚCICIELA SKLEPU UŻYWAJĄCEGO DARMOWEJ KASY",
+  "opening": "Cześć — jestem Paul. Zbudowałem kasę, z której właśnie korzystasz.",
+  "para1": "To ja po prawej, {yearsAgo} lat temu. W 2011 roku otworzyłem Urban Locavore — z setkami produktów już w WooCommerce i bez żadnego sposobu na sprzedaż przy ladzie. Więc zbudowałem własną kasę. Kiedy sklep zamknął się w 2014 roku, wrzuciłem ją na WordPress.org dla każdego, kto jej potrzebuje. <b>Wtyczki POS dla WordPress przychodziły i odchodziły. Ta nie.</b> {releaseYears} lat wydań, jeden deweloper, ciągle w akcji — a darmowa wersja to wciąż pełnoprawne narzędzie: sprzedawaj, drukuj, bądź zsynchronizowany. I pozostaje darmowa.",
+  "para1_no_photo": "W 2011 roku otworzyłem Urban Locavore w Perth — z setkami produktów już w WooCommerce i bez żadnego sposobu na sprzedaż przy ladzie. Więc zbudowałem własną kasę. Kiedy sklep zamknął się w 2014 roku, wrzuciłem ją na WordPress.org dla każdego, kto jej potrzebuje. <b>Wtyczki POS dla WordPress przychodziły i odchodziły. Ta nie.</b> {releaseYears} lat wydań, jeden deweloper, ciągle w akcji — a darmowa wersja to wciąż pełnoprawne narzędzie: sprzedawaj, drukuj, bądź zsynchronizowany. I pozostaje darmowa.",
+  "para2": "<b>Pro jest powodem, dla którego to wciąż istnieje.</b> Dodaje dodatkowe narzędzia do zarządzania sklepem — czytniki kart, zwroty przy kasie, raporty na koniec dnia, obsługa wielu lokalizacji — i finansuje każde wydanie, w tym darmowe. Żadnych inwestorów, żadnego planowanego wyjścia. Finansują to bezpośrednio właściciele sklepów.",
+  "para3": "A użytkownicy Pro mają bezpośredni kontakt: powiedz mi, czego potrzebuje Twój sklep, i to kształtuje to, co buduję dalej.",
+  "photo_caption": "Urban Locavore, Perth — sklep, który zapoczątkował wszystko",
+  "sig_name": "Paul Kilmurray",
+  "sig_meta": "deweloper i były właściciel sklepu · github.com/kilbot",
+  "ps": "<b>P.S.</b> — Pro kosztuje <b>{annual}/rok lub {lifetime} jednorazowo</b>. Jeśli licencja wygaśnie, Pro nadal działa — tylko bez aktualizacji."
+}

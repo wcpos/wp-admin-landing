@@ -1,0 +1,19 @@
+{
+  "get_pro": "Få Pro",
+  "price_both": "{annual}/år · {lifetime} engangspris",
+  "price_annual_only": "{annual}/år",
+  "proof_chip_line": "butikker bruker WooCommerce POS\npå WordPress.org siden mai 2014",
+  "reviews_heading": "Fra anmeldelsene på WordPress.org",
+  "translated_from_french": "oversatt fra fransk",
+  "read_on_wporg": "Les på WordPress.org →",
+  "review_cta_line": "Bruker du den gratis kassen? En anmeldelse hjelper andre butikkeiere å finne den.",
+  "review_cta_link": "Skriv en anmeldelse på WordPress.org →",
+  "roadmap_title": "Hva jeg bygger",
+  "roadmap_subtitle": "Se den oppdaterte planen →",
+  "roadmap_done": "FERDIG",
+  "roadmap_next": "NESTE",
+  "roadmap_listen": "<b>Pro-brukere påvirker prioriteringene.</b> Det er ingen sakskø — du forteller meg på Discord hva butikken din trenger, og det former denne listen.",
+  "fair_licence": "Hvis du slutter å betale, fortsetter Pro å fungere. Oppdateringer og støtte stopper.",
+  "error_something_wrong": "Noe gikk galt: <1>{message}</1>",
+  "pro_active_thanks": "Du har Pro — takk for at du holder dette prosjektet i gang."
+}
