@@ -28,7 +28,7 @@ export const RoadmapCard = () => {
           </li>
         ))}
         {roadmap.next.map((item) => (
-          <li key={item} className="wcpos:flex wcpos:items-baseline wcpos:gap-3 wcpos:border-b wcpos:border-gray-700 wcpos:py-2 wcpos:text-sm last:wcpos:border-0">
+          <li key={item} className="wcpos:flex wcpos:items-baseline wcpos:gap-3 wcpos:border-b wcpos:border-gray-700 wcpos:py-2 wcpos:text-sm wcpos:last:border-0">
             <span className="wcpos:rounded wcpos:bg-amber-600 wcpos:px-1.5 wcpos:text-[10px] wcpos:font-bold wcpos:text-white">{t('roadmap_next')}</span>
             {item}
           </li>

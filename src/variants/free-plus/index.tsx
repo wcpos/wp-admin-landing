@@ -18,7 +18,7 @@ const Page = () => (
     <Awning />
     <Hero />
     <Comparison />
-    <div className="wcpos:grid wcpos:gap-6 wcpos:border-t wcpos:border-gray-100 wcpos:p-8 lg:wcpos:grid-cols-[1fr_1.2fr] lg:wcpos:px-12">
+    <div className="wcpos:grid wcpos:gap-6 wcpos:border-t wcpos:border-gray-100 wcpos:p-8 wcpos:lg:grid-cols-[1fr_1.2fr] wcpos:lg:px-12">
       <RoadmapCard />
       <div /> {/* reviews render full-width below */}
     </div>

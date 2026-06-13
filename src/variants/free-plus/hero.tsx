@@ -9,8 +9,8 @@ export const Hero = () => {
   const rt = readRuntime();
   const imgBase = `${rt.constants.CDN_BASE}/img`;
   return (
-    <div className="wcpos:grid wcpos:gap-8 lg:wcpos:grid-cols-2">
-      <div className="wcpos:flex wcpos:flex-col wcpos:items-start wcpos:gap-4 wcpos:p-8 lg:wcpos:p-12 lg:wcpos:pr-0">
+    <div className="wcpos:grid wcpos:gap-8 wcpos:lg:grid-cols-2">
+      <div className="wcpos:flex wcpos:flex-col wcpos:items-start wcpos:gap-4 wcpos:p-8 wcpos:lg:p-12 wcpos:lg:pr-0">
         <span className="wcpos:inline-flex wcpos:items-center wcpos:gap-2 wcpos:rounded-full wcpos:bg-[#F5E5C0] wcpos:px-3 wcpos:py-1 wcpos:text-[11px] wcpos:font-bold wcpos:uppercase wcpos:tracking-widest wcpos:text-[#996a13]">
           {t('kicker')}
         </span>
@@ -23,7 +23,7 @@ export const Hero = () => {
         <CtaRow location="hero" />
         <span className="wcpos:text-xs wcpos:text-gray-400">{ts('fair_licence')}</span>
       </div>
-      <figure className="wcpos:m-0 wcpos:flex wcpos:flex-col wcpos:justify-center wcpos:p-8 lg:wcpos:p-10">
+      <figure className="wcpos:m-0 wcpos:flex wcpos:flex-col wcpos:justify-center wcpos:p-8 wcpos:lg:p-10">
         <picture>
           <source type="image/webp" srcSet={`${imgBase}/reports-hero.webp 2048w, ${imgBase}/reports-hero-1024.webp 1024w`} sizes="(min-width: 1024px) 512px, 100vw" />
           <img

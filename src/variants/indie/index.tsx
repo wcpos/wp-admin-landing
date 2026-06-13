@@ -16,8 +16,8 @@ const NS = 'wp-admin-landing-indie';
 const Page = () => (
   <div className="wcpos:overflow-hidden wcpos:rounded-lg wcpos:bg-white">
     <Awning />
-    <div className="wcpos:bg-gradient-to-b wcpos:from-[#fdfdfc] wcpos:to-[#f6f5f2] wcpos:p-8 lg:wcpos:p-12">
-      <div className="wcpos:grid wcpos:items-start wcpos:gap-10 lg:wcpos:grid-cols-[1.25fr_.85fr]">
+    <div className="wcpos:bg-gradient-to-b wcpos:from-[#fdfdfc] wcpos:to-[#f6f5f2] wcpos:p-8 wcpos:lg:p-12">
+      <div className="wcpos:grid wcpos:items-start wcpos:gap-10 wcpos:lg:grid-cols-[1.25fr_.85fr]">
         <Letter />
         <div className="wcpos:flex wcpos:flex-col wcpos:gap-5">
           <RoadmapCard />
