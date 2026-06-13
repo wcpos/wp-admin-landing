@@ -18,10 +18,11 @@ const Page = () => (
     <Awning />
     <Hero />
     <Comparison />
-    <div className="wcpos:grid wcpos:gap-6 wcpos:border-t wcpos:border-gray-100 wcpos:p-8 wcpos:lg:grid-cols-[1fr_1.2fr] wcpos:lg:px-12">
-      <RoadmapCard />
-      <div /> {/* reviews render full-width below */}
-    </div>
+    <section className="wcpos:border-t wcpos:border-gray-100 wcpos:px-8 wcpos:py-12 wcpos:lg:px-14">
+      <div className="wcpos:mx-auto wcpos:max-w-2xl">
+        <RoadmapCard />
+      </div>
+    </section>
     <ReviewsStrip />
   </div>
 );
