@@ -1,9 +1,17 @@
 /*
  * Import only theme + utilities — skip preflight (base layer).
  * WordPress admin provides its own base styles; preflight would conflict.
+ *
+ * `important`: the page renders INSIDE `<div class="wrap">`, so wp-admin's
+ * element-in-context rules (e.g. `.wrap h1 { font-size: 23px }`, specificity
+ * 0,1,1) outrank our single-class utilities (0,1,0) and silently override the
+ * landing's typography — headings, margins, list styles. Marking utilities
+ * `!important` makes them authoritative in this hostile host cascade. Safe here:
+ * the page is self-contained and the only inline styles set `background` on
+ * elements that carry no `bg-*` utility.
  */
 @import "tailwindcss/theme" prefix(wcpos);
-@import "tailwindcss/utilities" prefix(wcpos);
+@import "tailwindcss/utilities" prefix(wcpos) important;
 
 /* Custom WordPress admin theme colors */
 @theme inline {
