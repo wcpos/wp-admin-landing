@@ -9,9 +9,37 @@ export const FALLBACK_VARIANT = 'free-plus';
 export const VALID_VARIANTS = ['indie', 'free-plus'];
 const CACHE_KEY = 'wcpos_landing_assignment';
 
+/**
+ * Asset base for the variant chunks, derived from welcome.js's OWN <script src>
+ * so chunks always load from the exact same origin+version the bootstrap was
+ * served from: jsdelivr `@<tag>` in production (atomic — no separate `@v2`
+ * range that can drift mid-rollout) and a relative path on the GitHub Pages
+ * preview. Falls back to the compiled-in CDN_BASE if the script tag can't be
+ * located.
+ */
+export function deriveAssetBase(): string {
+  try {
+    if (typeof document === 'undefined') return CDN_BASE;
+    const current = (document.currentScript as HTMLScriptElement | null)?.src;
+    const fromTag = Array.from(document.querySelectorAll('script[src]'))
+      .map((s) => (s as HTMLScriptElement).src)
+      .find((s) => /\/welcome\.js(\?|$)/.test(s));
+    const src = current && /\/welcome\.js(\?|$)/.test(current) ? current : fromTag;
+    if (src) {
+      const base = src.replace(/\/js\/welcome\.js(\?.*)?$/, '');
+      if (base !== src) return base; // matched the expected /js/welcome.js layout
+    }
+  } catch {
+    /* fall through to compiled default */
+  }
+  return CDN_BASE;
+}
+
+const ASSET_BASE = deriveAssetBase();
+
 export const VARIANT_ASSETS: Record<string, { js: string; css: string }> = {
-  indie: { js: `${CDN_BASE}/js/variants/indie.js`, css: `${CDN_BASE}/css/variants/indie.css` },
-  'free-plus': { js: `${CDN_BASE}/js/variants/free-plus.js`, css: `${CDN_BASE}/css/variants/free-plus.css` },
+  indie: { js: `${ASSET_BASE}/js/variants/indie.js`, css: `${ASSET_BASE}/css/variants/indie.css` },
+  'free-plus': { js: `${ASSET_BASE}/js/variants/free-plus.js`, css: `${ASSET_BASE}/css/variants/free-plus.css` },
 };
 
 interface CachedAssignment { variant: string; anonId: string; schemaVersion: number; ts: number }

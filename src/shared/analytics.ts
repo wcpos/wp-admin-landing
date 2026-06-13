@@ -56,9 +56,20 @@ function hasPersistedIdentity(): boolean {
  * `identifyConsented()` must be called only after the variant flag is
  * resolved (flag-before-identify rule).
  */
+/** True on the GitHub Pages preview harness — keeps preview pageloads out of
+ *  production PostHog so they never pollute baselines (set by the harness). */
+function isPreview(): boolean {
+  try {
+    return typeof window !== 'undefined' && (window as unknown as { __WCPOS_PREVIEW?: boolean }).__WCPOS_PREVIEW === true;
+  } catch {
+    return false;
+  }
+}
+
 export function initAnalytics(): typeof posthog {
   const data = getLandingData();
   const anonId = data?.anon_id;
+  const preview = isPreview();
 
   posthog.init(POSTHOG_KEY, {
     api_host: POSTHOG_HOST,
@@ -67,6 +78,7 @@ export function initAnalytics(): typeof posthog {
     autocapture: false,
     capture_pageview: false,
     disable_session_recording: true,
+    opt_out_capturing_by_default: preview,
     ...(anonId && !hasPersistedIdentity()
       ? { bootstrap: { distinctID: anonId, isIdentifiedID: false } }
       : {}),
@@ -93,8 +105,10 @@ export function initAnalytics(): typeof posthog {
     ...visits,
   });
 
-  posthog.capture('$pageview');
-  observeProActivation(data?.pro_active ?? false);
+  if (!preview) {
+    posthog.capture('$pageview');
+    observeProActivation(data?.pro_active ?? false);
+  }
   return posthog;
 }
 

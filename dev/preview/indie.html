@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preview — indie</title>
+  <style>
+    html, body { margin: 0; background: #f0f0f1; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+    /* Mimic the wp-admin content column so the lg: (1024px) breakpoint engages. */
+    .wrap { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+  </style>
+  <script>
+    // Preview flag: keeps these pageloads OUT of production PostHog.
+    window.__WCPOS_PREVIEW = true;
+    // The data the plugin normally injects.
+    window.wcpos = window.wcpos || {};
+    window.wcpos.landing = { schema_version: 2, locale: 'en_US', plugin_version: 'preview', pro_active: false };
+    // Force the variant: the landing-variant flag is disabled, so the bootstrap's
+    // assignment cache decides — seed it. (variant set per page.)
+    try {
+      localStorage.setItem('wcpos_landing_assignment', JSON.stringify({
+        variant: 'indie', anonId: 'no-anon', schemaVersion: 2, ts: Date.now()
+      }));
+    } catch (e) {}
+  </script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script>window.wp = { element: { createRoot: ReactDOM.createRoot, render: ReactDOM.render } };</script>
+  <link rel="stylesheet" href="./assets/css/variants/indie.css" />
+</head>
+<body>
+  <div class="wrap"><div id="woocommerce-pos-upgrade"></div></div>
+  <script src="./assets/js/welcome.js"></script>
+</body>
+</html>
