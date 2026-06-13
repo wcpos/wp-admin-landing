@@ -14,7 +14,7 @@ export const Hero = () => {
         <span className="wcpos:inline-flex wcpos:items-center wcpos:gap-2 wcpos:rounded-full wcpos:bg-[#F5E5C0] wcpos:px-3 wcpos:py-1 wcpos:text-[11px] wcpos:font-bold wcpos:uppercase wcpos:tracking-widest wcpos:text-[#996a13]">
           {t('kicker')}
         </span>
-        <h1 className="wcpos:text-4xl wcpos:font-bold wcpos:leading-[1.08] wcpos:tracking-tight wcpos:text-gray-900 wcpos:lg:text-5xl">
+        <h1 className="wcpos:text-3xl wcpos:font-bold wcpos:leading-[1.12] wcpos:tracking-tight wcpos:text-gray-900 wcpos:lg:text-[2.125rem]">
           {t('headline_1')}<br /><span className="wcpos:text-[#CD2C24]">{t('headline_2')}</span>
         </h1>
         <p className="wcpos:max-w-md wcpos:text-[15px] wcpos:leading-relaxed wcpos:text-gray-600">
