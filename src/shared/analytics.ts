@@ -78,6 +78,13 @@ export function initAnalytics(): typeof posthog {
     autocapture: false,
     capture_pageview: false,
     disable_session_recording: true,
+    // Trim PostHog features the landing page never uses — each otherwise
+    // lazy-loads its own script (surveys.js, web-vitals.js, dead-clicks) and
+    // adds requests/main-thread work during the first render.
+    disable_surveys: true,
+    capture_performance: false,
+    capture_heatmaps: false,
+    capture_dead_clicks: false,
     opt_out_capturing_by_default: preview,
     ...(anonId && !hasPersistedIdentity()
       ? { bootstrap: { distinctID: anonId, isIdentifiedID: false } }
