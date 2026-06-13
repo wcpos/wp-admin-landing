@@ -6,11 +6,11 @@ export const ReviewsStrip = () => {
   const { t, i18n } = useTranslation();
   const rt = readRuntime();
   return (
-    <section className="wcpos:border-t wcpos:border-gray-100 wcpos:bg-white wcpos:px-8 wcpos:py-8 lg:wcpos:px-12">
+    <section className="wcpos:border-t wcpos:border-gray-100 wcpos:bg-white wcpos:px-8 wcpos:py-8 wcpos:lg:px-12">
       <h4 className="wcpos:mb-4 wcpos:text-xs wcpos:font-bold wcpos:uppercase wcpos:tracking-wider wcpos:text-gray-500">
         {t('reviews_heading')}
       </h4>
-      <div className="wcpos:grid wcpos:gap-4 lg:wcpos:grid-cols-3">
+      <div className="wcpos:grid wcpos:gap-4 wcpos:lg:grid-cols-3">
         {reviews.reviews.map((r) => {
           const quote = r.translated && i18n.language.startsWith('fr') && (r as { quote_fr?: string }).quote_fr ? (r as { quote_fr?: string }).quote_fr! : r.quote_en;
           const showTranslated = r.translated && !i18n.language.startsWith('fr');

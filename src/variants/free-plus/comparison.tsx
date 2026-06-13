@@ -7,7 +7,7 @@ const FREE_ROWS = new Set([1]);
 export const Comparison = () => {
   const { t } = useTranslation('wp-admin-landing-free-plus');
   return (
-    <div className="wcpos:px-8 wcpos:pb-10 lg:wcpos:px-12">
+    <div className="wcpos:px-8 wcpos:pb-10 wcpos:lg:px-12">
       <div className="wcpos:mb-4 wcpos:flex wcpos:items-baseline wcpos:gap-3 wcpos:border-t wcpos:border-gray-100 wcpos:pt-6">
         <h2 className="wcpos:text-xl wcpos:font-semibold">{t('table_heading')}</h2>
         <span className="wcpos:text-xs wcpos:text-gray-400">{t('table_note')}</span>

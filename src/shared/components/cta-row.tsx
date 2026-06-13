@@ -20,7 +20,7 @@ export const CtaRow = ({ location }: { location: string }) => {
         target="_blank"
         rel="noreferrer"
         onClick={() => rt.trackEvent('upgrade_cta_clicked', { cta_location: location, href })}
-        className="wcpos:inline-flex wcpos:items-center wcpos:rounded-md wcpos:bg-[#CD2C24] wcpos:px-6 wcpos:py-2.5 wcpos:text-sm wcpos:font-semibold wcpos:text-white wcpos:shadow-md hover:wcpos:bg-[#A82320]"
+        className="wcpos:inline-flex wcpos:items-center wcpos:rounded-md wcpos:bg-[#CD2C24] wcpos:px-6 wcpos:py-2.5 wcpos:text-sm wcpos:font-semibold wcpos:text-white wcpos:shadow-md wcpos:hover:bg-[#A82320]"
       >
         {t('get_pro')}
       </a>
