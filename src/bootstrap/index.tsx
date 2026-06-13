@@ -36,12 +36,11 @@ async function main(): Promise<void> {
       constants,
       variant,
       renderSource,
-      // Amendment: skeleton is cleared HERE, before injection, not inside
-      // signalRendered. The variant mounts into #woocommerce-pos-upgrade (same
-      // element), so calling clearSkeleton() after React renders would wipe the
-      // just-mounted tree. Clearing before injection empties the placeholder
-      // div, giving React a clean container to mount into. signalRendered only
-      // fires the tracking event.
+      // signalRendered only fires the tracking event. The skeleton is NOT
+      // cleared here or before injection: the variant's createRoot(el).render()
+      // replaces the container's children when it mounts, so the branded
+      // skeleton stays visible right up until the real content appears — no
+      // blank flash between placeholder and page (perceived-performance).
       signalRendered: () => {
         trackEvent('landing_variant_rendered', {
           variant,
@@ -52,14 +51,8 @@ async function main(): Promise<void> {
       },
     });
 
-    // Clear skeleton BEFORE injecting the variant chunk. The injected script
-    // executes synchronously before its onload, so it finds el already empty
-    // and ready for React to mount into. If we cleared inside signalRendered
-    // (called after mount), el.innerHTML='' would destroy the React tree.
-    clearSkeleton(el);
+    // Keep the skeleton up while the chunk loads — React replaces it on mount.
     await injectAssets(assets);
-    // The injected variant script mounts itself into #woocommerce-pos-upgrade
-    // and calls runtime.signalRendered() exactly once.
   } catch (err) {
     trackEvent('landing_error', {
       stage: 'variant_load',

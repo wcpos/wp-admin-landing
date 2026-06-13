@@ -54,6 +54,33 @@ function writeCache(variant: string, anonId: string | undefined): void {
     } satisfies CachedAssignment));
   } catch { /* private mode — assignment just re-resolves next load */ }
 }
+function clearCache(): void {
+  try { window.localStorage.removeItem(CACHE_KEY); } catch { /* private mode */ }
+}
+
+/**
+ * Fire-and-forget exposure accounting for cache-served (instant) renders.
+ * The custom assignment cache short-circuits the variant→chunk mapping so the
+ * page renders without waiting for PostHog's network flag load (~500ms), but
+ * exposure must still fire: once flags arrive, getFeatureFlag('landing-variant')
+ * records `$feature_flag_called`, keeping the SRM canary in lockstep with
+ * `landing_variant_rendered` (spec §3.1.4). If the kill-switch is on, the
+ * assignment cache is cleared so the kill takes effect on the next load (spec
+ * §3.1.4 — never switch a rendered variant mid-session). Same synchronous-fire
+ * guard as resolveFlag.
+ */
+function watchExposure(ph: typeof posthog): void {
+  let unsub: (() => void) | undefined;
+  let fired = false;
+  unsub = ph.onFeatureFlags(() => {
+    fired = true;
+    ph.getFeatureFlag(FLAG_KEY); // fires $feature_flag_called
+    const killValue = ph.getFeatureFlag(KILL_SWITCH_KEY, { send_event: false });
+    if (killValue === true || killValue === 'on') clearCache();
+    unsub?.();
+  });
+  if (fired) unsub();
+}
 
 /** Waits for flags or times out. Exposure accounting: getFeatureFlag is always
  *  called once flags arrive — even after a timeout/cache render — so
@@ -96,9 +123,30 @@ export interface LoadedVariant { variant: string; renderSource: 'flag' | 'cache'
  *  between prepare and inject: an injected script executes before its onload, so
  *  the runtime must exist before injection, not after (spec §3.1 ordering). */
 export async function prepareVariant(ph: typeof posthog, anonId: string | undefined, proActive: boolean): Promise<PreparedVariant> {
+  const cached = readCache();
+
+  // Fast path: a synchronous decision that does NOT wait for the flag network
+  // load. `pro_active` and a valid cached assignment can both be decided
+  // instantly (flag value irrelevant), so we render immediately and record
+  // exposure asynchronously — saving ~500ms on every repeat visit (spec §3.1.4:
+  // the cache short-circuits the variant→chunk mapping, not exposure).
+  const fast = decideVariant({
+    flagValue: undefined, cached, anonId, schemaVersion: ANALYTICS_SCHEMA_VERSION,
+    now: Date.now(), validVariants: VALID_VARIANTS, killSwitch: false, proActive, fallbackVariant: FALLBACK_VARIANT,
+  });
+  if (proActive) {
+    // Excluded from all denominators (§3.1.6) — no exposure, no flag wait.
+    return { variant: fast.variant, renderSource: 'fallback', assets: resolveAssets(fast.variant, null, VARIANT_ASSETS, ASSET_VERSION) };
+  }
+  if (fast.renderSource === 'cache') {
+    watchExposure(ph); // fire-and-forget: $feature_flag_called + kill-switch (next-load)
+    return { variant: fast.variant, renderSource: 'cache', assets: resolveAssets(fast.variant, null, VARIANT_ASSETS, ASSET_VERSION) };
+  }
+
+  // Cold path (no usable cache): wait for the flag, bounded by the timeout.
   const { flagValue, killSwitch, payload } = await resolveFlag(ph);
   const decision = decideVariant({
-    flagValue, cached: readCache(), anonId, schemaVersion: ANALYTICS_SCHEMA_VERSION,
+    flagValue, cached, anonId, schemaVersion: ANALYTICS_SCHEMA_VERSION,
     now: Date.now(), validVariants: VALID_VARIANTS, killSwitch, proActive, fallbackVariant: FALLBACK_VARIANT,
   });
   if (decision.cache) writeCache(decision.variant, anonId);
