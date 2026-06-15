@@ -16,7 +16,7 @@ test('person profiles always + session recording stays off', () => {
 
 test('before_send strips admin URLs', () => {
   assert.match(source, /key\.startsWith\('\$session_entry_'\)/, 'before_send must strip the $session_entry_* URL family');
-  for (const key of ['\\$current_url', '\\$host', '\\$pathname', '\\$referrer']) {
+  for (const key of ['\\$current_url', '\\$host', '\\$pathname', '\\$referrer', '\\$referring_domain']) {
     assert.match(source, new RegExp(key), `before_send must strip ${key}`);
   }
 });
