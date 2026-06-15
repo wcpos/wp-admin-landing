@@ -96,11 +96,21 @@ export function initAnalytics(): typeof posthog {
       : {}),
     before_send: (event) => {
       if (event?.properties) {
-        delete event.properties.$current_url;
-        delete event.properties.$host;
-        delete event.properties.$pathname;
-        delete event.properties.$referrer;
-        delete event.properties.$referring_domain;
+        const p = event.properties;
+        delete p.$current_url;
+        delete p.$host;
+        delete p.$pathname;
+        delete p.$referrer;
+        delete p.$referring_domain;
+        // Newer posthog-js also records the entry URL/referrer/host on a
+        // `$session_entry_*` family (e.g. $session_entry_url =
+        // https://shop.example/wp-admin/admin.php?page=woocommerce-pos). Strip
+        // the whole family so the site's admin URL never reaches PostHog
+        // (privacy / wp.org guideline 7) — there is no useful campaign data on
+        // an admin-screen entry.
+        for (const key of Object.keys(p)) {
+          if (key.startsWith('$session_entry_')) delete p[key];
+        }
       }
       return event;
     },
