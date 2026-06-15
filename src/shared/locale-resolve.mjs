@@ -14,7 +14,8 @@ export const LOCALE_DIRS = [
 /**
  * Maps an i18next-requested language code to an available translation directory.
  * Files use full WP locale codes (fr_FR, es_ES, …). This resolves:
- *  - exact matches (fr_FR → fr_FR, ja → ja),
+ *  - exact region matches, including hyphenated BCP-47 forms i18next/browsers
+ *    may pass (zh-TW → zh_TW, es-MX → es_MX, pt-PT → pt_PT), case-insensitively;
  *  - short codes from sites whose WP locale is language-only (es → es_ES,
  *    pt → pt_BR, zh → zh_CN) so those users get their language, not English.
  * Unknown codes pass through unchanged → the file 404s → bundled-English
@@ -25,8 +26,13 @@ export const LOCALE_DIRS = [
  */
 export function resolveLocaleDir(lng) {
   if (!lng) return lng;
-  if (LOCALE_DIRS.includes(lng)) return lng;
-  const base = lng.split(/[-_]/)[0].toLowerCase();
-  if (LOCALE_DIRS.includes(base)) return base;
+  const norm = lng.replace(/-/g, '_'); // BCP-47 hyphen → WP underscore (zh-TW → zh_TW)
+  // Exact region/language match first, so es-MX stays es_MX and never collapses
+  // to the base language's first region (es_ES). Case-insensitive to tolerate
+  // codes like `zh_tw` from cleanCode/lowercasing.
+  const exact = LOCALE_DIRS.find((dir) => dir.toLowerCase() === norm.toLowerCase());
+  if (exact) return exact;
+  const base = norm.split('_')[0].toLowerCase();
+  if (LOCALE_DIRS.includes(base)) return base; // language-only dir (ja, ar, en, …)
   return LOCALE_DIRS.find((dir) => dir.toLowerCase().split('_')[0] === base) ?? lng;
 }

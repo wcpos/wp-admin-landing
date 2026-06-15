@@ -28,6 +28,14 @@ test('region variants keep their own directory', () => {
   assert.equal(resolveLocaleDir('pt_PT'), 'pt_PT');
 });
 
+test('hyphenated codes keep their exact region (not the base language first region)', () => {
+  // Regression (Codex #31): 'zh-TW' must not collapse to zh_CN, 'es-MX' to es_ES.
+  assert.equal(resolveLocaleDir('zh-TW'), 'zh_TW');
+  assert.equal(resolveLocaleDir('es-MX'), 'es_MX');
+  assert.equal(resolveLocaleDir('pt-PT'), 'pt_PT');
+  assert.equal(resolveLocaleDir('zh_tw'), 'zh_TW'); // case-insensitive
+});
+
 test('unknown locales pass through unchanged → 404 → English fallback', () => {
   assert.equal(resolveLocaleDir('xx_XX'), 'xx_XX');
   assert.equal(resolveLocaleDir('zz'), 'zz');
