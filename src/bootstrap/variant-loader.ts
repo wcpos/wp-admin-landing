@@ -84,6 +84,29 @@ function recordCachedExposure(ph: typeof posthog): void {
   }
 }
 
+/**
+ * Background kill-switch watch for cache-served renders. recordCachedExposure
+ * above only sees the kill-switch value persisted from the last load; if ops
+ * flips the switch ON afterwards, this picks up the FRESH value once PostHog
+ * reloads flags and clears the assignment cache so the kill takes effect on the
+ * next load (spec §3.1.4). Read with `send_event: false` so it never fires
+ * `$feature_flag_called` — the ops kill-switch is bucket-agnostic, so reading it
+ * after identify() is safe (unlike the experiment flag's exposure, which must
+ * stay pre-identify). Same synchronous-fire guard as resolveFlag; unsubscribes
+ * after the first reload.
+ */
+function watchKillSwitch(ph: typeof posthog): void {
+  let unsub: (() => void) | undefined;
+  let fired = false;
+  unsub = ph.onFeatureFlags(() => {
+    fired = true;
+    const killValue = ph.getFeatureFlag(KILL_SWITCH_KEY, { send_event: false });
+    if (killValue === true || killValue === 'on') clearCache();
+    unsub?.();
+  });
+  if (fired) unsub();
+}
+
 /** Waits for flags or times out. Exposure accounting: getFeatureFlag is always
  *  called once flags arrive — even after a timeout/cache render — so
  *  $feature_flag_called stays in lockstep with rendered events (spec §3.1.4).
@@ -144,6 +167,9 @@ export async function prepareVariant(ph: typeof posthog, anonId: string | undefi
     // Synchronous, before this function returns → before the bootstrap's
     // identify(): keeps $feature_flag_called in the anon_id bucket (spec §5.1).
     recordCachedExposure(ph);
+    // Non-exposure background watch so a freshly-flipped kill-switch still clears
+    // the cache for next load (does not read the experiment flag → no exposure).
+    watchKillSwitch(ph);
     return { variant: fast.variant, renderSource: 'cache', assets: resolveAssets(fast.variant, null, VARIANT_ASSETS, ASSET_VERSION) };
   }
 

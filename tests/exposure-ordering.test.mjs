@@ -39,6 +39,24 @@ test('kill-switch read does not pollute exposure and clears cache for next load'
   assert.match(helper, /clearCache\(\)/, 'kill-switch on a cached render clears the cache (takes effect next load)');
 });
 
+test('fresh kill-switch is watched without re-reading the experiment flag (no post-identify exposure)', () => {
+  // The async kill-switch watch picks up a switch flipped after the last load,
+  // but must NOT read the experiment flag (FLAG_KEY) — that would record
+  // $feature_flag_called post-identify in the wrong bucket.
+  assert.match(loader, /function watchKillSwitch/);
+  const watch = slice(loader, 'function watchKillSwitch', '\n}');
+  assert.match(watch, /KILL_SWITCH_KEY,\s*\{\s*send_event:\s*false\s*\}/, 'kill-switch watch is non-exposure');
+  assert.doesNotMatch(watch, /getFeatureFlag\(FLAG_KEY\)/, 'kill-switch watch must not read the experiment flag');
+  assert.match(watch, /clearCache\(\)/);
+  const cacheBranch = slice(loader, "fast.renderSource === 'cache'", 'return {');
+  assert.match(cacheBranch, /watchKillSwitch\(ph\)/, 'cache path arms the fresh kill-switch watch');
+});
+
+test('preview disables production flag resolution', () => {
+  const analytics = readFileSync(new URL('../src/shared/analytics.ts', import.meta.url), 'utf8');
+  assert.match(analytics, /advanced_disable_flags:\s*preview/, 'preview must not resolve production feature flags');
+});
+
 test('bootstrap reads the flag (prepareVariant) before identifyConsented', () => {
   // Ordering: prepareVariant (which does the synchronous exposure read on the
   // cache path, and awaits resolveFlag on the cold path) resolves before identify.

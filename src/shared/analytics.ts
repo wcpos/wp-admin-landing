@@ -86,6 +86,11 @@ export function initAnalytics(): typeof posthog {
     capture_heatmaps: false,
     capture_dead_clicks: false,
     opt_out_capturing_by_default: preview,
+    // Preview (GitHub Pages harness): never resolve production feature flags.
+    // The harness seeds its own assignment cache to render a chosen variant; a
+    // live `landing-variant` flag must not win over that, and preview iframe
+    // loads should not hit the production flag endpoint at all.
+    advanced_disable_flags: preview,
     ...(anonId && !hasPersistedIdentity()
       ? { bootstrap: { distinctID: anonId, isIdentifiedID: false } }
       : {}),
