@@ -92,19 +92,36 @@ function recordCachedExposure(ph: typeof posthog): void {
  * next load (spec §3.1.4). Read with `send_event: false` so it never fires
  * `$feature_flag_called` — the ops kill-switch is bucket-agnostic, so reading it
  * after identify() is safe (unlike the experiment flag's exposure, which must
- * stay pre-identify). Same synchronous-fire guard as resolveFlag; unsubscribes
- * after the first reload.
+ * stay pre-identify). Unlike resolveFlag, this deliberately does NOT use the
+ * synchronous-fire / unsubscribe-after-first guard: that would re-read the stale
+ * inline value and miss the fresh network reload. It stays subscribed and clears
+ * on any observed ON value, bounded by a timeout so the listener never lingers
+ * (see the inline note on the subscription below).
  */
 function watchKillSwitch(ph: typeof posthog): void {
   let unsub: (() => void) | undefined;
-  let fired = false;
+  const stop = () => {
+    if (unsub) {
+      unsub();
+      unsub = undefined;
+    }
+  };
+  // Deliberately NO synchronous-fire / unsubscribe-after-first guard here. On a
+  // cached repeat visit posthog-js fires onFeatureFlags inline with the STALE
+  // persisted flags; unsubscribing then (the resolveFlag pattern) would only
+  // re-read the value recordCachedExposure already saw and miss the fresh
+  // network reload — so a kill-switch flipped since the last visit would never
+  // clear the cache. Instead, stay subscribed and clear on any observed ON
+  // value (the fresh reload, and the post-identify reload), then stop. Bounded
+  // by a timeout so the listener never lingers.
   unsub = ph.onFeatureFlags(() => {
-    fired = true;
     const killValue = ph.getFeatureFlag(KILL_SWITCH_KEY, { send_event: false });
-    if (killValue === true || killValue === 'on') clearCache();
-    unsub?.();
+    if (killValue === true || killValue === 'on') {
+      clearCache(); // kill takes effect next load (spec §3.1.4)
+      stop();
+    }
   });
-  if (fired) unsub();
+  setTimeout(stop, 8000);
 }
 
 /** Waits for flags or times out. Exposure accounting: getFeatureFlag is always
