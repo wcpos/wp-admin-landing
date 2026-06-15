@@ -5,6 +5,7 @@ import ChainedBackend from 'i18next-chained-backend';
 import LocalStorageBackend from 'i18next-localstorage-backend';
 import HttpBackend from 'i18next-http-backend';
 import { getLandingData } from './landing-data';
+import { resolveLocaleDir } from './locale-resolve.mjs';
 import sharedEn from '../translations/en/wp-admin-landing-shared.json';
 
 export const SHARED_NS = 'wp-admin-landing-shared';
@@ -19,6 +20,12 @@ export function initI18n(): typeof i18next {
     .init({
       lng: locale,
       fallbackLng: 'en_US',
+      // Request only the exact locale — not i18next's default base-language
+      // companion (es_ES would otherwise also fetch a nonexistent `es`, logging
+      // a 404 each load). Locale files are key-complete (lint-translations), so
+      // no region→base fallback layer is needed; missing keys fall back to the
+      // bundled en_US.
+      load: 'currentOnly',
       ns: [SHARED_NS],
       defaultNS: SHARED_NS,
       keySeparator: false,
@@ -32,11 +39,14 @@ export function initI18n(): typeof i18next {
         backendOptions: [
           { prefix: 'wcpos_i18n_', expirationTime: 7 * 24 * 60 * 60 * 1000 },
           // Self-contained: locale files live in this repo beside src/translations/en/
-          // and ship with the same release tag as the bundles. Locale dirs use WP locale
-          // codes (fr_FR, de_DE, es_ES, it_IT, nl_NL, pt_BR, ja, zh_CN, ko_KR, ar, hi_IN).
-          // Missing locale files 404 → chained backend falls back to bundled English
-          // (expected until translations are generated).
-          { loadPath: 'https://cdn.jsdelivr.net/gh/wcpos/wp-admin-landing@v2/src/translations/{{lng}}/{{ns}}.json' },
+          // and ship with the same release tag as the bundles. The loadPath is a
+          // function so a requested code is resolved to an available directory
+          // (short es → es_ES, etc.); unsupported locales 404 → bundled-English
+          // fallback (the documented behaviour).
+          {
+            loadPath: (lngs: string[], namespaces: string[]) =>
+              `https://cdn.jsdelivr.net/gh/wcpos/wp-admin-landing@v2/src/translations/${resolveLocaleDir(lngs[0])}/${namespaces[0]}.json`,
+          },
         ],
       },
     });
