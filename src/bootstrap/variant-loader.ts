@@ -92,8 +92,11 @@ function recordCachedExposure(ph: typeof posthog): void {
  * next load (spec §3.1.4). Read with `send_event: false` so it never fires
  * `$feature_flag_called` — the ops kill-switch is bucket-agnostic, so reading it
  * after identify() is safe (unlike the experiment flag's exposure, which must
- * stay pre-identify). Same synchronous-fire guard as resolveFlag; unsubscribes
- * after the first reload.
+ * stay pre-identify). Unlike resolveFlag, this deliberately does NOT use the
+ * synchronous-fire / unsubscribe-after-first guard: that would re-read the stale
+ * inline value and miss the fresh network reload. It stays subscribed and clears
+ * on any observed ON value, bounded by a timeout so the listener never lingers
+ * (see the inline note on the subscription below).
  */
 function watchKillSwitch(ph: typeof posthog): void {
   let unsub: (() => void) | undefined;
