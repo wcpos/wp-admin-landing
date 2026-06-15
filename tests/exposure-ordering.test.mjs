@@ -52,7 +52,7 @@ test('fresh kill-switch is watched without re-reading the experiment flag (no po
   // miss the fresh network reload. It stays subscribed (bounded by a timeout)
   // and clears only on an observed ON value.
   assert.doesNotMatch(watch, /if \(fired\)\s*unsub/, 'must not unsubscribe after the first stale callback');
-  assert.match(watch, /setTimeout\(/, 'subscription is bounded by a timeout, not closed on first fire');
+  assert.match(watch, /setTimeout\([^,]+,\s*8000\)/, 'subscription is bounded by the documented 8s timeout, not closed on first fire');
   const cacheBranch = slice(loader, "fast.renderSource === 'cache'", 'return {');
   assert.match(cacheBranch, /watchKillSwitch\(ph\)/, 'cache path arms the fresh kill-switch watch');
 });
