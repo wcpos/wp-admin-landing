@@ -59,27 +59,29 @@ function clearCache(): void {
 }
 
 /**
- * Fire-and-forget exposure accounting for cache-served (instant) renders.
- * The custom assignment cache short-circuits the variant→chunk mapping so the
- * page renders without waiting for PostHog's network flag load (~500ms), but
- * exposure must still fire: once flags arrive, getFeatureFlag('landing-variant')
- * records `$feature_flag_called`, keeping the SRM canary in lockstep with
- * `landing_variant_rendered` (spec §3.1.4). If the kill-switch is on, the
- * assignment cache is cleared so the kill takes effect on the next load (spec
- * §3.1.4 — never switch a rendered variant mid-session). Same synchronous-fire
- * guard as resolveFlag.
+ * Exposure accounting for a cache-served (instant) render. The read is
+ * **synchronous** — getFeatureFlag returns from PostHog's persisted flags, which
+ * exist after the first load that wrote the assignment cache (spec §3.1.4). It
+ * therefore runs inside prepareVariant, BEFORE the bootstrap calls
+ * identify(site_uuid): `$feature_flag_called` is recorded in the same anon_id
+ * bucket the cached assignment was made in, keeping the SRM/stickiness canary
+ * valid (flag-before-identify, spec §5.1).
+ *
+ * There is deliberately NO onFeatureFlags subscription here. An async read could
+ * fire AFTER identify() reloads flags under site_uuid (which hashes to a
+ * different bucket), recording the exposure for the wrong bucket. The kill-switch
+ * is read synchronously too; if on, the assignment cache is cleared so the kill
+ * takes effect on the next load (spec §3.1.4 — never switch a rendered variant
+ * mid-session).
  */
-function watchExposure(ph: typeof posthog): void {
-  let unsub: (() => void) | undefined;
-  let fired = false;
-  unsub = ph.onFeatureFlags(() => {
-    fired = true;
-    ph.getFeatureFlag(FLAG_KEY); // fires $feature_flag_called
+function recordCachedExposure(ph: typeof posthog): void {
+  try {
+    ph.getFeatureFlag(FLAG_KEY); // fires $feature_flag_called (anon_id bucket)
     const killValue = ph.getFeatureFlag(KILL_SWITCH_KEY, { send_event: false });
     if (killValue === true || killValue === 'on') clearCache();
-    unsub?.();
-  });
-  if (fired) unsub();
+  } catch {
+    /* flags not yet persisted on a rare cache-without-flags load — skip exposure */
+  }
 }
 
 /** Waits for flags or times out. Exposure accounting: getFeatureFlag is always
@@ -139,7 +141,9 @@ export async function prepareVariant(ph: typeof posthog, anonId: string | undefi
     return { variant: fast.variant, renderSource: 'fallback', assets: resolveAssets(fast.variant, null, VARIANT_ASSETS, ASSET_VERSION) };
   }
   if (fast.renderSource === 'cache') {
-    watchExposure(ph); // fire-and-forget: $feature_flag_called + kill-switch (next-load)
+    // Synchronous, before this function returns → before the bootstrap's
+    // identify(): keeps $feature_flag_called in the anon_id bucket (spec §5.1).
+    recordCachedExposure(ph);
     return { variant: fast.variant, renderSource: 'cache', assets: resolveAssets(fast.variant, null, VARIANT_ASSETS, ASSET_VERSION) };
   }
 
