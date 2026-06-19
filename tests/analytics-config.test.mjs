@@ -30,6 +30,16 @@ test('Google Analytics is gone (spec §5.1: removed entirely)', () => {
   assert.doesNotMatch(source, /react-ga4|ReactGA|G-08SJ28P1E5/);
 });
 
+test('bootstrap seeds featureFlags from server-resolved bootstrap_flags (spec §5.1)', () => {
+  // The plugin injects window.wcpos.landing.bootstrap_flags; init must seed
+  // them into PostHog's bootstrap so getFeatureFlag(FLAG_KEY) resolves at first
+  // paint instead of racing the (broken) /flags network fetch.
+  assert.match(source, /featureFlags\s*:\s*data\.bootstrap_flags/);
+  // ...but never in preview, which seeds its own assignment cache.
+  const initBody = source.slice(source.indexOf('export function initAnalytics'), source.indexOf('export function identifyConsented'));
+  assert.match(initBody, /!preview\s*&&\s*data\?\.bootstrap_flags/);
+});
+
 test('flag-before-identify: identify lives in identifyConsented, not init', () => {
   assert.match(source, /export function identifyConsented/);
   const initBody = source.slice(source.indexOf('export function initAnalytics'), source.indexOf('export function identifyConsented'));
