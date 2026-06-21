@@ -92,7 +92,20 @@ export function initAnalytics(): typeof posthog {
     // loads should not hit the production flag endpoint at all.
     advanced_disable_flags: preview,
     ...(anonId && !hasPersistedIdentity()
-      ? { bootstrap: { distinctID: anonId, isIdentifiedID: false } }
+      ? {
+          bootstrap: {
+            distinctID: anonId,
+            isIdentifiedID: false,
+            // Server-resolved experiment flags. The plugin (≥1.9.7) evaluates
+            // `landing-variant` for this anon_id and injects it into
+            // window.wcpos.landing.bootstrap_flags, so getFeatureFlag(FLAG_KEY)
+            // returns synchronously at first paint — no /flags round-trip, no
+            // 500 ms cold-path timeout, no flicker. Absent on older plugins
+            // (the cold path then resolves it). Skipped in preview, which seeds
+            // its own assignment cache and must not resolve production flags.
+            ...(!preview && data?.bootstrap_flags ? { featureFlags: data.bootstrap_flags } : {}),
+          },
+        }
       : {}),
     before_send: (event) => {
       if (event?.properties) {
