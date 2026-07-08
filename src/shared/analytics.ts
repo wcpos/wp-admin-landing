@@ -70,6 +70,27 @@ export function initAnalytics(): typeof posthog {
   const data = getLandingData();
   const anonId = data?.anon_id;
   const preview = isPreview();
+  const bootstrap: {
+    distinctID?: string;
+    isIdentifiedID?: false;
+    featureFlags?: Record<string, string | boolean>;
+  } = {};
+
+  if (anonId && !hasPersistedIdentity()) {
+    bootstrap.distinctID = anonId;
+    bootstrap.isIdentifiedID = false;
+  }
+
+  // Server-resolved experiment flags. The plugin (≥1.9.7) evaluates
+  // `landing-variant` for this anon_id and injects it into
+  // window.wcpos.landing.bootstrap_flags, so getFeatureFlag(FLAG_KEY)
+  // returns synchronously at first paint — no /flags round-trip, no
+  // 500 ms cold-path timeout, no flicker. Absent on older plugins
+  // (the cold path then resolves it). Skipped in preview, which seeds
+  // its own assignment cache and must not resolve production flags.
+  if (!preview && data?.bootstrap_flags) {
+    bootstrap.featureFlags = data.bootstrap_flags;
+  }
 
   posthog.init(POSTHOG_KEY, {
     api_host: POSTHOG_HOST,
@@ -91,22 +112,7 @@ export function initAnalytics(): typeof posthog {
     // live `landing-variant` flag must not win over that, and preview iframe
     // loads should not hit the production flag endpoint at all.
     advanced_disable_flags: preview,
-    ...(anonId && !hasPersistedIdentity()
-      ? {
-          bootstrap: {
-            distinctID: anonId,
-            isIdentifiedID: false,
-            // Server-resolved experiment flags. The plugin (≥1.9.7) evaluates
-            // `landing-variant` for this anon_id and injects it into
-            // window.wcpos.landing.bootstrap_flags, so getFeatureFlag(FLAG_KEY)
-            // returns synchronously at first paint — no /flags round-trip, no
-            // 500 ms cold-path timeout, no flicker. Absent on older plugins
-            // (the cold path then resolves it). Skipped in preview, which seeds
-            // its own assignment cache and must not resolve production flags.
-            ...(!preview && data?.bootstrap_flags ? { featureFlags: data.bootstrap_flags } : {}),
-          },
-        }
-      : {}),
+    ...(Object.keys(bootstrap).length ? { bootstrap } : {}),
     before_send: (event) => {
       if (event?.properties) {
         const p = event.properties;
