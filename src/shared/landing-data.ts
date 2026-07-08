@@ -38,6 +38,12 @@ export interface WCPOSLanding {
   pro_active: boolean;
   /** Random per-site UUID injected by plugin ≥1.10 for analytics identity (spec §5.1). Absent on older plugins. */
   anon_id?: string;
+  /**
+   * Server-resolved feature flags injected by plugin ≥1.9.7, seeded into
+   * PostHog's `bootstrap.featureFlags` so `landing-variant` resolves at first
+   * paint without a network flag fetch (spec §5.1). Absent on older plugins.
+   */
+  bootstrap_flags?: Record<string, string | boolean>;
   profile?: ConsentProfile;
   updates_server?: UpdatesServerConfig;
 }
@@ -82,6 +88,14 @@ function isConsentProfile(value: unknown): value is ConsentProfile {
   );
 }
 
+/** Type guard validating that a value is a flag map (string keys → string|boolean), matching PostHog's `bootstrap.featureFlags` contract. */
+function isFlagMap(value: unknown): value is Record<string, string | boolean> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  return Object.values(value as Record<string, unknown>).every(
+    (v) => typeof v === 'string' || typeof v === 'boolean'
+  );
+}
+
 /** Type guard validating that a value conforms to the {@link UpdatesServerConfig} shape. */
 function isUpdatesServerConfig(value: unknown): value is UpdatesServerConfig {
   if (!value || typeof value !== 'object') return false;
@@ -123,6 +137,9 @@ export function getLandingData(): WCPOSLanding | undefined {
   const raw = landing as Partial<WCPOSLanding>;
   if (typeof raw.anon_id === 'string') {
     validated.anon_id = raw.anon_id;
+  }
+  if (isFlagMap(raw.bootstrap_flags)) {
+    validated.bootstrap_flags = raw.bootstrap_flags;
   }
   if (isConsentProfile(raw.profile)) {
     validated.profile = raw.profile;
