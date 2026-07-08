@@ -24,11 +24,26 @@ test('before_send strips admin URLs', () => {
 
 test('bootstrap distinctID only when nothing persisted (no per-load re-keying)', () => {
   assert.match(source, /hasPersistedIdentity/);
-  assert.match(source, /isIdentifiedID\s*:\s*false/);
+  assert.match(source, /bootstrap\.isIdentifiedID\s*=\s*false/);
 });
 
 test('Google Analytics is gone (spec §5.1: removed entirely)', () => {
   assert.doesNotMatch(source, /react-ga4|ReactGA|G-08SJ28P1E5/);
+});
+
+test('bootstrap seeds featureFlags from server-resolved bootstrap_flags (spec §5.1)', () => {
+  // The plugin injects window.wcpos.landing.bootstrap_flags; init must seed
+  // them into PostHog's bootstrap so getFeatureFlag(FLAG_KEY) resolves at first
+  // paint instead of racing the (broken) /flags network fetch.
+  assert.match(source, /featureFlags\s*=\s*data\.bootstrap_flags/);
+  assert.match(source, /Object\.keys\(bootstrap\)\.length/, 'bootstrap should be built independently of distinctID bootstrapping');
+  const identityGateStart = source.indexOf('if (anonId && !hasPersistedIdentity())');
+  const identityGateEnd = source.indexOf('// Server-resolved experiment flags', identityGateStart);
+  const identityGate = source.slice(identityGateStart, identityGateEnd);
+  assert.doesNotMatch(identityGate, /featureFlags/, 'featureFlags must also be bootstrapped for returning users with an existing persisted identity');
+  // ...but never in preview, which seeds its own assignment cache.
+  const initBody = source.slice(source.indexOf('export function initAnalytics'), source.indexOf('export function identifyConsented'));
+  assert.match(initBody, /!preview\s*&&\s*data\?\.bootstrap_flags/);
 });
 
 test('flag-before-identify: identify lives in identifyConsented, not init', () => {
