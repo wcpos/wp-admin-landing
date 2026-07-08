@@ -15,6 +15,8 @@ export interface ConsentProfile {
   site_uuid: string;
   user_uuid: string;
   user_role: string;
+  site_domain?: string;
+  admin_domain?: string;
   wc_currency: string;
   wc_country: string;
   days_since_install: number;
@@ -71,6 +73,8 @@ function isConsentProfile(value: unknown): value is ConsentProfile {
     typeof p.site_uuid === 'string' &&
     typeof p.user_uuid === 'string' &&
     typeof p.user_role === 'string' &&
+    (typeof p.site_domain === 'undefined' || typeof p.site_domain === 'string') &&
+    (typeof p.admin_domain === 'undefined' || typeof p.admin_domain === 'string') &&
     typeof p.wc_currency === 'string' &&
     typeof p.wc_country === 'string' &&
     typeof p.days_since_install === 'number' &&

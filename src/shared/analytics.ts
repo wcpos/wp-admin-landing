@@ -66,10 +66,21 @@ function isPreview(): boolean {
   }
 }
 
+function getReferringDomain(): string | undefined {
+  try {
+    if (!document.referrer) return undefined;
+    const hostname = new URL(document.referrer).hostname.toLowerCase();
+    return hostname || undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export function initAnalytics(): typeof posthog {
   const data = getLandingData();
   const anonId = data?.anon_id;
   const preview = isPreview();
+  const referringDomain = getReferringDomain();
 
   posthog.init(POSTHOG_KEY, {
     api_host: POSTHOG_HOST,
@@ -117,6 +128,9 @@ export function initAnalytics(): typeof posthog {
   });
 
   const visits = bumpVisitState();
+  for (const key of ['site_domain', 'admin_domain', 'referring_domain']) {
+    posthog.unregister(key);
+  }
   posthog.register({
     plugin_version: data?.plugin_version ?? 'unknown',
     pro_active: data?.pro_active ?? false,
@@ -124,6 +138,9 @@ export function initAnalytics(): typeof posthog {
     has_profile: Boolean(data?.profile),
     has_anon_id: Boolean(anonId),
     analytics_schema_version: ANALYTICS_SCHEMA_VERSION,
+    ...(data?.profile?.site_domain ? { site_domain: data.profile.site_domain } : {}),
+    ...(data?.profile?.admin_domain ? { admin_domain: data.profile.admin_domain } : {}),
+    ...(referringDomain ? { referring_domain: referringDomain } : {}),
     ...visits,
   });
 
@@ -152,6 +169,8 @@ export function identifyConsented(): void {
     product_count: profile.product_count,
     order_count: profile.order_count,
     pos_user_count: profile.pos_user_count,
+    ...(profile.site_domain ? { site_domain: profile.site_domain } : {}),
+    ...(profile.admin_domain ? { admin_domain: profile.admin_domain } : {}),
     wc_currency: profile.wc_currency,
     wc_country: profile.wc_country,
     user_role: profile.user_role,
