@@ -2,7 +2,7 @@
   "get_pro": "Hanki Pro",
   "price_both": "{annual}/vuosi · {lifetime} kertamaksu",
   "price_annual_only": "{annual}/vuosi",
-  "proof_chip_line": "kauppaa käyttää WooCommerce POSia\nWordPress.orgissa toukokuusta 2014",
+  "proof_chip_line": "kauppaa käyttää WCPOSia\nWordPress.orgissa toukokuusta 2014",
   "reviews_heading": "WordPress.org-arvosteluja",
   "translated_from_french": "käännetty ranskasta",
   "read_on_wporg": "Lue WordPress.orgissa →",
