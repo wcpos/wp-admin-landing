@@ -50,7 +50,7 @@ literally.** Use the natural equivalent a shopkeeper in the target language woul
 - **Preserve `{placeholder}` interpolations.** They may be repositioned within the
   sentence to suit grammar, but must never be removed, renamed, or translated.
 - **Prices stay in USD, exactly as written.** Do not convert currencies or localise prices.
-- **Proper nouns are not translated:** WooCommerce POS, WordPress.org, Discord,
+- **Proper nouns are not translated:** WCPOS, WordPress.org, Discord,
   Urban Locavore, Perth.
 - **Never translate review quotes.** Reviews are not part of these namespaces. adeline's
   review renders in its original French for `fr` locales via code — leave review content

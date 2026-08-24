@@ -7,6 +7,10 @@ const BANNED = [
   /\bsimply\b/i, JUST_RE, /\bhurry\b/i, /\blimited time\b/i, /\bact now\b/i,
   /\brevolutionary\b/i, /\bgame.changing\b/i, /\bseamless\b/i, /\bleverage\b/i, /\bbest-in-class\b/i,
   /\p{Extended_Pictographic}/u, // emoji (spec: none in product copy)
+  // Copyright-driven naming convention: the product is WCPOS / WCPOS Pro,
+  // never the legacy name. Bans the prohibited form outright so it cannot
+  // return through new copy; `WooCommerce` alone is fine (it is the platform).
+  /\bWooCommerce POS\b/i,
 ];
 /** Keys allowed to use "just" — locked copy approved by Paul (indie P.S., spec §2.1). Only the just-rule is skipped. */
 const ALLOW_JUST = new Set(['ps']);
