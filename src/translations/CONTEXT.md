@@ -17,6 +17,7 @@ One namespace per landing-page variant, plus a shared namespace:
   card, CTA atoms).
 - `wp-admin-landing-indie` — the "indie" variant.
 - `wp-admin-landing-free-plus` — the "free-plus" variant.
+- `wp-admin-landing-plan` — the "plan" variant (Free and Pro plan cards).
 
 ## Target locales (11)
 
@@ -42,6 +43,10 @@ literally.** Use the natural equivalent a shopkeeper in the target language woul
 - **indie variant** — a shopkeeper-to-shopkeeper letter from Paul: warm, plain, first
   person. It should read like a person who runs a shop talking to another shop owner.
 - **free-plus variant** — a plain product page. Clear and factual, no hard sell.
+- **plan variant** — the same plain, factual register as free-plus. "Free" and "Pro" are
+  plan names; keep the word for "register" identical across every string. `free_price`
+  stays `$0`. Prefer phrasing without very long compounds in headings and feature titles:
+  the page never auto-hyphenates, so a long word wraps whole or breaks mid-word.
 
 ## Brand and formatting rules
 

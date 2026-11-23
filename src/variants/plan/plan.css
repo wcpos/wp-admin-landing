@@ -1,0 +1,161 @@
+/*
+ * The plan variant ports its judged mockup's stylesheet rather than translating
+ * it into utilities: the layout leans on container queries, pseudo-element
+ * check marks and the clipped price separator, which read far clearer as CSS.
+ * Every rule sits under #woocommerce-pos-upgrade (id specificity) so wp-admin's
+ * element rules (`p { font-size: 13px }`, `.wrap h1`, `a:focus`) never win,
+ * and every class carries the `plan-` prefix so wp-admin classes (`.card`) never
+ * match. Element resets use :where() so the class rules after them still apply.
+ */
+#woocommerce-pos-upgrade {
+  & .plan-page {
+    --ink: #1f252e;
+    --slate-800: #323a46;
+    --slate-600: #525c6b;
+    --slate-500: #6a7482;
+    --slate-200: #dce0e6;
+    --slate-100: #eaedf1;
+    --slate-50: #f4f6f9;
+    --red: #cd2c24;
+    --red-hover: #a82320;
+    --cream: #f5e5c0;
+    --wp-border: #c3c4c7;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    container-type: inline-size;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    color: var(--slate-800);
+    font: 15px/1.5 var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+  & .plan-page :where(h1, h2, h3, p, ul, li, figure, figcaption, blockquote, summary) {
+    margin: 0; padding: 0; font-size: inherit; line-height: inherit; font-weight: inherit; color: inherit;
+  }
+  & .plan-page :where(h1, h2, h3, .plan-checks b, .plan-checks span) { hyphens: manual; -webkit-hyphens: manual; }
+  & .plan-page :where(a) { color: var(--slate-800); }
+  & .plan-page :where(a:focus) { box-shadow: none; }
+  & .plan-page :where(a, summary):focus-visible { outline: 2px solid var(--slate-800); outline-offset: 2px; }
+  & .plan-page img { display: block; max-width: 100%; height: auto; }
+  & .plan-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* header */
+  & .plan-head { padding: 36px 48px 28px; }
+  & .plan-eyebrow { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; margin-bottom: 10px; }
+  & .plan-installs { font-size: 14px; color: var(--slate-600); }
+  & .plan-installs-below { display: none; }
+  & .plan-marker { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--slate-600); }
+  & .plan-marker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--slate-500); }
+  & .plan-head h1 { max-width: 24em; font-size: 32px; line-height: 1.15; letter-spacing: -0.018em; font-weight: 700; color: var(--ink); text-wrap: balance; }
+
+  /* plan cards */
+  & .plan-cards { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 20px; align-items: start; padding: 28px 48px 32px; background: var(--slate-50); border-top: 1px solid var(--slate-100); }
+  & .plan-free-col { display: grid; gap: 20px; }
+  & .plan-tier { background: #fff; border: 1px solid var(--wp-border); border-radius: 6px; }
+  & .plan-tier-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; padding: 22px 26px 0; }
+  & .plan-tier h2 { font-size: 24px; font-weight: 700; color: var(--ink); }
+  & .plan-current { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--slate-500); }
+  /* index.css makes every ::before border-box; the tick marks are drawn content-box */
+  & :is(.plan-current, .plan-checks li)::before { box-sizing: content-box; }
+  & .plan-current::before { content: ""; width: 10px; height: 5px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg) translateY(-2px); }
+  & .plan-cost { padding: 8px 26px 0; font-size: 15px; color: var(--slate-600); }
+  & .plan-cost b { margin-right: 6px; font-size: 28px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  & .plan-lead { padding: 12px 26px 0; font-size: 14px; font-weight: 600; color: var(--ink); }
+  & .plan-checks { display: grid; gap: 12px; padding: 10px 26px 24px; list-style: none; }
+  & .plan-checks li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.4; }
+  & .plan-checks li::before { content: ""; position: absolute; left: 3px; top: 5px; width: 11px; height: 6px; border-left: 2px solid var(--slate-500); border-bottom: 2px solid var(--slate-500); transform: rotate(-45deg); }
+  & .plan-checks b { display: block; font-weight: 600; color: var(--ink); }
+  & .plan-checks span { display: block; margin-top: 2px; font-size: 13px; color: var(--slate-500); }
+  & .plan-tier-free .plan-note { margin: 0 26px 24px; padding-top: 14px; border-top: 1px solid var(--slate-100); font-size: 14px; color: var(--slate-600); }
+  & .plan-enough { padding: 0 4px; font-size: 14px; color: var(--slate-600); }
+  & .plan-enough h3 { margin-bottom: 4px; font-size: 15px; font-weight: 600; color: var(--ink); }
+
+  /* Pro: the next step */
+  & .plan-tier-pro { border: 2px solid var(--slate-800); box-shadow: 0 12px 28px -18px rgba(31, 37, 46, 0.45); }
+  & .plan-band { display: flex; align-items: center; min-height: 34px; padding: 5px 26px; background: var(--slate-800); }
+  & .plan-band h2 { font-size: 19px; line-height: 24px; color: var(--cream); }
+  & .plan-tier-pro .plan-checks { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 24px; padding-bottom: 16px; }
+  & .plan-tier-pro .plan-checks li::before { border-color: var(--slate-800); }
+  & .plan-pro-stacked { display: none; }
+  & .plan-more { margin: -4px 26px 16px; }
+  & .plan-more summary { padding: 4px 0; font-size: 14px; font-weight: 600; color: var(--ink); cursor: pointer; }
+  & .plan-tier-pro .plan-more .plan-checks { padding: 10px 0 2px; }
+  & .plan-list-note { margin: 0 26px 18px; padding-top: 10px; border-top: 1px solid var(--slate-100); font-size: 13px; color: var(--slate-600); }
+
+  /* the one CTA, its prices and the licence line */
+  & .plan-buy { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 6px 20px; padding: 22px 26px 20px; border-bottom: 1px solid var(--slate-100); }
+  & .plan-btn { display: inline-flex; grid-row: 1 / span 2; grid-column: 1; align-items: center; justify-content: center; gap: 8px; min-width: 170px; min-height: 46px; padding: 0 26px; background: var(--red); border: 1px solid var(--red-hover); border-radius: 5px; color: #fff; font: 600 16px/1.2 var(--font); text-align: center; text-decoration: none; }
+  & .plan-btn:hover, & .plan-btn:focus { background: var(--red-hover); color: #fff; }
+  & .plan-btn svg { flex: none; }
+  & .plan-price { overflow: hidden; font-size: 22px; font-weight: 700; line-height: 1.25; color: var(--ink); }
+  & .plan-price-in { display: flex; flex-wrap: wrap; margin-left: -1.1em; }
+  & .plan-pp { white-space: nowrap; }
+  /* every price gets a leading separator; the one that starts a line is clipped */
+  & .plan-pp::before { content: "·"; display: inline-block; width: 1.1em; text-align: center; }
+  & .plan-per { font-size: 13px; color: var(--slate-500); }
+  & .plan-fair { grid-column: 1 / -1; margin-top: 8px; font-size: 13px; line-height: 1.45; color: var(--slate-500); }
+  & .plan-thanks { display: block; }
+  & .plan-thanks p { margin-top: 6px; font-size: 17px; font-weight: 600; color: var(--ink); }
+  & .plan-closing { margin: 0 48px 48px; background: #fff; border: 2px solid var(--slate-800); border-radius: 6px; }
+  & .plan-closing h2 { padding: 22px 26px 0; font-size: 20px; line-height: 1.3; font-weight: 700; color: var(--ink); }
+  & .plan-closing .plan-buy { border-bottom: 0; }
+
+  /* screenshots: the lead image spans both rows; the column ratio makes its
+     height match the two right images plus captions at desktop width */
+  & .plan-shots { padding: 44px 48px; }
+  & .plan-shots h2 { margin-bottom: 18px; font-size: 22px; line-height: 1.25; font-weight: 700; color: var(--ink); }
+  & .plan-shot-grid { display: grid; grid-template-columns: minmax(0, 1.173fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+  & .plan-shot-lead { grid-row: 1 / span 2; }
+  & .plan-shot-grid img { width: 100%; border: 1px solid var(--slate-200); border-radius: 4px; }
+  & .plan-shot-grid figcaption { margin-top: 8px; font-size: 14px; color: var(--slate-600); }
+
+  /* reviews */
+  & .plan-reviews { padding: 0 48px 44px; }
+  & .plan-reviews h2 { margin-bottom: 16px; font-size: 20px; font-weight: 700; color: var(--ink); }
+  & .plan-review-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  & .plan-review { display: flex; flex-direction: column; padding: 20px; border: 1px solid var(--wp-border); border-radius: 6px; }
+  & .plan-stars { margin-bottom: 10px; font-size: 15px; letter-spacing: 2px; color: var(--slate-800); }
+  & .plan-review blockquote { flex: 1; font-size: 15px; line-height: 1.55; }
+  & .plan-tr { display: block; margin-top: 6px; font-size: 12px; color: var(--slate-500); }
+  & .plan-tr::first-letter { text-transform: uppercase; }
+  & .plan-review figcaption { margin-top: 14px; font-size: 13px; color: var(--slate-500); }
+  & .plan-review figcaption b { font-weight: 600; color: var(--ink); }
+  & .plan-review a { display: inline-block; margin-top: 6px; font-size: 14px; font-weight: 600; }
+
+  @container (max-width: 940px) {
+    & .plan-head { padding: 30px 32px 24px; }
+    & .plan-cards { grid-template-columns: minmax(0, 1fr); padding: 24px 32px; }
+    & .plan-pro-all { display: none; }
+    & .plan-pro-stacked { display: block; }
+    & .plan-tier-pro { order: -1; }
+    & .plan-installs-top { display: none; }
+    & .plan-eyebrow { margin-bottom: 2px; }
+    & .plan-installs-below { display: block; margin-bottom: 10px; line-height: 20px; }
+    & .plan-shots { padding: 32px; }
+    & .plan-reviews { padding: 0 32px 36px; }
+    & .plan-closing { margin: 0 32px 40px; }
+    & .plan-review-list { grid-template-columns: minmax(0, 1fr); }
+  }
+  @container (max-width: 560px) {
+    & .plan-head { padding: 22px 16px 18px; }
+    & .plan-head h1 { font-size: 25px; line-height: 1.2; }
+    & .plan-cards { gap: 14px; padding: 16px 12px; }
+    & :is(.plan-tier-top, .plan-cost, .plan-lead) { padding-left: 18px; padding-right: 18px; }
+    & .plan-band { padding: 5px 18px; }
+    & .plan-buy { grid-template-columns: minmax(0, 1fr); padding: 18px; }
+    & .plan-btn { grid-row: auto; width: 100%; min-width: 0; }
+    & .plan-checks { padding: 10px 18px 20px; }
+    & .plan-tier-pro .plan-checks { grid-template-columns: minmax(0, 1fr); }
+    & .plan-tier-free .plan-note { margin: 0 18px 20px; }
+    & .plan-list-note { margin: 0 18px 18px; }
+    & .plan-more { margin: -4px 18px 14px; }
+    & .plan-shots { padding: 28px 16px; }
+    & .plan-shot-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    & .plan-shot-lead { grid-row: auto; }
+    & .plan-reviews { padding: 0 16px 32px; }
+    & .plan-closing { margin: 0 12px 32px; }
+    & .plan-closing h2 { padding: 18px 18px 0; font-size: 18px; }
+  }
+}
