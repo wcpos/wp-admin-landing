@@ -37,7 +37,9 @@ export function initI18n(): typeof i18next {
       backend: {
         backends: [LocalStorageBackend, HttpBackend],
         backendOptions: [
-          { prefix: 'wcpos_i18n_', expirationTime: 7 * 24 * 60 * 60 * 1000 },
+          // defaultVersion invalidates locale files cached before a copy release;
+          // bump it whenever existing keys change meaning (2.0 Free/Pro split, 2026-11-23).
+          { prefix: 'wcpos_i18n_', expirationTime: 7 * 24 * 60 * 60 * 1000, defaultVersion: '2026-11-23' },
           // Self-contained: locale files live in this repo beside src/translations/en/
           // and ship with the same release tag as the bundles. The loadPath is a
           // function so a requested code is resolved to an available directory
