@@ -28,13 +28,13 @@ export const Hero = () => {
       <figure className="wcpos:m-0">
         <div className="wcpos:rounded-xl wcpos:bg-gradient-to-br wcpos:from-[#F5E5C0]/40 wcpos:to-gray-100 wcpos:p-3 wcpos:shadow-[0_24px_60px_-24px_rgba(26,31,39,0.45)] wcpos:ring-1 wcpos:ring-gray-900/5">
           <picture>
-            <source type="image/webp" srcSet={`${imgBase}/reports-hero.webp 2048w, ${imgBase}/reports-hero-1024.webp 1024w`} sizes="(min-width: 1024px) 512px, 100vw" />
+            <source type="image/webp" srcSet={`${imgBase}/refund-form-2x.webp`} />
             <img
-              src={`${imgBase}/reports-hero.png`}
+              src={`${imgBase}/refund-form-2x.png`}
               alt={t('hero_img_alt')}
               loading="lazy"
-              width={2048}
-              height={1536}
+              width={560}
+              height={768}
               className="wcpos:block wcpos:h-auto wcpos:w-full wcpos:rounded-lg wcpos:ring-1 wcpos:ring-gray-900/10"
             />
           </picture>
