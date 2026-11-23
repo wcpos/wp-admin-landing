@@ -5,8 +5,17 @@ import { CDN_BASE, ASSET_VERSION, ANALYTICS_SCHEMA_VERSION } from '../shared/con
 
 export const FLAG_KEY = 'landing-variant';
 export const KILL_SWITCH_KEY = 'ops-landing-kill-switch';
-export const FALLBACK_VARIANT = 'free-plus';
+export const FALLBACK_VARIANT = 'plan';
 export const VALID_VARIANTS = ['indie', 'free-plus', 'plan'];
+/**
+ * The variants production may render. Paul, 2026-11-23: "Move plan to 100% for
+ * now." A flag or cached value outside this list (older plugins still assign
+ * `indie` / `free-plus`) falls back to FALLBACK_VARIANT. The other variants stay
+ * built and stay previewable; to run a test again, list its arms here.
+ */
+export const SERVED_VARIANTS = ['plan'];
+const servedVariants = (): string[] =>
+  typeof window !== 'undefined' && (window as { __WCPOS_PREVIEW?: boolean }).__WCPOS_PREVIEW ? VALID_VARIANTS : SERVED_VARIANTS;
 const CACHE_KEY = 'wcpos_landing_assignment';
 
 /**
@@ -175,7 +184,7 @@ export async function prepareVariant(ph: typeof posthog, anonId: string | undefi
   // the cache short-circuits the variant→chunk mapping, not exposure).
   const fast = decideVariant({
     flagValue: undefined, cached, anonId, schemaVersion: ANALYTICS_SCHEMA_VERSION,
-    now: Date.now(), validVariants: VALID_VARIANTS, killSwitch: false, proActive, fallbackVariant: FALLBACK_VARIANT,
+    now: Date.now(), validVariants: servedVariants(), killSwitch: false, proActive, fallbackVariant: FALLBACK_VARIANT,
   });
   if (proActive) {
     // Excluded from all denominators (§3.1.6) — no exposure, no flag wait.
@@ -195,7 +204,7 @@ export async function prepareVariant(ph: typeof posthog, anonId: string | undefi
   const { flagValue, killSwitch, payload } = await resolveFlag(ph);
   const decision = decideVariant({
     flagValue, cached, anonId, schemaVersion: ANALYTICS_SCHEMA_VERSION,
-    now: Date.now(), validVariants: VALID_VARIANTS, killSwitch, proActive, fallbackVariant: FALLBACK_VARIANT,
+    now: Date.now(), validVariants: servedVariants(), killSwitch, proActive, fallbackVariant: FALLBACK_VARIANT,
   });
   if (decision.cache) writeCache(decision.variant, anonId);
   const assets = resolveAssets(decision.variant, payload, VARIANT_ASSETS, ASSET_VERSION);

@@ -10,10 +10,12 @@ const buy = read('buy.tsx');
 const plans = read('plans.tsx');
 const loader = readFileSync(new URL('../src/bootstrap/variant-loader.ts', import.meta.url), 'utf8');
 
-test('plan is registered with its own chunk and is not the fallback', () => {
+test('plan is registered with its own chunk and is the only served variant', () => {
   assert.match(loader, /VALID_VARIANTS = \[[^\]]*'plan'/);
   assert.match(loader, /plan: \{ js: `\$\{ASSET_BASE\}\/js\/variants\/plan\.js`, css: `\$\{ASSET_BASE\}\/css\/variants\/plan\.css` \}/);
-  assert.match(loader, /FALLBACK_VARIANT = 'free-plus'/);
+  assert.match(loader, /FALLBACK_VARIANT = 'plan'/);
+  assert.match(loader, /SERVED_VARIANTS = \['plan'\]/);
+  assert.equal((loader.match(/validVariants: servedVariants\(\)/g) || []).length, 2);
 });
 
 test('renders through readRuntime and signals rendered exactly once', () => {
