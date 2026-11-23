@@ -6,7 +6,7 @@ import { CDN_BASE, ASSET_VERSION, ANALYTICS_SCHEMA_VERSION } from '../shared/con
 export const FLAG_KEY = 'landing-variant';
 export const KILL_SWITCH_KEY = 'ops-landing-kill-switch';
 export const FALLBACK_VARIANT = 'free-plus';
-export const VALID_VARIANTS = ['indie', 'free-plus'];
+export const VALID_VARIANTS = ['indie', 'free-plus', 'plan'];
 const CACHE_KEY = 'wcpos_landing_assignment';
 
 /**
@@ -40,6 +40,7 @@ const ASSET_BASE = deriveAssetBase();
 export const VARIANT_ASSETS: Record<string, { js: string; css: string }> = {
   indie: { js: `${ASSET_BASE}/js/variants/indie.js`, css: `${ASSET_BASE}/css/variants/indie.css` },
   'free-plus': { js: `${ASSET_BASE}/js/variants/free-plus.js`, css: `${ASSET_BASE}/css/variants/free-plus.css` },
+  plan: { js: `${ASSET_BASE}/js/variants/plan.js`, css: `${ASSET_BASE}/css/variants/plan.css` },
 };
 
 interface CachedAssignment { variant: string; anonId: string; schemaVersion: number; ts: number }

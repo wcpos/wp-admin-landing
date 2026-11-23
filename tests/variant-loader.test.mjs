@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { decideVariant, resolveAssets, CACHE_TTL_MS } from '../src/bootstrap/variant-decision.mjs';
 
-const VALID = ['indie', 'free-plus'];
+const VALID = ['indie', 'free-plus', 'plan'];
 const base = {
   flagValue: undefined,
   cached: null,
@@ -18,6 +18,12 @@ const base = {
 test('flag value wins and is cached', () => {
   const d = decideVariant({ ...base, flagValue: 'indie' });
   assert.deepEqual(d, { variant: 'indie', renderSource: 'flag', cache: true });
+});
+
+test('plan renders only when the flag returns it; it is never the fallback', () => {
+  assert.deepEqual(decideVariant({ ...base, flagValue: 'plan' }), { variant: 'plan', renderSource: 'flag', cache: true });
+  assert.equal(decideVariant({ ...base }).variant, 'free-plus');
+  assert.equal(decideVariant({ ...base, flagValue: 'plan', proActive: true }).variant, 'free-plus');
 });
 
 test('invalid flag value falls through to fallback', () => {

@@ -35,7 +35,7 @@ export function findViolations(strings) {
 // CLI mode: lint the experiment namespaces only (legacy wp-admin-landing.json is excluded by design;
 // scoping decision: we lint only the three new namespace files so CI enforces brand rules on new
 // copy without retroactively blocking legacy strings we do not own in this PR).
-const NAMESPACES = ['wp-admin-landing-shared.json', 'wp-admin-landing-indie.json', 'wp-admin-landing-free-plus.json'];
+const NAMESPACES = ['wp-admin-landing-shared.json', 'wp-admin-landing-indie.json', 'wp-admin-landing-free-plus.json', 'wp-admin-landing-plan.json'];
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const dir = new URL('../src/translations/en/', import.meta.url);
   const present = readdirSync(dir).filter((f) => NAMESPACES.includes(f));
