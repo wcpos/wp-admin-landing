@@ -43,14 +43,15 @@ jobs:
   build-pr-assets:
     name: build-pr-assets
     # Only run on same-repo PRs — fork PRs can't use the org bot token.
-    # Skip Dependabot — its workflow runs can't read repo-level secrets, so
-    # WCPOS_BOT_APP_ID resolves to an empty string and create-github-app-token
-    # fails. The release-cdn-tag job rebuilds assets when the dep update
-    # lands on main.
+    # Skip Dependabot's PRs, by PR author and not by actor: this job builds
+    # the PR's code with the app token in reach, and once the bot pushes the
+    # rebuilt assets to a Dependabot PR the actor is the bot, not Dependabot.
+    # Their assets are rebuilt by dependabot-auto-merge.yml, which keeps the
+    # build and the write credential in separate jobs.
     if: >-
       github.event_name == 'pull_request' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      github.actor != 'dependabot[bot]'
+      github.event.pull_request.user.login != 'dependabot[bot]'
     needs:
       - quality-gates
     permissions:
