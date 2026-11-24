@@ -18,6 +18,7 @@ One namespace per landing-page variant, plus a shared namespace:
 - `wp-admin-landing-indie` — the "indie" variant.
 - `wp-admin-landing-free-plus` — the "free-plus" variant.
 - `wp-admin-landing-plan` — the "plan" variant (Free and Pro plan cards).
+- `wp-admin-landing-jobs` — the "jobs" variant (six questions about the shop, each with a cropped WCPOS 2.0 screenshot).
 
 ## Target locales (11)
 
@@ -47,6 +48,11 @@ literally.** Use the natural equivalent a shopkeeper in the target language woul
   plan names; keep the word for "register" identical across every string. `free_price`
   stays `$0`. Prefer phrasing without very long compounds in headings and feature titles:
   the page never auto-hyphenates, so a long word wraps whole or breaks mid-word.
+- **jobs variant** — plain questions a shop owner would ask about their own day ("Do
+  customers bring things back?"), answered in one line each. Captions describe a screenshot
+  that stays in English, so product names, amounts and on-screen labels (Aim Analog Watch,
+  45.00, Regular Price, AL 12345 Store) stay exactly as shown; `screen_in_english` follows
+  each caption on translated pages.
 
 ## Brand and formatting rules
 
