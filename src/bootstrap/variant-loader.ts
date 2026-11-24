@@ -8,12 +8,14 @@ export const KILL_SWITCH_KEY = 'ops-landing-kill-switch';
 export const FALLBACK_VARIANT = 'plan';
 export const VALID_VARIANTS = ['indie', 'free-plus', 'plan', 'jobs'];
 /**
- * The variants production may render. Paul, 2026-11-23: "Move plan to 100% for
- * now." A flag or cached value outside this list (older plugins still assign
- * `indie` / `free-plus`) falls back to FALLBACK_VARIANT. The other variants stay
- * built and stay previewable; to run a test again, list its arms here.
+ * The variants production may render: the two arms of the `plan` vs `jobs` test
+ * (Paul, 2026-11-24: "We are going to run this as an experiment, right?"). The
+ * 50/50 split itself is assigned by the plugin (Feature_Flags::LANDING_VARIANTS)
+ * and the PostHog flag; this list only says which assignments are honoured. A
+ * value outside it (older plugins still assign `indie` / `free-plus`) falls back
+ * to FALLBACK_VARIANT. The other variants stay built and stay previewable.
  */
-export const SERVED_VARIANTS = ['plan'];
+export const SERVED_VARIANTS = ['plan', 'jobs'];
 const servedVariants = (): string[] =>
   typeof window !== 'undefined' && (window as { __WCPOS_PREVIEW?: boolean }).__WCPOS_PREVIEW ? VALID_VARIANTS : SERVED_VARIANTS;
 const CACHE_KEY = 'wcpos_landing_assignment';
