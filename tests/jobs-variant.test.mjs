@@ -16,9 +16,10 @@ test('jobs is registered with its own chunk', () => {
   assert.match(loader, /jobs: \{ js: `\$\{ASSET_BASE\}\/js\/variants\/jobs\.js`, css: `\$\{ASSET_BASE\}\/css\/variants\/jobs\.css` \}/);
 });
 
-test('jobs ships dark: not served, not the fallback, reachable only in preview', () => {
+test('jobs is a served test arm, never the fallback; unserved variants stay preview-only', () => {
   const served = loader.match(/SERVED_VARIANTS = \[([^\]]*)\]/)[1];
-  assert.doesNotMatch(served, /'jobs'/);
+  assert.match(served, /'jobs'/);
+  assert.doesNotMatch(served, /'indie'|'free-plus'/);
   assert.doesNotMatch(loader, /FALLBACK_VARIANT = 'jobs'/);
   assert.match(loader, /__WCPOS_PREVIEW \? VALID_VARIANTS : SERVED_VARIANTS/);
 });
