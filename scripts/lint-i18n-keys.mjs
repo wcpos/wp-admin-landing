@@ -6,6 +6,7 @@ const NS_FOR_DIR = {
   'src/variants/indie': 'wp-admin-landing-indie.json',
   'src/variants/free-plus': 'wp-admin-landing-free-plus.json',
   'src/variants/plan': 'wp-admin-landing-plan.json',
+  'src/variants/jobs': 'wp-admin-landing-jobs.json',
   'src/shared/components': 'wp-admin-landing-shared.json',
 };
 

@@ -11,6 +11,7 @@ const NAMESPACES = [
   'wp-admin-landing-indie.json',
   'wp-admin-landing-free-plus.json',
   'wp-admin-landing-plan.json',
+  'wp-admin-landing-jobs.json',
 ];
 const PLACEHOLDER_RE = /\{[a-zA-Z0-9_]+\}/g;
 const TAG_RE = /<\/?[a-zA-Z0-9]+>/g;

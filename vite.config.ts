@@ -2,7 +2,7 @@ import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-type Target = 'bootstrap' | 'indie' | 'free-plus' | 'plan';
+type Target = 'bootstrap' | 'indie' | 'free-plus' | 'plan' | 'jobs';
 const target = (process.env.BUILD_TARGET ?? 'bootstrap') as Target;
 
 const TARGETS: Record<Target, { entry: string; js: string; css: string }> = {
@@ -10,6 +10,7 @@ const TARGETS: Record<Target, { entry: string; js: string; css: string }> = {
   indie: { entry: 'src/variants/indie/index.tsx', js: 'js/variants/indie.js', css: 'css/variants/indie.css' },
   'free-plus': { entry: 'src/variants/free-plus/index.tsx', js: 'js/variants/free-plus.js', css: 'css/variants/free-plus.css' },
   plan: { entry: 'src/variants/plan/index.tsx', js: 'js/variants/plan.js', css: 'css/variants/plan.css' },
+  jobs: { entry: 'src/variants/jobs/index.tsx', js: 'js/variants/jobs.js', css: 'css/variants/jobs.css' },
 };
 const t = TARGETS[target];
 

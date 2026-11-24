@@ -1,0 +1,164 @@
+/*
+ * The jobs variant ports its judged mockup's stylesheet, as plan does: every
+ * rule sits under #woocommerce-pos-upgrade so wp-admin's element rules never
+ * win, and every class carries the `jobs-` prefix. Element resets use :where()
+ * so the class rules after them still apply.
+ */
+#woocommerce-pos-upgrade {
+  & .jobs-page {
+    --ink: #1f252e;
+    --slate-800: #323a46;
+    --slate-600: #525c6b;
+    --slate-500: #6a7482;
+    --slate-300: #c4cad3;
+    --slate-200: #dce0e6;
+    --slate-100: #eaedf1;
+    --slate-50: #f4f6f9;
+    --red: #cd2c24;
+    --red-hover: #a82320;
+    --cream: #f5e5c0;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    container-type: inline-size;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    color: var(--slate-800);
+    font: 15px/1.5 var(--font);
+    -webkit-font-smoothing: antialiased;
+  }
+  & .jobs-page :where(h1, h2, h3, p, ul, li, figure, figcaption, blockquote, summary, details) {
+    margin: 0; padding: 0; font-size: inherit; line-height: inherit; font-weight: inherit; color: inherit;
+  }
+  & .jobs-page :where(h1, h2, h3) { hyphens: manual; -webkit-hyphens: manual; text-wrap: balance; }
+  & .jobs-page :where(ul) { list-style: none; }
+  & .jobs-page :where(a) { color: var(--slate-800); }
+  & .jobs-page :where(a:focus) { box-shadow: none; }
+  & .jobs-page :where(a):focus-visible { outline: 2px solid var(--slate-800); outline-offset: 2px; }
+  & .jobs-page img { display: block; width: 100%; max-width: none; height: auto; }
+  & .jobs-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* index.css makes every ::before border-box; the tick marks are drawn content-box */
+  & :is(.jobs-also li, .jobs-no li)::before { content: ""; position: absolute; left: 2px; top: 5px; box-sizing: content-box; width: 9px; height: 5px; border-left: 2px solid var(--slate-500); border-bottom: 2px solid var(--slate-500); transform: rotate(-45deg); }
+
+  /* layout: questions left, the purchase card and the free card right (not sticky) */
+  & .jobs-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 336px); grid-template-areas: "head side" "qs side"; grid-template-rows: auto 1fr; column-gap: 32px; align-items: start; padding: 18px 36px 36px; }
+  & .jobs-head { grid-area: head; margin-bottom: 12px; }
+  & .jobs-qs { grid-area: qs; }
+  & .jobs-side { grid-area: side; display: grid; gap: 16px; }
+  & .jobs-closing { display: none; }
+  & .jobs-myplan { display: flex; flex-wrap: wrap; gap: 2px 18px; align-items: baseline; margin-bottom: 8px; font-size: 14px; color: var(--slate-600); }
+  & .jobs-myplan b { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+  & .jobs-myplan b::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--slate-500); }
+  & .jobs-head h1 { max-width: 22em; font-size: 28px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 750; color: var(--ink); }
+  & .jobs-sub { max-width: 44em; margin-top: 8px; font-size: 15.5px; line-height: 1.4; color: var(--slate-600); }
+  & .jobs-sub b { font-weight: 600; color: var(--ink); }
+
+  /* the six questions */
+  & .jobs-lead-in { margin-bottom: 8px; font-size: 14px; line-height: 1.4; font-weight: 500; color: var(--slate-600); }
+  & .jobs-list { overflow: hidden; border: 1px solid var(--slate-200); border-radius: 8px; }
+  & .jobs-q + .jobs-q { border-top: 1px solid var(--slate-200); }
+  & .jobs-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 20px; align-items: center; padding: 8px 18px; }
+  & .jobs-row-full { grid-template-columns: minmax(0, 1fr); }
+  & .jobs-q summary { cursor: pointer; list-style: none; }
+  & .jobs-q summary::-webkit-details-marker { display: none; }
+  & .jobs-q summary:hover, & .jobs-q[open] summary, & .jobs-q[open] { background: var(--slate-50); }
+  & .jobs-q summary:focus-visible { outline: 2px solid var(--slate-800); outline-offset: -2px; }
+  & .jobs-ask { grid-column: 1; font-size: 16.5px; line-height: 1.3; font-weight: 650; color: var(--ink); }
+  & .jobs-ans { grid-column: 1; font-size: 14px; line-height: 1.4; color: var(--slate-600); }
+  /* the visible "this opens" cue: words plus a chevron that turns when open */
+  & .jobs-cue { grid-column: 2; grid-row: 1 / span 2; justify-self: end; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--slate-800); white-space: nowrap; }
+  & .jobs-cue::after { content: ""; width: 7px; height: 7px; margin-top: -4px; border-right: 2px solid var(--slate-800); border-bottom: 2px solid var(--slate-800); transform: rotate(45deg); }
+  & .jobs-q[open] .jobs-cue::after { margin-top: 3px; transform: rotate(-135deg); }
+  & .jobs-cue span { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--slate-300); }
+  & .jobs-q summary:hover .jobs-cue span { text-decoration-color: currentColor; }
+  & .jobs-c-open, & .jobs-q[open] .jobs-c-closed { display: none; }
+  & .jobs-q[open] .jobs-c-open { display: inline; }
+
+  /* an opened row: a real screenshot cropped to the proving control, a cream highlight on it */
+  & .jobs-shot { padding: 0 18px 10px; }
+  & .jobs-frame { position: relative; overflow: hidden; background: #fff; border-radius: 6px; box-shadow: 0 0 0 1px var(--slate-200); }
+  & .jobs-win { position: absolute; overflow: hidden; }
+  & .jobs-win::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+  & .jobs-div-left::after { border-left: 1px solid var(--slate-200); }
+  & .jobs-div-top::after { border-top: 1px solid var(--slate-200); }
+  & .jobs-crop { position: absolute; }
+  & .jobs-ring { position: absolute; border-radius: 7px; background: var(--cream); box-shadow: 0 0 0 3px var(--cream); mix-blend-mode: multiply; pointer-events: none; }
+  & .jobs-shot figcaption { margin-top: 6px; font-size: 14px; color: var(--slate-600); }
+  & .jobs-en-note { font-size: 13px; color: var(--slate-500); }
+  & .jobs-phone { display: none; }
+  & .jobs-also { padding: 12px 18px; border-top: 1px solid var(--slate-200); background: var(--slate-50); font-size: 14px; color: var(--slate-600); }
+  & .jobs-also-h { font-weight: 650; color: var(--ink); }
+  & .jobs-also ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 20px; margin-top: 6px; }
+  & .jobs-also li { position: relative; padding-left: 18px; line-height: 1.4; }
+
+  /* the purchase card and the free card */
+  & .jobs-door { padding: 20px 22px; border-radius: 8px; }
+  & .jobs-door h2 { font-size: 18px; line-height: 1.25; font-weight: 750; color: var(--ink); }
+  & .jobs-yes { border: 2px solid var(--slate-800); box-shadow: 0 16px 30px -22px rgba(31, 37, 46, 0.55); }
+  /* each price is one unbreakable block; every price carries a "·" before it, and the one
+     that starts a line sits in the negative margin and is clipped */
+  & .jobs-price { overflow: hidden; margin-top: 10px; font-size: 23px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+  & .jobs-price-in { display: flex; flex-wrap: wrap; margin-left: -1em; }
+  & .jobs-pp { white-space: nowrap; }
+  & .jobs-pp::before { content: "·"; display: inline-block; width: 1em; text-align: center; font-weight: 400; color: var(--slate-500); }
+  & .jobs-per { margin-top: 2px; font-size: 13px; color: var(--slate-600); }
+  & .jobs-btn { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; margin-top: 14px; padding: 0 24px; background: var(--red); border: 1px solid var(--red-hover); border-radius: 5px; color: #fff; font: 650 17px/1.2 var(--font); text-align: center; text-decoration: none; }
+  & .jobs-btn:hover, & .jobs-btn:focus { background: var(--red-hover); color: #fff; }
+  & .jobs-btn svg { flex: none; }
+  & .jobs-fair { margin-top: 10px; font-size: 13px; line-height: 1.45; color: var(--slate-600); }
+  & .jobs-thanks { margin-top: 10px; font-size: 17px; line-height: 1.4; font-weight: 600; color: var(--ink); }
+  & .jobs-no { background: var(--slate-50); border: 1px solid var(--slate-200); }
+  & .jobs-then { margin-top: 2px; font-size: 14.5px; color: var(--slate-600); }
+  & .jobs-no ul { display: grid; gap: 5px; margin-top: 12px; }
+  & .jobs-no li { position: relative; padding-left: 20px; font-size: 14px; line-height: 1.4; }
+  & .jobs-terms { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--slate-200); font-size: 13px; color: var(--slate-600); }
+
+  /* one voice from WordPress.org */
+  & .jobs-review { padding: 4px 22px 0; }
+  & .jobs-stars { font-size: 14px; letter-spacing: 2px; color: var(--slate-800); }
+  & .jobs-review blockquote { margin-top: 6px; font-size: 14px; line-height: 1.5; }
+  & .jobs-review figcaption { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--slate-500); }
+  & .jobs-review b { font-weight: 600; color: var(--ink); }
+  & .jobs-review a { font-weight: 600; }
+
+  /* the error state */
+  & .jobs-err { margin: 36px 44px 44px; padding: 16px 20px; background: var(--slate-50); border: 1px solid var(--slate-200); border-left: 4px solid var(--slate-800); border-radius: 0 6px 6px 0; }
+  & .jobs-err-title { font-size: 16px; font-weight: 700; color: var(--ink); }
+  & .jobs-err-next { margin-top: 4px; }
+  & .jobs-err-msg { margin-top: 8px; font-size: 13px; color: var(--slate-500); overflow-wrap: anywhere; }
+
+  /* one column: the purchase card first, the closing purchase block last */
+  @container (max-width: 880px) {
+    & .jobs-body { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "head" "yes" "qs" "no" "foot" "close"; padding: 24px 28px 30px; }
+    & .jobs-side { display: contents; }
+    & .jobs-card { grid-area: yes; }
+    & .jobs-no { grid-area: no; margin-top: 18px; }
+    & .jobs-closing { grid-area: close; display: block; margin-top: 24px; }
+    & .jobs-review { grid-area: foot; margin-top: 22px; padding: 20px 0 0; border-top: 1px solid var(--slate-100); }
+    & .jobs-head { margin-bottom: 18px; }
+    & .jobs-qs { margin-top: 22px; }
+    & .jobs-no ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+  }
+  @container (max-width: 560px) {
+    & .jobs-body { padding: 18px 14px 26px; }
+    & .jobs-head h1 { font-size: 25px; line-height: 1.18; }
+    & .jobs-sub { font-size: 15px; }
+    & .jobs-myplan, & .jobs-lead-in { font-size: 13.5px; }
+    & .jobs-door { padding: 18px; }
+    & .jobs-row { grid-template-columns: minmax(0, 1fr); padding: 12px 14px; }
+    /* phone: label and chevron together, on their own line under the body */
+    & .jobs-cue { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 6px; font-size: 13.5px; }
+    & .jobs-ask { font-size: 15.5px; }
+    & .jobs-ans { font-size: 13.5px; }
+    /* phone: a tighter window on the same image, full row width, edge to edge */
+    & .jobs-shot { padding: 2px 0 16px; }
+    & .jobs-frame { border-radius: 0; box-shadow: 0 1px 0 var(--slate-200), 0 -1px 0 var(--slate-200); }
+    & .jobs-shot figcaption { padding: 0 14px; }
+    & .jobs-desk { display: none; }
+    & .jobs-phone { display: block; }
+    & .jobs-also { padding: 12px 14px; }
+    & :is(.jobs-also, .jobs-no) ul { grid-template-columns: minmax(0, 1fr); }
+    & .jobs-err { margin: 22px 14px 26px; }
+  }
+}

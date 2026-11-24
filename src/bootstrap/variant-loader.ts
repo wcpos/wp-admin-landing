@@ -6,7 +6,7 @@ import { CDN_BASE, ASSET_VERSION, ANALYTICS_SCHEMA_VERSION } from '../shared/con
 export const FLAG_KEY = 'landing-variant';
 export const KILL_SWITCH_KEY = 'ops-landing-kill-switch';
 export const FALLBACK_VARIANT = 'plan';
-export const VALID_VARIANTS = ['indie', 'free-plus', 'plan'];
+export const VALID_VARIANTS = ['indie', 'free-plus', 'plan', 'jobs'];
 /**
  * The variants production may render. Paul, 2026-11-23: "Move plan to 100% for
  * now." A flag or cached value outside this list (older plugins still assign
@@ -50,6 +50,7 @@ export const VARIANT_ASSETS: Record<string, { js: string; css: string }> = {
   indie: { js: `${ASSET_BASE}/js/variants/indie.js`, css: `${ASSET_BASE}/css/variants/indie.css` },
   'free-plus': { js: `${ASSET_BASE}/js/variants/free-plus.js`, css: `${ASSET_BASE}/css/variants/free-plus.css` },
   plan: { js: `${ASSET_BASE}/js/variants/plan.js`, css: `${ASSET_BASE}/css/variants/plan.css` },
+  jobs: { js: `${ASSET_BASE}/js/variants/jobs.js`, css: `${ASSET_BASE}/css/variants/jobs.css` },
 };
 
 interface CachedAssignment { variant: string; anonId: string; schemaVersion: number; ts: number }
