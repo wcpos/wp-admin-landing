@@ -17,7 +17,7 @@
     "lint:tw": "node scripts/lint-tailwind-prefix.mjs"
   },
   "dependencies": {
-    "i18next": "^26.0.5",
+    "i18next": "^26.7.2",
     "i18next-chained-backend": "^5.0.3",
     "i18next-http-backend": "^3.0.5",
     "i18next-localstorage-backend": "^4.3.1",
