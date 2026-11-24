@@ -1,13 +1,104 @@
 name: Dependabot Auto-Merge
 on: pull_request_target
 
+# The committed bundles in assets/ must match package.json when a Dependabot PR
+# merges: main is protected, so nothing can push a rebuild there afterwards, and
+# CI's build-pr-assets job is skipped for Dependabot (its `pull_request` runs
+# cannot read secrets). #61 merged a bump with stale bundles for that reason.
+#
+# So the rebuild happens here, split in two so the PR's code never runs next to
+# a write credential: `build-assets` runs the PR's code with a read-only token
+# and no secrets; `commit-assets` runs none of the PR's code and only pushes the
+# files that job produced. `auto-merge` waits for both.
+
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
-  auto-merge:
+  build-assets:
     if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      # No `cache: npm` here: this job runs untrusted code in the base branch's
+      # cache scope, and a poisoned cache would be restored by trusted runs.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Upload built assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-assets
+          path: assets/
+          if-no-files-found: error
+          retention-days: 1
+
+  commit-assets:
+    needs: build-assets
+    runs-on: ubuntu-latest
+    steps:
+      # App token, not GITHUB_TOKEN: its push retriggers CI, so `quality-gates`
+      # registers against the new head and branch protection is satisfied.
+      - name: Generate bot app token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.WCPOS_BOT_APP_ID }}
+          private-key: ${{ secrets.WCPOS_BOT_PRIVATE_KEY }}
+
+      - name: Check out PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Replace assets with the built ones
+        run: rm -rf assets
+
+      - name: Download built assets
+        uses: actions/download-artifact@v4
+        with:
+          name: built-assets
+          path: assets/
+
+      - name: Commit built assets if changed
+        env:
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A assets/
+
+          if git diff --cached --quiet; then
+            echo "Assets already up to date with source; nothing to commit."
+            exit 0
+          fi
+
+          # "[dependabot skip]" lets Dependabot keep rebasing this PR; the
+          # rebase drops this commit and this workflow rebuilds on the new head.
+          git commit -m "build: update generated assets [dependabot skip]"
+          git push origin "HEAD:${PR_BRANCH}"
+
+  auto-merge:
+    needs: commit-assets
+    permissions:
+      contents: write
+      pull-requests: write
     uses: wcpos/.github/.github/workflows/dependabot-auto-merge.yml@main
     secrets:
       # Pass WCPOS_BOT credentials under the names the reusable workflow
